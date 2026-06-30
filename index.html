@@ -162,17 +162,23 @@
 
     .nav__inner {
       height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
     }
+    @media (min-width: 768px) { .nav__inner { padding: 0 56px; } }
 
     .nav__brand {
       display: flex;
       align-items: center;
       gap: 14px;
       text-decoration: none;
+      flex-shrink: 0;
+      z-index: 1;
     }
 
     .nav__logo { height: 36px; width: auto; transition: transform var(--transition-bounce); }
@@ -203,6 +209,11 @@
       display: none;
       gap: 32px;
       list-style: none;
+      white-space: nowrap;
+      margin: 0;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
     @media (min-width: 768px) { .nav__links { display: flex; } }
 
@@ -232,6 +243,8 @@
       gap: 12px;
       padding-left: 16px;
       border-left: 1px solid var(--border-mid);
+      flex-shrink: 0;
+      z-index: 1;
     }
 
     .nav__cta {
@@ -922,7 +935,7 @@
   <!-- ─── NAV ───────────────────────────────────────────────── -->
   <header>
     <nav class="nav" role="navigation" aria-label="Navegación principal">
-      <div class="container nav__inner">
+      <div class="nav__inner">
 
         <a href="#home" class="nav__brand" aria-label="Verónica Arciniega — inicio">
           <img src="Logo blanco.png" id="logo-dark" class="nav__logo" alt="Logo Verónica Arciniega" width="100" height="36">
