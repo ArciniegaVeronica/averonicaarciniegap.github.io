@@ -269,13 +269,72 @@
     .flow-tag{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:6px 14px;border-radius:100px;border:1px solid currentColor}
     .flow-title{font-size:22px;font-weight:800;letter-spacing:-.025em}
     .flow-desc{font-size:14px;color:var(--muted);max-width:620px;line-height:1.7;margin-bottom:28px}
-    .screens-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
-    .screen-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft);transition:all var(--ease)}
-    .screen-card:hover{border-color:var(--border-mid);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
-    .screen-card img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
-    .screen-card__empty{aspect-ratio:9/16;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:.25}
+    /* Screens — specific column counts per flow */
+    .screens-grid--2{grid-template-columns:repeat(2,1fr)!important}
+    @media(min-width:640px){.screens-grid--3{grid-template-columns:repeat(3,1fr)!important}}
+    @media(min-width:640px){.screens-grid--4{grid-template-columns:repeat(2,1fr)!important}}
+    @media(min-width:900px){.screens-grid--4{grid-template-columns:repeat(4,1fr)!important}}
+
+    /* Screens — correct iPhone ratio, larger, framed */
+    .screens-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+    }
+    @media(min-width:540px){.screens-grid{grid-template-columns:repeat(3,1fr);gap:20px}}
+    @media(min-width:900px){.screens-grid{grid-template-columns:repeat(4,1fr);gap:24px}}
+
+    .screen-card{
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:var(--card-soft);
+      transition:all var(--ease);
+      display:flex;
+      flex-direction:column;
+    }
+    .screen-card:hover{
+      border-color:var(--border-mid);
+      transform:translateY(-6px);
+      box-shadow:0 20px 48px rgba(0,0,0,.4);
+    }
+    .screen-card__img-wrap{
+      width:100%;
+      aspect-ratio:9/19.5;
+      overflow:hidden;
+      position:relative;
+      background:var(--card-soft);
+    }
+    .screen-card__img-wrap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:top;
+      display:block;
+      transition:transform .6s ease;
+    }
+    .screen-card:hover .screen-card__img-wrap img{transform:scale(1.04)}
+    .screen-card__empty{
+      width:100%;
+      aspect-ratio:9/19.5;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      opacity:.2;
+    }
     .screen-card__empty svg{width:28px;height:28px}
-    .screen-card figcaption{padding:10px 12px;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);border-top:1px solid var(--border)}
+    .screen-card figcaption{
+      padding:12px 14px;
+      font-family:var(--mono);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      color:var(--faint);
+      border-top:1px solid var(--border);
+      flex-shrink:0;
+    }
 
     /* ─── RESULTS ─── */
     .results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:32px}
@@ -916,28 +975,28 @@
         <h3 class="flow-title" data-t="f1_title">Onboarding e inicio personalizado</h3>
       </div>
       <p class="flow-desc" data-t="f1_desc">Splash de marca + home con resumen diario. El usuario entiende de un vistazo qué tiene pendiente: próxima reserva destacada, acceso a favoritos y noticias del gym. Sin navegación extra.</p>
-      <div class="screens-grid">
+      <div class="screens-grid screens-grid--3">
         <figure class="screen-card">
-          <img src="assets/tg-splash.jpg" alt="Pantalla Splash — Thunder Gym"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="screen-card__empty" style="display:none" aria-hidden="true">
+          <div class="screen-card__img-wrap">          <img src="assets/tg-splash.jpg" alt="Pantalla Splash — Thunder Gym"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">          <div class="screen-card__empty" style="display:none" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
           </div>
           <figcaption data-t="fs_splash">Splash</figcaption>
         </figure>
         <figure class="screen-card">
-          <img src="assets/tg-inicio.jpg" alt="Pantalla de inicio"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="screen-card__empty" style="display:none" aria-hidden="true">
+          <div class="screen-card__img-wrap">          <img src="assets/tg-inicio.jpg" alt="Pantalla de inicio"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">          <div class="screen-card__empty" style="display:none" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
           </div>
           <figcaption data-t="fs_home">Inicio</figcaption>
         </figure>
         <figure class="screen-card">
-          <img src="assets/tg-inicio-reservas.jpg" alt="Inicio con reservas activas"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="screen-card__empty" style="display:none" aria-hidden="true">
+          <div class="screen-card__img-wrap">          <img src="assets/tg-inicio-reservas.jpg" alt="Inicio con reservas activas"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">          <div class="screen-card__empty" style="display:none" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
           </div>
           <figcaption data-t="fs_home_r">Inicio con reservas</figcaption>
         </figure>
@@ -951,20 +1010,20 @@
         <h3 class="flow-title" data-t="f2_title">Horarios y vacantes en tiempo real</h3>
       </div>
       <p class="flow-desc" data-t="f2_desc">Lista de clases filtrable por turno (Mañana / Tarde / Noche) con contador de vacantes visible directamente. Elimina la pizarra desactualizada y la incertidumbre antes de desplazarse al gym.</p>
-      <div class="screens-grid">
+      <div class="screens-grid screens-grid--2">
         <figure class="screen-card">
-          <img src="assets/tg-horarios-1.jpg" alt="Vista de horarios de clases"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="screen-card__empty" style="display:none" aria-hidden="true">
+          <div class="screen-card__img-wrap">          <img src="assets/tg-horarios-1.jpg" alt="Vista de horarios de clases"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">          <div class="screen-card__empty" style="display:none" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
           </div>
           <figcaption data-t="fs_sched">Horarios</figcaption>
         </figure>
         <figure class="screen-card">
-          <img src="assets/tg-horarios-2.jpg" alt="Horarios con filtro por turno"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="screen-card__empty" style="display:none" aria-hidden="true">
+          <div class="screen-card__img-wrap">          <img src="assets/tg-horarios-2.jpg" alt="Horarios con filtro por turno"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">          <div class="screen-card__empty" style="display:none" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
           </div>
           <figcaption data-t="fs_sched_f">Horarios filtrados</figcaption>
         </figure>
@@ -978,28 +1037,28 @@
         <h3 class="flow-title" data-t="f3_title">Inscripción con confirmación inmediata</h3>
       </div>
       <p class="flow-desc" data-t="f3_desc">Modal de confirmación previo, pantalla de éxito animada con datos completos de la reserva y opción de añadir al calendario. La pantalla de cancelación mantiene el mismo patrón visual para coherencia.</p>
-      <div class="screens-grid">
+      <div class="screens-grid screens-grid--3">
         <figure class="screen-card">
-          <img src="assets/tg-noti-app.jpg" alt="Modal de confirmación de reserva"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="screen-card__empty" style="display:none" aria-hidden="true">
+          <div class="screen-card__img-wrap">          <img src="assets/tg-noti-app.jpg" alt="Modal de confirmación de reserva"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">          <div class="screen-card__empty" style="display:none" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
           </div>
           <figcaption data-t="fs_modal">Modal reserva</figcaption>
         </figure>
         <figure class="screen-card">
-          <img src="assets/tg-confirmada.jpg" alt="Reserva confirmada"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="screen-card__empty" style="display:none" aria-hidden="true">
+          <div class="screen-card__img-wrap">          <img src="assets/tg-confirmada.jpg" alt="Reserva confirmada"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">          <div class="screen-card__empty" style="display:none" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
           </div>
           <figcaption data-t="fs_conf">Reserva confirmada</figcaption>
         </figure>
         <figure class="screen-card">
-          <img src="assets/tg-cancelada.jpg" alt="Reserva cancelada"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="screen-card__empty" style="display:none" aria-hidden="true">
+          <div class="screen-card__img-wrap">          <img src="assets/tg-cancelada.jpg" alt="Reserva cancelada"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">          <div class="screen-card__empty" style="display:none" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
           </div>
           <figcaption data-t="fs_cancel">Reserva cancelada</figcaption>
         </figure>
@@ -1013,20 +1072,20 @@
         <h3 class="flow-title" data-t="f4_title">Alertas y gestión de reservas</h3>
       </div>
       <p class="flow-desc" data-t="f4_desc">Notificaciones push del sistema antes de cada clase y sección "Mis reservas" con vista completa y gestión. Mariana ya no necesita recordarlo — la app lo hace por ella.</p>
-      <div class="screens-grid">
+      <div class="screens-grid screens-grid--2">
         <figure class="screen-card">
-          <img src="assets/tg-noti-sistema.jpg" alt="Notificación push del sistema"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="screen-card__empty" style="display:none" aria-hidden="true">
+          <div class="screen-card__img-wrap">          <img src="assets/tg-noti-sistema.jpg" alt="Notificación push del sistema"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">          <div class="screen-card__empty" style="display:none" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
           </div>
           <figcaption data-t="fs_notif">Notificación push</figcaption>
         </figure>
         <figure class="screen-card">
-          <img src="assets/tg-mis-reservas.jpg" alt="Vista Mis Reservas"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="screen-card__empty" style="display:none" aria-hidden="true">
+          <div class="screen-card__img-wrap">          <img src="assets/tg-mis-reservas.jpg" alt="Vista Mis Reservas"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">          <div class="screen-card__empty" style="display:none" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+          </div>
           </div>
           <figcaption data-t="fs_bookings">Mis reservas</figcaption>
         </figure>
