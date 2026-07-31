@@ -1203,6 +1203,12 @@
 </head>
 
 <body>
+<script>
+(function(){
+  var t=localStorage.getItem('va-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+})();
+</script>
 
   <!-- Accesibilidad: saltar al contenido principal -->
   <a href="#main-content" class="skip-link" data-t="skip_link">Saltar al contenido principal</a>
@@ -1913,15 +1919,20 @@
   function toggleTheme() {
     currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', currentTheme);
-
-    const isDark = currentTheme === 'dark';
+    localStorage.setItem('va-theme', currentTheme);
+    syncThemeUI();
+  }
+  function syncThemeUI() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    currentTheme = isDark ? 'dark' : 'light';
     document.getElementById('icon-moon').style.display  = isDark ? 'block' : 'none';
     document.getElementById('icon-sun').style.display   = isDark ? 'none'  : 'block';
-    document.getElementById('logo-dark').style.display  = isDark ? 'block' : 'none';
-    document.getElementById('logo-light').style.display = isDark ? 'none'  : 'block';
-
+    const logoDark  = document.getElementById('logo-dark');
+    const logoLight = document.getElementById('logo-light');
+    if (logoDark)  logoDark.style.display  = isDark ? 'block' : 'none';
+    if (logoLight) logoLight.style.display = isDark ? 'none'  : 'block';
     const toggle = document.getElementById('theme-toggle');
-    toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    if (toggle) toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
   }
 
   /* ══════════════════════════════════════════════
