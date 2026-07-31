@@ -269,65 +269,70 @@
     .flow-tag{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:6px 14px;border-radius:100px;border:1px solid currentColor}
     .flow-title{font-size:22px;font-weight:800;letter-spacing:-.025em}
     .flow-desc{font-size:14px;color:var(--muted);max-width:620px;line-height:1.7;margin-bottom:28px}
-    /* Screens — specific column counts per flow */
-    .screens-grid--2{grid-template-columns:repeat(2,1fr)!important}
-    @media(min-width:640px){.screens-grid--3{grid-template-columns:repeat(3,1fr)!important}}
-    @media(min-width:640px){.screens-grid--4{grid-template-columns:repeat(2,1fr)!important}}
-    @media(min-width:900px){.screens-grid--4{grid-template-columns:repeat(4,1fr)!important}}
+    /* Screens — uniform grid, ALL flows same 4-col layout */
+    .screens-grid,
+    .screens-grid--2,
+    .screens-grid--3,
+    .screens-grid--4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    @media(min-width:540px){
+      .screens-grid,
+      .screens-grid--2,
+      .screens-grid--3,
+      .screens-grid--4 { grid-template-columns:repeat(4,1fr); gap:18px; }
+    }
 
-    /* Screens — correct iPhone ratio, larger, framed */
-    .screens-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:16px;
+    /* Screen card — consistent, non-intrusive */
+    .screen-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card-soft);
+      transition: all var(--ease);
+      display: flex;
+      flex-direction: column;
     }
-    @media(min-width:540px){.screens-grid{grid-template-columns:repeat(3,1fr);gap:20px}}
-    @media(min-width:900px){.screens-grid{grid-template-columns:repeat(4,1fr);gap:24px}}
-
-    .screen-card{
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid var(--border);
-      background:var(--card-soft);
-      transition:all var(--ease);
-      display:flex;
-      flex-direction:column;
+    .screen-card:hover {
+      border-color: var(--border-mid);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.3);
     }
-    .screen-card:hover{
-      border-color:var(--border-mid);
-      transform:translateY(-6px);
-      box-shadow:0 20px 48px rgba(0,0,0,.4);
+    /* Fixed height container — all cards identical */
+    .screen-card__img-wrap {
+      width: 100%;
+      aspect-ratio: 9/16;
+      overflow: hidden;
+      position: relative;
+      background: var(--card-soft);
+      flex-shrink: 0;
     }
-    .screen-card__img-wrap{
-      width:100%;
-      aspect-ratio:9/19.5;
-      overflow:hidden;
-      position:relative;
-      background:var(--card-soft);
+    .screen-card__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center top;
+      display: block;
+      padding: 6px;
+      transition: transform .5s ease;
     }
-    .screen-card__img-wrap img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:top;
-      display:block;
-      transition:transform .6s ease;
+    .screen-card:hover .screen-card__img-wrap img { transform: scale(1.03); }
+    .screen-card__empty {
+      width: 100%;
+      aspect-ratio: 9/16;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      opacity: .15;
     }
-    .screen-card:hover .screen-card__img-wrap img{transform:scale(1.04)}
-    .screen-card__empty{
-      width:100%;
-      aspect-ratio:9/19.5;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      opacity:.2;
-    }
-    .screen-card__empty svg{width:28px;height:28px}
-    .screen-card figcaption{
-      padding:12px 14px;
-      font-family:var(--mono);
+    .screen-card__empty svg { width: 24px; height: 24px; }
+    .screen-card figcaption {
+      padding: 10px 12px;
+      font-family: var(--mono);
       font-size:9px;
       text-transform:uppercase;
       letter-spacing:.1em;
