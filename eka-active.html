@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EKA Active — Verónica Arciniega</title>
+  <meta name="description" content="Proyecto de diseño gráfico para EKA Active. Fitness & Wellness. Portfolio de Verónica Arciniega.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0f; --surface:#16161d; --card:#1a1a24; --card-soft:#0d0d14;
+      --text:#f5f5f7; --muted:rgba(245,245,247,0.55); --faint:rgba(245,245,247,0.22);
+      --primary:#6366f1; --border:rgba(255,255,255,0.07); --border-mid:rgba(255,255,255,0.13);
+      --shadow:0 24px 64px rgba(0,0,0,.45);
+      --font:'Plus Jakarta Sans',sans-serif; --mono:'Space Mono',monospace;
+      --ease:0.4s cubic-bezier(0.4,0,0.2,1); --bounce:0.5s cubic-bezier(0.34,1.56,0.64,1);
+      --brand-a:#E07830; --brand-b:#5C7A4A;
+    }
+    [data-theme="light"]{
+      --bg:#f4f4f8; --surface:#ffffff; --card:#ffffff; --card-soft:#ececf4;
+      --text:#0a0a0f; --muted:rgba(10,10,15,0.55); --faint:rgba(10,10,15,0.22);
+      --border:rgba(0,0,0,0.07); --border-mid:rgba(0,0,0,0.13);
+      --shadow:0 24px 64px rgba(0,0,0,.1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:68px}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.65;transition:background var(--ease),color var(--ease)}
+    img{max-width:100%;display:block} a{color:inherit;text-decoration:none}
+    button{font-family:inherit;cursor:pointer;border:none;background:none}
+    :focus-visible{outline:2px solid var(--brand-a);outline-offset:3px;border-radius:4px}
+
+    .skip{position:fixed;top:-100px;left:16px;z-index:9999;padding:12px 20px;background:var(--brand-a);color:#fff;border-radius:8px;font-weight:700;font-size:14px;transition:top .2s}
+    .skip:focus{top:16px}
+
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-mid);background:color-mix(in srgb,var(--bg) 92%,transparent);box-shadow:0 4px 24px rgba(0,0,0,.2)}
+    .nav__inner{max-width:1280px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    @media(min-width:768px){.nav__inner{padding:0 48px}}
+    .nav__back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--muted);transition:color var(--ease)}
+    .nav__back:hover{color:var(--text)}
+    .nav__back svg{width:16px;height:16px;transition:transform var(--ease)}
+    .nav__back:hover svg{transform:translateX(-3px)}
+    .nav__right{display:flex;align-items:center;gap:12px}
+    .lang-btn{color:var(--faint);font-weight:700;font-family:var(--mono);font-size:11px;padding:4px 2px;transition:color var(--ease);cursor:pointer}
+    .lang-btn[aria-pressed="true"]{color:var(--brand-a)}
+    .lang-sep{color:var(--faint);font-size:11px}
+    .theme-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-mid);color:var(--muted);transition:background var(--ease),transform var(--bounce)}
+    .theme-btn:hover{background:var(--surface);transform:rotate(20deg);color:var(--text)}
+    .theme-btn svg{width:16px;height:16px}
+
+    /* HERO */
+    .hero{position:relative;height:92svh;min-height:540px;overflow:hidden;display:flex;align-items:flex-end;padding-top:68px}
+    .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 8s ease}
+    .hero:hover .hero__img{transform:scale(1.03)}
+    .hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.4) 45%,rgba(0,0,0,.15) 100%)}
+    .hero__content{position:relative;z-index:1;width:100%;max-width:1280px;margin:0 auto;padding:0 24px 72px}
+    @media(min-width:768px){.hero__content{padding:0 48px 88px}}
+    .hero__eyebrow{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:var(--brand-a);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:12px;opacity:0;animation:fadeUp .7s .1s ease forwards}
+    .hero__eyebrow::before{content:'';width:32px;height:1px;background:var(--brand-a)}
+    .hero__title{font-size:clamp(44px,9vw,104px);font-weight:800;letter-spacing:-.045em;line-height:.92;color:#fff;opacity:0;animation:fadeUp .8s .25s ease forwards;margin-bottom:24px}
+    .hero__chips{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:fadeUp .8s .4s ease forwards}
+    .hero__chip{padding:8px 18px;border-radius:100px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);backdrop-filter:blur(8px);font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.08em}
+    .hero__chip--accent{border-color:var(--brand-a);background:color-mix(in srgb,var(--brand-a) 20%,transparent);color:#fff}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    /* META */
+    .meta-strip{background:var(--surface);border-bottom:1px solid var(--border)}
+    .meta-inner{max-width:1280px;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+    @media(min-width:640px){.meta-inner{grid-template-columns:repeat(4,1fr)}}
+    .meta-block{background:var(--surface);padding:24px 28px}
+    @media(min-width:768px){.meta-block{padding:28px 48px}}
+    .meta-block:first-child{padding-left:24px} @media(min-width:768px){.meta-block:first-child{padding-left:48px}}
+    .meta-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--brand-a);font-weight:700;margin-bottom:8px}
+    .meta-value{font-size:13px;font-weight:600;color:var(--text);line-height:1.5}
+
+    /* LAYOUT */
+    .wrap{max-width:900px;margin:0 auto;padding:0 24px}
+    @media(min-width:768px){.wrap{padding:0 48px}}
+    .cs-sec{padding:80px 0} .cs-sec--alt{background:var(--surface)}
+    .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+    .eyebrow__num{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:700;letter-spacing:.1em}
+    .eyebrow__line{flex:1;height:1px;background:var(--border)}
+    .lbl{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--brand-a);font-weight:700}
+    h2{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.03em;margin:10px 0 16px}
+    .prose{font-size:16px;color:var(--muted);line-height:1.8;max-width:680px}
+    .prose strong{color:var(--text);font-weight:700}
+
+    /* DELIVERABLES */
+    .del-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-top:32px}
+    .del-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;transition:all var(--ease)}
+    .del-card:hover{border-color:var(--brand-a);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.25)}
+    .del-card__icon{font-size:24px;margin-bottom:12px}
+    .del-card__title{font-size:13px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:4px}
+    .del-card__sub{font-size:12px;color:var(--muted)}
+
+    /* GALLERY */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+    @media(max-width:600px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    .g-item{border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft);aspect-ratio:1/1;transition:all var(--ease);position:relative}
+    .g-item:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.35);border-color:var(--border-mid)}
+    .g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+    .g-item:hover img{transform:scale(1.05)}
+    .g-item__empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.12}
+    .g-item__empty svg{width:32px;height:32px}
+
+    /* PROJ NAV */
+    .proj-nav{background:var(--surface);border-top:1px solid var(--border);padding:36px 0}
+    .proj-nav__inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    @media(min-width:768px){.proj-nav__inner{padding:0 48px}}
+    .nav-proj{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:var(--muted);padding:11px 20px;border-radius:100px;border:1px solid var(--border);transition:all var(--ease)}
+    .nav-proj:hover{color:var(--text);border-color:var(--border-mid);background:var(--card)}
+    .nav-proj--prev:hover{transform:translateX(-4px)}
+    .nav-proj--next:hover{transform:translateX(4px)}
+    .nav-proj svg{width:15px;height:15px;flex-shrink:0}
+    .nav-home{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#fff;padding:11px 24px;border-radius:100px;background:var(--brand-a);border:1px solid var(--brand-a);transition:all var(--bounce)}
+    .nav-home:hover{transform:translateY(-3px);box-shadow:0 10px 28px color-mix(in srgb,var(--brand-a) 40%,transparent)}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--faint)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip" data-t="skip">Saltar al contenido</a>
+
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span data-t="back">Volver al portfolio</span>
+    </a>
+    <div class="nav__right">
+      <div style="display:flex;align-items:center;gap:6px">
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')" aria-pressed="true">ES</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-pressed="false">EN</button>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()">
+        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707M6.343 17.657l-.707.707m12.728 0-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero">
+  <img class="hero__img" src="assets/eka-active-hero.jpg" alt="Hero del proyecto EKA Active" loading="eager"
+       onerror="this.style.background='linear-gradient(135deg,#E0783022,#5C7A4A22)';this.style.opacity='0'">
+  <div class="hero__overlay" aria-hidden="true"></div>
+  <div class="hero__content">
+    <p class="hero__eyebrow" data-t="sector">Fitness & Wellness</p>
+    <h1 class="hero__title">EKA Active</h1>
+    <div class="hero__chips">
+      <span class="hero__chip hero__chip--accent" data-t="tag1">Social Media</span>
+      <span class="hero__chip" data-t="tag2">Dirección Visual</span>
+      <span class="hero__chip">Diseñadora Gráfica</span>
+    </div>
+  </div>
+</header>
+
+<div class="meta-strip">
+  <div class="meta-inner">
+    <div class="meta-block"><p class="meta-label" data-t="ml_sector">Sector</p><p class="meta-value" data-t="mv_sector">Fitness & Wellness</p></div>
+    <div class="meta-block"><p class="meta-label" data-t="ml_role">Rol</p><p class="meta-value" data-t="mv_role">Diseñadora Gráfica</p></div>
+    <div class="meta-block"><p class="meta-label" data-t="ml_tools">Herramientas</p><p class="meta-value">Adobe Photoshop · Illustrator · Canva · IA</p></div>
+    <div class="meta-block"><p class="meta-label" data-t="ml_del">Entregables</p><p class="meta-value" data-t="mv_del">Definición de estilo visual · Posts para redes sociales</p></div>
+  </div>
+</div>
+
+<section class="cs-sec">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">01</span><div class="eyebrow__line"></div><span class="lbl" data-t="s1l">El proyecto</span></div>
+    <h2 data-t="s1h">Contexto y reto</h2>
+    <p class="prose reveal" data-t="s1p">EKA Active es una marca de fitness y bienestar que comenzaba a construir su presencia digital con lo básico definido. El reto era tomar ese punto de partida y desarrollar un estilo visual coherente y atractivo que comunicara energía, movimiento y bienestar.</p>
+  </div>
+</section>
+
+<section class="cs-sec cs-sec--alt">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">02</span><div class="eyebrow__line"></div><span class="lbl" data-t="s2l">El trabajo</span></div>
+    <h2 data-t="s2h">Lo que desarrollé</h2>
+    <p class="prose reveal" data-t="s2p">Partiendo de los elementos básicos de la marca, definí el estilo visual y la dirección de arte para su comunicación en redes sociales. Diseñé posts que transmitieran la energía y los valores de la marca mediante composiciones dinámicas, fotografía cuidada y una paleta de naranja, café y verde.</p>
+    <div class="del-grid reveal">
+      <div class="del-card">
+        <div class="del-card__icon" aria-hidden="true">🎨</div>
+        <p class="del-card__title" data-t="del0t">Definición de estilo visual</p>
+        <p class="del-card__sub" data-t="del0s">Dirección de arte inicial</p>
+      </div>
+      <div class="del-card">
+        <div class="del-card__icon" aria-hidden="true">📸</div>
+        <p class="del-card__title" data-t="del1t">Posts para redes sociales</p>
+        <p class="del-card__sub" data-t="del1s">Instagram & Facebook</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-sec">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">03</span><div class="eyebrow__line"></div><span class="lbl" data-t="s3l">Galería</span></div>
+    <h2 data-t="s3h">Piezas seleccionadas</h2>
+    <div class="gallery reveal" role="list">
+      <figure class="gallery__item" role="listitem">
+        <img src="assets/eka-active-01.jpg" alt="Pieza 1" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gallery__placeholder" style="display:none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+      </figure>
+      <figure class="gallery__item" role="listitem">
+        <img src="assets/eka-active-02.jpg" alt="Pieza 2" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gallery__placeholder" style="display:none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+      </figure>
+      <figure class="gallery__item" role="listitem">
+        <img src="assets/eka-active-03.jpg" alt="Pieza 3" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gallery__placeholder" style="display:none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+      </figure>
+      <figure class="gallery__item" role="listitem">
+        <img src="assets/eka-active-04.jpg" alt="Pieza 4" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gallery__placeholder" style="display:none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+      </figure>
+      <figure class="gallery__item" role="listitem">
+        <img src="assets/eka-active-05.jpg" alt="Pieza 5" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gallery__placeholder" style="display:none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+      </figure>
+      <figure class="gallery__item" role="listitem">
+        <img src="assets/eka-active-06.jpg" alt="Pieza 6" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="gallery__placeholder" style="display:none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="proj-nav">
+  <div class="proj-nav__inner">
+    <a href="jaguares.html" class="nav-proj nav-proj--prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg><span data-t="prev_lbl">Proyecto anterior</span></a>
+    <a href="index.html#projects" class="nav-home" data-t="all_projects">Ver todos los proyectos</a>
+    <span></span>
+  </div>
+</div>
+
+<footer><p>© 2026 Verónica Arciniega — <span data-t="footer">Diseñadora Multidisciplinar</span></p></footer>
+
+<script>
+const T = {
+  es: {
+    skip:"Saltar al contenido", back:"Volver al portfolio",
+    sector:"Fitness & Wellness", tag1:"Social Media", tag2:"Dirección Visual",
+    ml_sector:"Sector", mv_sector:"Fitness & Wellness",
+    ml_role:"Rol", mv_role:"Diseñadora Gráfica",
+    ml_tools:"Herramientas", ml_del:"Entregables", mv_del:"Definición de estilo visual · Posts para redes sociales",
+    s1l:"El proyecto", s1h:"Contexto y reto", s1p:"EKA Active es una marca de fitness y bienestar que comenzaba a construir su presencia digital con lo básico definido. El reto era tomar ese punto de partida y desarrollar un estilo visual coherente y atractivo que comunicara energía, movimiento y bienestar.",
+    s2l:"El trabajo", s2h:"Lo que desarrollé", s2p:"Partiendo de los elementos básicos de la marca, definí el estilo visual y la dirección de arte para su comunicación en redes sociales. Diseñé posts que transmitieran la energía y los valores de la marca mediante composiciones dinámicas, fotografía cuidada y una paleta de naranja, café y verde.",
+    del0t:"Definición de estilo visual", del0s:"Dirección de arte inicial",
+    del1t:"Posts para redes sociales", del1s:"Instagram & Facebook",
+    s3l:"Galería", s3h:"Piezas seleccionadas",
+    prev_lbl:"Proyecto anterior", next_lbl:"Siguiente proyecto",
+    all_projects:"Ver todos los proyectos", footer:"Diseñadora Multidisciplinar"
+  },
+  en: {
+    skip:"Skip to content", back:"Back to portfolio",
+    sector:"Fitness & Wellness", tag1:"Social Media", tag2:"Visual Direction",
+    ml_sector:"Sector", mv_sector:"Fitness & Wellness",
+    ml_role:"Role", mv_role:"Graphic Designer",
+    ml_tools:"Tools", ml_del:"Deliverables", mv_del:"Visual style definition · Social media posts",
+    s1l:"The project", s1h:"Context & challenge", s1p:"EKA Active is a fitness and wellness brand starting to build its digital presence with only the basics defined. The challenge was to take that starting point and develop a coherent and attractive visual style that communicated energy, movement and wellbeing.",
+    s2l:"The work", s2h:"What I developed", s2p:"Starting from the brand's basic elements, I defined the visual style and art direction for their social media communication. I designed posts that conveyed the brand's energy and values through dynamic compositions, careful photography and a palette of orange, brown and green.",
+    del0t:"Visual style definition", del0s:"Initial art direction",
+    del1t:"Social media posts", del1s:"Instagram & Facebook",
+    s3l:"Gallery", s3h:"Selected pieces",
+    prev_lbl:"Previous project", next_lbl:"Next project",
+    all_projects:"View all projects", footer:"Multidisciplinary Designer"
+  }
+};
+let lang="es";
+function setLang(l){
+  lang=l; document.documentElement.lang=l;
+  document.querySelectorAll("[data-t]").forEach(el=>{const k=el.getAttribute("data-t");if(T[l][k]!==undefined)el.textContent=T[l][k];});
+  document.getElementById("btn-es").setAttribute("aria-pressed",l==="es");
+  document.getElementById("btn-en").setAttribute("aria-pressed",l==="en");
+}
+function toggleTheme(){
+  const dark=document.documentElement.getAttribute("data-theme")==="dark";
+  document.documentElement.setAttribute("data-theme",dark?"light":"dark");
+  document.getElementById("icon-moon").style.display=dark?"none":"block";
+  document.getElementById("icon-sun").style.display=dark?"block":"none";
+}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("visible");io.unobserve(x.target);}}){threshold:0.08});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+setLang("es");
+</script>
+</body>
+</html>
