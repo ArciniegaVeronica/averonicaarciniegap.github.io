@@ -451,6 +451,47 @@
       gap: 24px;
     }
 
+    /* Show more */
+    .show-more-wrap {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+    }
+    .show-more-hint {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-faint);
+    }
+    .show-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-mid);
+      background: var(--tag-bg);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: all var(--transition);
+    }
+    .show-more-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(99,102,241,0.35);
+    }
+    .show-more-btn svg { width: 14px; height: 14px; transition: transform var(--transition); }
+    .show-more-btn:hover svg { transform: translateY(3px); }
+
     .project-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -1987,6 +2028,8 @@
       .join('');
   }
 
+  const INITIAL_SHOW = 3;
+
   function renderProjects(filter) {
     currentFilter = filter;
     const grid = document.getElementById('projects-grid');
@@ -2003,70 +2046,127 @@
       return;
     }
 
-    filtered.forEach((p, i) => {
-      const title    = lang === 'es' ? p.titleEs : p.titleEn;
-      const tagLabel = lang === 'es' ? p.tagEs   : p.tagEn;
-      const desc     = lang === 'es' ? p.descEs  : p.descEn;
+    // En "Todos" mostramos solo los primeros 3 — el resto se revela con el botón
+    const showAll   = filter !== 'all';
+    const visible   = showAll ? filtered : filtered.slice(0, INITIAL_SHOW);
+    const hidden    = showAll ? []       : filtered.slice(INITIAL_SHOW);
 
-      // Descripción: si es larga mostramos preview + "Leer más"
-      const isLong      = desc.length > 220;
-      const shortDesc   = isLong ? desc.split('\n\n')[0] : desc;
-      const readMoreLbl = lang === 'es' ? 'Leer más del proceso' : 'Read more about the process';
-      const readLessLbl = lang === 'es' ? 'Cerrar' : 'Close';
-
-      const descHTML = isLong
-        ? `<div class="desc-short">${toParas(shortDesc)}</div>
-           <div class="desc-full" style="display:none">${toParas(desc)}</div>
-           <button class="read-more-btn" aria-expanded="false"
-             style="margin-top:8px;margin-bottom:4px;font-size:12px;font-family:var(--font-mono);
-                    text-transform:uppercase;letter-spacing:0.08em;color:var(--primary);
-                    background:none;border:none;cursor:pointer;padding:0;font-weight:700;"
-             onclick="toggleDesc(this,'${readMoreLbl}','${readLessLbl}')">
-             ${readMoreLbl} ↓
-           </button>`
-        : `<div>${toParas(shortDesc)}</div>`;
-
-      const imageHTML = p.image
-        ? `<img src="${p.image}" alt="${title}" loading="lazy" width="640" height="360">`
-        : `<div class="project-card__placeholder" aria-hidden="true">
-             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8">
-               <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-             </svg>
-           </div>`;
-
-      const chipsHTML = p.tags.map(t => `<span class="chip">${t}</span>`).join('');
-
-      const card = document.createElement('article');
-      card.className = 'project-card reveal';
-      card.style.transitionDelay = `${i * 0.08}s`;
-      card.setAttribute('data-category', p.category);
-
-      card.innerHTML = `
-        <div class="project-card__image">${imageHTML}</div>
-        <div class="project-card__body">
-          <p class="project-card__tag" style="color:${p.color}">${tagLabel}</p>
-          <h3 class="project-card__title">${title}</h3>
-          <div class="project-card__desc" style="font-size:14px;color:var(--text-muted)">${descHTML}</div>
-          <div class="project-card__chips" aria-label="Herramientas utilizadas" style="margin-top:16px">${chipsHTML}</div>
-          ${p.link ? (() => {
-            const isExternal = p.link.startsWith('http');
-            const label = isExternal
-              ? (lang === 'es' ? 'Ver prototipo' : 'View prototype')
-              : (lang === 'es' ? 'Ver caso de estudio' : 'View case study');
-            const target = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
-            return `<a href="${p.link}" ${target} class="btn-primary"
-              style="margin-top:20px;display:inline-flex;font-size:13px;padding:12px 24px"
-              aria-label="${label} — ${title}">
-              ${label}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>`;
-          })() : ''}
-        </div>`;
-
-      grid.appendChild(card);
+    visible.forEach((p, i) => {
+      grid.appendChild(buildCard(p, i, lang));
     });
 
+    // Botón "Ver más" solo en filtro "Todos" si quedan proyectos
+    if (hidden.length > 0) {
+      const hint = lang === 'es'
+        ? `${hidden.length} proyecto${hidden.length > 1 ? 's' : ''} más`
+        : `${hidden.length} more project${hidden.length > 1 ? 's' : ''}`;
+      const btnLbl = lang === 'es' ? 'Ver más proyectos' : 'View more projects';
+
+      const wrap = document.createElement('div');
+      wrap.className = 'show-more-wrap';
+      wrap.id = 'show-more-wrap';
+      wrap.innerHTML = `
+        <p class="show-more-hint">${hint}</p>
+        <button class="show-more-btn" onclick="showMoreProjects()" aria-label="${btnLbl}">
+          ${btnLbl}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>`;
+      grid.appendChild(wrap);
+
+      // Guardamos los proyectos ocultos para revelarlos después
+      grid.__hiddenProjects = hidden;
+      grid.__hiddenStart    = visible.length;
+    }
+
     observeReveal();
+  }
+
+  function showMoreProjects() {
+    const grid   = document.getElementById('projects-grid');
+    const hidden = grid.__hiddenProjects || [];
+    const start  = grid.__hiddenStart  || INITIAL_SHOW;
+    const lang   = currentLang;
+
+    // Eliminar el wrap del botón antes de añadir las tarjetas
+    const wrap = document.getElementById('show-more-wrap');
+    if (wrap) wrap.remove();
+
+    hidden.forEach((p, i) => {
+      const card = buildCard(p, start + i, lang);
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      grid.appendChild(card);
+      // Animar entrada
+      setTimeout(() => {
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        card.style.opacity    = '1';
+        card.style.transform  = 'translateY(0)';
+      }, i * 80 + 10);
+    });
+
+    grid.__hiddenProjects = [];
+  }
+
+  function buildCard(p, i, lang) {
+    const title    = lang === 'es' ? p.titleEs : p.titleEn;
+    const tagLabel = lang === 'es' ? p.tagEs   : p.tagEn;
+    const desc     = lang === 'es' ? p.descEs  : p.descEn;
+
+    const isLong      = desc.length > 220;
+    const shortDesc   = isLong ? desc.split('\n\n')[0] : desc;
+    const readMoreLbl = lang === 'es' ? 'Leer más del proceso' : 'Read more about the process';
+    const readLessLbl = lang === 'es' ? 'Cerrar' : 'Close';
+
+    const descHTML = isLong
+      ? `<div class="desc-short">${toParas(shortDesc)}</div>
+         <div class="desc-full" style="display:none">${toParas(desc)}</div>
+         <button class="read-more-btn" aria-expanded="false"
+           style="margin-top:8px;margin-bottom:4px;font-size:12px;font-family:var(--font-mono);
+                  text-transform:uppercase;letter-spacing:0.08em;color:var(--primary);
+                  background:none;border:none;cursor:pointer;padding:0;font-weight:700;"
+           onclick="toggleDesc(this,'${readMoreLbl}','${readLessLbl}')">
+           ${readMoreLbl} ↓
+         </button>`
+      : `<div>${toParas(shortDesc)}</div>`;
+
+    const imageHTML = p.image
+      ? `<img src="${p.image}" alt="${title}" loading="lazy" width="640" height="360">`
+      : `<div class="project-card__placeholder" aria-hidden="true">
+           <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8">
+             <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+           </svg>
+         </div>`;
+
+    const chipsHTML = p.tags.map(t => `<span class="chip">${t}</span>`).join('');
+
+    const card = document.createElement('article');
+    card.className = 'project-card reveal';
+    card.style.transitionDelay = `${i * 0.08}s`;
+    card.setAttribute('data-category', p.category);
+
+    card.innerHTML = `
+      <div class="project-card__image">${imageHTML}</div>
+      <div class="project-card__body">
+        <p class="project-card__tag" style="color:${p.color}">${tagLabel}</p>
+        <h3 class="project-card__title">${title}</h3>
+        <div class="project-card__desc" style="font-size:14px;color:var(--text-muted)">${descHTML}</div>
+        <div class="project-card__chips" aria-label="Herramientas utilizadas" style="margin-top:16px">${chipsHTML}</div>
+        ${p.link ? (() => {
+          const isExternal = p.link.startsWith('http');
+          const label = isExternal
+            ? (lang === 'es' ? 'Ver prototipo' : 'View prototype')
+            : (lang === 'es' ? 'Ver caso de estudio' : 'View case study');
+          const target = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+          return `<a href="${p.link}" ${target} class="btn-primary"
+            style="margin-top:20px;display:inline-flex;font-size:13px;padding:12px 24px"
+            aria-label="${label} — ${title}">
+            ${label}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>`;
+        })() : ''}
+      </div>`;
+
+    return card;
   }
 
   // Botón leer más / cerrar
