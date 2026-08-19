@@ -40,20 +40,6 @@
     "link": "hexalud-wellness.html"
   },
   {
-    "id": "holly-body",
-    "category": "graphic",
-    "color": "#7BA7BC",
-    "titleEs": "Holly Body",
-    "titleEn": "Holly Body",
-    "tagEs": "Social Media · Publicidad Digital",
-    "tagEn": "Social Media · Digital Advertising",
-    "descEs": "Ecosistema de comunicación visual para una marca de belleza: contenido para redes sociales, banners y una pieza de alto impacto para pauta publicitaria alineados con una estética nude y aspiracional.",
-    "descEn": "Visual communication ecosystem for a beauty brand: social media content, banners and a high-impact paid advertising asset aligned with a nude and aspirational aesthetic.",
-    "image": "assets/holly-body-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "AI"],
-    "link": "holly-body.html"
-  },
-  {
     "id": "chiltepik",
     "category": "graphic",
     "color": "#A85D4A",
@@ -66,6 +52,20 @@
     "image": "assets/chiltepik-hero.jpg",
     "tags": ["Photoshop", "Illustrator", "Canva", "AI"],
     "link": "chiltepik.html"
+  },
+  {
+    "id": "holly-body",
+    "category": "graphic",
+    "color": "#7BA7BC",
+    "titleEs": "Holly Body",
+    "titleEn": "Holly Body",
+    "tagEs": "Social Media · Publicidad Digital",
+    "tagEn": "Social Media · Digital Advertising",
+    "descEs": "Ecosistema de comunicación visual para una marca de belleza: contenido para redes sociales, banners y una pieza de alto impacto para pauta publicitaria alineados con una estética nude y aspiracional.",
+    "descEn": "Visual communication ecosystem for a beauty brand: social media content, banners and a high-impact paid advertising asset aligned with a nude and aspirational aesthetic.",
+    "image": "assets/holly-body-hero.jpg",
+    "tags": ["Photoshop", "Illustrator", "Canva", "AI"],
+    "link": "holly-body.html"
   },
   {
     "id": "habemus-pizza",
