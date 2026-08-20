@@ -10,13 +10,7 @@
     "descEs": "Diseño UX/UI de una app móvil de gimnasio bajo presión de tiempo real: 72 horas para investigar, idear y entregar un prototipo navegable de alta fidelidad con flujos de reserva, horarios y alertas.",
     "descEn": "UX/UI design of a gym mobile app under real time pressure: 72 hours to research, ideate and deliver a high-fidelity navigable prototype covering booking, schedules and alert flows.",
     "image": "thunder-gym.png",
-    "tags": [
-      "Figma",
-      "UX Research",
-      "Crazy 8's",
-      "Wireframing",
-      "Prototipado"
-    ],
+    "tags": ["Figma", "UX Research", "Crazy 8's", "Wireframing", "Prototipado"],
     "link": "thunder-gym.html"
   },
   {
@@ -27,45 +21,25 @@
     "titleEn": "Hexalud Wellness",
     "tagEs": "UX/UI · Product Design",
     "tagEn": "UX/UI · Product Design",
-    "descEs": "Plataforma de bienestar corporativo con gamificación y recompensas. Diseño UX/UI de la app móvil, wireframes, UX tracking y evolución de identidad visual a lo largo de 3 años en equipo Agile. +30% retención de usuarios.",
+    "descEs": "Plataforma de bienestar corporativo con gamificación y recompensas. Diseño UX/UI de la app móvil, wireframes, UX tracking y evolución de identidad visual a lo largo de 3 años en equipo Agile. +30% retención.",
     "descEn": "Corporate wellness platform with gamification and rewards. Mobile app UX/UI design, wireframes, UX tracking and visual identity evolution over 3 years in an Agile team. +30% user retention.",
     "image": "assets/hexalud-hero.jpg",
-    "tags": [
-      "Figma",
-      "Jira",
-      "UX Research",
-      "Prototipos",
-      "Adobe Suite"
-    ],
+    "tags": ["Figma", "Jira", "UX Research", "Prototipos", "Adobe Suite"],
     "link": "hexalud-wellness.html"
   },
   {
     "id": "chiltepik",
     "category": "graphic",
-    "color": "#A85D4A",
+    "color": "#edc491",
     "titleEs": "Chiltepiik",
     "titleEn": "Chiltepiik",
     "tagEs": "Dirección de Arte · Social Media",
     "tagEn": "Art Direction · Social Media",
     "descEs": "Construcción de una identidad editorial desde cero para una salsa artesanal mexicana: paleta, estilo fotográfico, sistema de composición, parrilla de contenido, posts y reels.",
-    "descEn": "Building an editorial identity from scratch for a Mexican homemade salsa: palette, photographic style, composition system, content grid, posts and reels.",
+    "descEn": "Building an editorial identity from scratch for a Mexican artisan salsa: palette, photographic style, composition system, content grid, posts and reels.",
     "image": "assets/chiltepik-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "AI"],
+    "tags": ["Photoshop", "Illustrator", "Canva", "IA"],
     "link": "chiltepik.html"
-  },
-  {
-    "id": "holly-body",
-    "category": "graphic",
-    "color": "#7BA7BC",
-    "titleEs": "Holly Body",
-    "titleEn": "Holly Body",
-    "tagEs": "Social Media · Publicidad Digital",
-    "tagEn": "Social Media · Digital Advertising",
-    "descEs": "Ecosistema de comunicación visual para una marca de belleza: contenido para redes sociales, banners y una pieza de alto impacto para pauta publicitaria alineados con una estética nude y aspiracional.",
-    "descEn": "Visual communication ecosystem for a beauty brand: social media content, banners and a high-impact paid advertising asset aligned with a nude and aspirational aesthetic.",
-    "image": "assets/holly-body-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "AI"],
-    "link": "holly-body.html"
   },
   {
     "id": "habemus-pizza",
@@ -78,13 +52,13 @@
     "descEs": "Exploración creativa dentro de una identidad ya establecida: contenido para redes sociales, reels, material de pauta y un mockup de packaging que extiende la marca al mundo físico.",
     "descEn": "Creative exploration within an established identity: social media content, reels, advertising material and a packaging mockup that extends the brand into the physical world.",
     "image": "assets/habemus-pizza-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "AI"],
+    "tags": ["Photoshop", "Illustrator", "Canva", "IA"],
     "link": "habemus-pizza.html"
   },
   {
     "id": "jaguares",
     "category": "graphic",
-    "color": "#1B3D6E",
+    "color": "#8fab6c",
     "titleEs": "Jaguares de Nayarit",
     "titleEn": "Jaguares de Nayarit",
     "tagEs": "Social Media · Identidad Deportiva",
@@ -92,7 +66,7 @@
     "descEs": "Piezas visuales para un equipo de béisbol profesional que fusionan identidad deportiva y cultura nayarita. Propuesta innovadora que el equipo eligió publicar en su feed oficial.",
     "descEn": "Visual pieces for a professional baseball team fusing sports identity and Nayarit culture. An innovative proposal the team chose to publish in their official feed.",
     "image": "assets/jaguares-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "AI"],
+    "tags": ["Photoshop", "Illustrator", "Canva", "IA"],
     "link": "jaguares.html"
   },
   {
@@ -106,7 +80,21 @@
     "descEs": "Dirección de arte y contenido para redes sociales de una marca de fitness en construcción: definición del estilo visual y piezas que comunican energía, movimiento y conexión con la naturaleza.",
     "descEn": "Art direction and social media content for a fitness brand in development: visual style definition and pieces that communicate energy, movement and connection with nature.",
     "image": "assets/eka-active-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "AI"],
+    "tags": ["Photoshop", "Illustrator", "Canva", "IA"],
     "link": "eka-active.html"
+  },
+  {
+    "id": "holly-body",
+    "category": "graphic",
+    "color": "#7BA7BC",
+    "titleEs": "Holly Body",
+    "titleEn": "Holly Body",
+    "tagEs": "Social Media · Publicidad Digital",
+    "tagEn": "Social Media · Digital Advertising",
+    "descEs": "Ecosistema de comunicación visual para una marca de belleza: contenido para redes sociales, banners y una pieza de alto impacto para pauta publicitaria alineados con una estética nude y aspiracional.",
+    "descEn": "Visual communication ecosystem for a beauty brand: social media content, banners and a high-impact paid advertising asset aligned with a nude and aspirational aesthetic.",
+    "image": "assets/holly-body-hero.jpg",
+    "tags": ["Photoshop", "Illustrator", "Canva", "IA"],
+    "link": "holly-body.html"
   }
 ]

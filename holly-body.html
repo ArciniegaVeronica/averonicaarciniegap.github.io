@@ -118,51 +118,140 @@
     .del-card__sub{font-size:12px;color:var(--muted)}
 
     /* GALLERY */
-    /* ── BENTO GALLERY ─────────────────────────────── */
-    .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
-    @media(max-width:640px){.bento{grid-template-columns:repeat(2,1fr);gap:10px}}
 
-    .bento-item{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft);cursor:pointer;transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease,border-color .3s ease;opacity:0;transform:translateY(20px)}
-    .bento.visible .bento-item{animation:bentoIn .5s ease forwards}
-    .bento.visible .bento-item:nth-child(1){animation-delay:.05s}
-    .bento.visible .bento-item:nth-child(2){animation-delay:.1s}
-    .bento.visible .bento-item:nth-child(3){animation-delay:.15s}
-    .bento.visible .bento-item:nth-child(4){animation-delay:.2s}
-    .bento.visible .bento-item:nth-child(5){animation-delay:.25s}
-    .bento.visible .bento-item:nth-child(6){animation-delay:.3s}
-    .bento.visible .bento-item:nth-child(7){animation-delay:.35s}
-    .bento.visible .bento-item:nth-child(8){animation-delay:.4s}
-    @keyframes bentoIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-    @media(prefers-reduced-motion:reduce){.bento-item{opacity:1;transform:none;animation:none!important}}
+    /* ── GALLERY PREMIUM ──────────────────────────────── */
+    .gallery-section{margin-top:32px}
 
-    .bento-item:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 20px 48px rgba(0,0,0,.38);border-color:var(--brand-a);z-index:2}
+    /* Hero image — full width, tall, cinematic */
+    .g-hero{
+      width:100%;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:var(--card-soft);
+      margin-bottom:14px;
+      position:relative;
+    }
+    .g-hero img{
+      width:100%;
+      height:auto;
+      display:block;
+      transition:transform .7s ease;
+    }
+    .g-hero:hover img{transform:scale(1.02)}
+    .g-hero__overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 50%);
+      opacity:0;transition:opacity .4s ease;
+      display:flex;align-items:flex-end;padding:20px 24px;
+      pointer-events:none;
+    }
+    .g-hero:hover .g-hero__overlay{opacity:1}
+    .g-hero__label{
+      font-family:var(--mono);font-size:11px;font-weight:700;
+      text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.9);
+    }
 
-    .bento-item--sq{aspect-ratio:1/1}
-    .bento-item--wide{grid-column:span 2;aspect-ratio:16/9}
-    .bento-item--tall{grid-row:span 2;aspect-ratio:9/16}
-    .bento-item--full{grid-column:1/-1}
-    .bento-item--reel{aspect-ratio:9/16;background:#000}
+    /* Main grid — 2 columns, images define height */
+    .g-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-bottom:14px;
+    }
+    @media(max-width:540px){.g-grid{grid-template-columns:1fr;gap:10px}}
 
-    .bento-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
-    .bento-item:hover img{transform:scale(1.06)}
+    .g-grid .g-item--wide{grid-column:span 2}
 
-    .bento-item--pauta img{object-fit:contain;padding:16px;background:var(--card-soft)}
-    .bento-item--pauta:hover img{transform:scale(1.02)}
+    /* Single item */
+    .g-item{
+      position:relative;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:var(--card-soft);
+      transition:transform .4s cubic-bezier(.34,1.56,.64,1),
+                 box-shadow .4s ease,border-color .3s ease;
+      opacity:0;
+      transform:translateY(16px);
+    }
+    .gallery-section.visible .g-item{animation:gIn .5s ease forwards}
+    .gallery-section.visible .g-item:nth-child(1){animation-delay:.04s}
+    .gallery-section.visible .g-item:nth-child(2){animation-delay:.08s}
+    .gallery-section.visible .g-item:nth-child(3){animation-delay:.12s}
+    .gallery-section.visible .g-item:nth-child(4){animation-delay:.16s}
+    .gallery-section.visible .g-item:nth-child(5){animation-delay:.20s}
+    .gallery-section.visible .g-item:nth-child(6){animation-delay:.24s}
+    .gallery-section.visible .g-item:nth-child(7){animation-delay:.28s}
+    @keyframes gIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @media(prefers-reduced-motion:reduce){.g-item{opacity:1;transform:none;animation:none!important}}
 
-    .bento-item__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 55%);opacity:0;transition:opacity .35s ease;display:flex;align-items:flex-end;padding:14px 16px}
-    .bento-item:hover .bento-item__overlay{opacity:1}
-    .bento-item__label{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.88)}
+    .g-item:hover{
+      transform:translateY(-5px) scale(1.01);
+      box-shadow:0 18px 44px rgba(0,0,0,.35);
+      border-color:var(--brand-a);
+    }
+    .g-item img{
+      width:100%;height:auto;display:block;
+      transition:transform .6s ease;
+    }
+    .g-item:hover img{transform:scale(1.04)}
 
-    .bento-item__ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.12}
-    .bento-item__ph svg{width:32px;height:32px}
+    /* Pauta — contain so nothing crops */
+    .g-item--pauta img{
+      object-fit:contain;padding:20px;
+      background:var(--card-soft);
+    }
+    .g-item--pauta:hover img{transform:scale(1.02)}
 
-    .bento-item--reel video{width:100%;height:100%;object-fit:cover;display:block}
-    .reel-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(0,0,0,.35);transition:background .3s ease}
-    .bento-item--reel:hover .reel-play{background:rgba(0,0,0,.15)}
-    .reel-play__icon{width:52px;height:52px;border-radius:50%;background:var(--brand-a);display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
-    .bento-item--reel:hover .reel-play__icon{transform:scale(1.12)}
+    /* Reel */
+    .g-item--reel{background:#000;aspect-ratio:9/16}
+    .g-item--reel video{width:100%;height:100%;object-fit:cover;display:block}
+    .reel-play{
+      position:absolute;inset:0;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+      background:rgba(0,0,0,.35);transition:background .3s ease;
+    }
+    .g-item--reel:hover .reel-play{background:rgba(0,0,0,.12)}
+    .reel-play__icon{
+      width:52px;height:52px;border-radius:50%;background:var(--brand-a);
+      display:flex;align-items:center;justify-content:center;
+      transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    .g-item--reel:hover .reel-play__icon{transform:scale(1.12)}
     .reel-play__icon svg{width:22px;height:22px;fill:#fff;margin-left:3px}
-    .reel-play__txt{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.8)}
+    .reel-play__txt{
+      font-family:var(--mono);font-size:10px;font-weight:700;
+      text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.8);
+    }
+
+    /* Overlay label on hover */
+    .g-item__ov{
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.68) 0%,transparent 48%);
+      opacity:0;transition:opacity .35s ease;
+      display:flex;align-items:flex-end;padding:12px 14px;
+      pointer-events:none;
+    }
+    .g-item:hover .g-item__ov{opacity:1}
+    .g-item__lbl{
+      font-family:var(--mono);font-size:9px;font-weight:700;
+      text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.88);
+    }
+
+    /* Placeholder */
+    .g-ph{min-height:160px;display:flex;align-items:center;justify-content:center;opacity:.1}
+    .g-ph svg{width:28px;height:28px}
+
+    /* Caption row below full gallery */
+    .g-caption-row{
+      display:flex;align-items:center;justify-content:space-between;
+      margin-top:6px;padding:0 2px;
+    }
+    .g-caption-label{
+      font-family:var(--mono);font-size:9px;font-weight:700;
+      text-transform:uppercase;letter-spacing:.1em;color:var(--faint);
+    }
 
     /* PROJ NAV */
     .proj-nav{background:var(--surface);border-top:1px solid var(--border);padding:36px 0}
@@ -275,37 +364,45 @@
   <div class="wrap">
     <div class="eyebrow reveal"><span class="eyebrow__num">03</span><div class="eyebrow__line"></div><span class="lbl" data-t="s3l">Galería</span></div>
     <h2 data-t="s3h">Piezas seleccionadas</h2>
-        <div class="bento reveal" role="list">
-      <figure class="bento-item bento-item--sq">
-        <img src="assets/holly-body-01.jpg" alt="Post" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label">Post</span></div>
-      </figure>
-      <figure class="bento-item bento-item--sq">
-        <img src="assets/holly-body-02.jpg" alt="Post" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label">Post</span></div>
-      </figure>
-      <figure class="bento-item bento-item--wide">
-        <img src="assets/holly-body-03.jpg" alt="Banner Facebook" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label">Banner Facebook</span></div>
-      </figure>
-      <figure class="bento-item bento-item--sq">
-        <img src="assets/holly-body-04.jpg" alt="Post" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label">Post</span></div>
-      </figure>
-      <figure class="bento-item bento-item--sq">
-        <img src="assets/holly-body-05.jpg" alt="Post" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label">Post</span></div>
-      </figure>
-      <figure class="bento-item bento-item--pauta bento-item--full">
-        <img src="assets/holly-body-pauta.jpg" alt="Pauta Publicitaria" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label">Pauta Publicitaria</span></div>
-      </figure>
+            <div class="gallery-section reveal" role="list">
+            <div class="g-hero">
+        <img src="assets/holly-body-01.jpg" alt="Post destacado" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        <div class="g-hero__overlay"><span class="g-hero__label">Post destacado</span></div>
+      </div>
+      <div class="g-grid">
+        <div class="g-item">
+          <img src="assets/holly-body-02.jpg" alt="Post" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="g-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="g-item__ov"><span class="g-item__lbl">Post</span></div>
+        </div>
+        <div class="g-item g-item--wide">
+          <img src="assets/holly-body-03.jpg" alt="Banner Facebook" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="g-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="g-item__ov"><span class="g-item__lbl">Banner Facebook</span></div>
+        </div>
+        <div class="g-item">
+          <img src="assets/holly-body-04.jpg" alt="Post" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="g-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="g-item__ov"><span class="g-item__lbl">Post</span></div>
+        </div>
+        <div class="g-item">
+          <img src="assets/holly-body-05.jpg" alt="Post" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="g-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="g-item__ov"><span class="g-item__lbl">Post</span></div>
+        </div>
+      </div>
+      <div class="g-item g-item--pauta" style="margin-top:14px;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft);position:relative">
+        <img src="assets/holly-body-pauta.jpg" alt="Pauta Publicitaria" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        <div class="g-item__ov"><span class="g-item__lbl">Pauta Publicitaria</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -372,19 +469,17 @@ const io=new IntersectionObserver(
   e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("visible");io.unobserve(x.target);}}),
   {threshold:0.08}
 );
-document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+document.querySelectorAll(".reveal, .gallery-section").forEach(el=>io.observe(el));
 syncIcons();
 setLang("es");
 
   function playReel(overlay) {
-    var fig = overlay.closest('.bento-item--reel');
+    var fig = overlay.closest('.g-item--reel');
     var vid = fig ? fig.querySelector('video') : null;
     if (!vid) return;
-    if (vid.paused) {
-      vid.play();
-      overlay.style.opacity = '0';
-      overlay.style.pointerEvents = 'none';
-    } else {
+    if (vid.paused) { vid.play(); overlay.style.opacity='0'; overlay.style.pointerEvents='none'; }
+    else { vid.pause(); overlay.style.opacity='1'; overlay.style.pointerEvents='auto'; }
+  } else {
       vid.pause();
       overlay.style.opacity = '1';
       overlay.style.pointerEvents = 'auto';
