@@ -170,6 +170,110 @@
     .reveal.visible{opacity:1;transform:translateY(0)}
     footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--faint)}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+    /* ── PASSWORD GATE ─────────────────────────────────── */
+    .gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      transition: opacity .4s ease;
+    }
+    .gate.unlocking {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .gate__box {
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .gate__icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(10,186,181,0.12);
+      border: 1px solid var(--brand-a);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--brand-a);
+    }
+    .gate__icon svg { width: 22px; height: 22px; }
+    .gate__title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--text);
+    }
+    .gate__sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: -12px;
+    }
+    .gate__form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .gate__input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border-mid);
+      background: var(--surface);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      outline: none;
+      transition: border-color .3s ease, box-shadow .3s ease;
+      text-align: center;
+    }
+    .gate__input:focus {
+      border-color: var(--brand-a);
+      box-shadow: 0 0 0 3px rgba(10,186,181,0.15);
+    }
+    .gate__btn {
+      padding: 14px 24px;
+      border-radius: 100px;
+      background: var(--brand-a);
+      color: #fff;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+    }
+    .gate__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(10,186,181,0.35);
+    }
+    .gate__error {
+      font-size: 13px;
+      color: #f87171;
+      font-family: var(--mono);
+      font-weight: 700;
+      min-height: 20px;
+      letter-spacing: .04em;
+    }
+    .gate__back {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .gate__back:hover { color: var(--text); }
+
   </style>
 </head>
 <body>
@@ -179,6 +283,29 @@
   document.documentElement.setAttribute('data-theme',t);
 })();
 </script>
+
+
+  <!-- PASSWORD GATE -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Acceso protegido">
+    <div class="gate__box">
+      <div class="gate__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+      </div>
+      <h1 class="gate__title">Proyecto protegido</h1>
+      <p class="gate__sub">Este proyecto es confidencial.<br>Introduce la contraseña para acceder.</p>
+      <div class="gate__form">
+        <input class="gate__input" id="gate-input" type="password"
+               placeholder="Contraseña" autocomplete="current-password"
+               onkeydown="if(event.key==='Enter')checkPwd()">
+        <button class="gate__btn" onclick="checkPwd()">Acceder</button>
+        <p class="gate__error" id="gate-error" aria-live="polite"></p>
+      </div>
+      <a href="index.html" class="gate__back">← Volver al portfolio</a>
+    </div>
+  </div>
 
 <a href="#main" class="skip" data-t="skip">Saltar al contenido</a>
 
