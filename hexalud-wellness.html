@@ -283,17 +283,6 @@
   document.documentElement.setAttribute('data-theme',t);
 })();
 </script>
-
-
-  <!-- PASSWORD GATE -->
-  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Acceso protegido">
-    <div class="gate__box">
-      <div class="gate__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="11" width="18" height="11" rx="2"/>
-          <path d="M7 11V7a5 5 0 0110 0v4"/>
-        </svg>
-      </div>
       <h1 class="gate__title">Proyecto protegido</h1>
       <p class="gate__sub">Este proyecto es confidencial.<br>Introduce la contraseña para acceder.</p>
       <div class="gate__form">
@@ -304,6 +293,26 @@
         <p class="gate__error" id="gate-error" aria-live="polite"></p>
       </div>
       <a href="index.html" class="gate__back">← Volver al portfolio</a>
+    </div>
+  </div>
+
+  <!-- PASSWORD GATE -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true">
+    <div class="gate__box">
+      <div class="gate__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+      </div>
+      <h2 class="gate__title">Proyecto protegido</h2>
+      <p class="gate__sub">Este proyecto es confidencial.<br>Introduce la contraseña para acceder.</p>
+      <input class="gate__input" id="gate-input" type="password"
+             placeholder="••••••••" autocomplete="off"
+             onkeydown="if(event.key==='Enter')gateCheck()">
+      <button class="gate__btn" onclick="gateCheck()">Acceder →</button>
+      <p class="gate__error" id="gate-error" aria-live="polite"></p>
+      <a href="index.html" class="gate__link">← Volver al portfolio</a>
     </div>
   </div>
 
@@ -641,6 +650,35 @@ const io=new IntersectionObserver(
 document.querySelectorAll(".reveal, .bento").forEach(el=>io.observe(el));
 syncIcons();
 setLang("es");
+
+  /* ── PASSWORD GATE ── */
+  var _pw = atob('R2FtZXgyMDIx');
+  function gateCheck() {
+    var v = document.getElementById('gate-input').value;
+    var e = document.getElementById('gate-error');
+    if (!v) { e.textContent = 'Escribe la contraseña'; return; }
+    if (v === _pw) {
+      sessionStorage.setItem('hxl_ok','1');
+      var g = document.getElementById('gate');
+      g.classList.add('out');
+      document.body.style.overflow = '';
+      setTimeout(function(){ if(g) g.remove(); }, 430);
+    } else {
+      e.textContent = 'Contraseña incorrecta';
+      document.getElementById('gate-input').value = '';
+      document.getElementById('gate-input').focus();
+    }
+  }
+  (function(){
+    if (sessionStorage.getItem('hxl_ok')==='1') {
+      var g = document.getElementById('gate');
+      if (g) g.remove();
+      document.body.style.overflow = '';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+  })();
+
 </script>
 </body>
 </html>
