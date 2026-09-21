@@ -10,28 +10,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0a0a0f; --surface:#16161d; --card:#1a1a24; --card-soft:#0d0d14;
-      --text:#f5f5f7; --muted:rgba(245,245,247,0.55); --faint:rgba(245,245,247,0.22);
-      --primary:#6366f1; --secondary:#ec4899; --tiffany:#0ABAB5;
-      --border:rgba(255,255,255,0.07); --border-mid:rgba(255,255,255,0.13);
+      --bg:#0a0a0f;--surface:#16161d;--card:#1a1a24;--card-soft:#0d0d14;
+      --text:#f5f5f7;--muted:rgba(245,245,247,0.55);--faint:rgba(245,245,247,0.22);
+      --primary:#6366f1;--secondary:#ec4899;--tiffany:#0ABAB5;
+      --border:rgba(255,255,255,0.07);--border-mid:rgba(255,255,255,0.13);
       --shadow:0 24px 64px rgba(0,0,0,.45);
-      --font:'Plus Jakarta Sans',sans-serif; --mono:'Space Mono',monospace;
-      --ease:0.4s cubic-bezier(0.4,0,0.2,1); --bounce:0.5s cubic-bezier(0.34,1.56,0.64,1);
-      --brand-a:#0ABAB5; --brand-b:#6366f1;
+      --font:'Plus Jakarta Sans',sans-serif;--mono:'Space Mono',monospace;
+      --ease:0.4s cubic-bezier(0.4,0,0.2,1);--bounce:0.5s cubic-bezier(0.34,1.56,0.64,1);
+      --brand-a:#0ABAB5;--brand-b:#6366f1;
     }
     [data-theme="light"]{
-      --bg:#f4f4f8; --surface:#ffffff; --card:#ffffff; --card-soft:#ececf4;
-      --text:#0a0a0f; --muted:rgba(10,10,15,0.55); --faint:rgba(10,10,15,0.22);
-      --border:rgba(0,0,0,0.07); --border-mid:rgba(0,0,0,0.13);
+      --bg:#f4f4f8;--surface:#ffffff;--card:#ffffff;--card-soft:#ececf4;
+      --text:#0a0a0f;--muted:rgba(10,10,15,0.55);--faint:rgba(10,10,15,0.22);
+      --border:rgba(0,0,0,0.07);--border-mid:rgba(0,0,0,0.13);
       --shadow:0 24px 64px rgba(0,0,0,.1);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;scroll-padding-top:68px}
     body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.65;transition:background var(--ease),color var(--ease)}
-    img{max-width:100%;display:block} a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
     button{font-family:inherit;cursor:pointer;border:none;background:none}
     :focus-visible{outline:2px solid var(--brand-a);outline-offset:3px;border-radius:4px}
-
     .skip{position:fixed;top:-100px;left:16px;z-index:9999;padding:12px 20px;background:var(--brand-a);color:#fff;border-radius:8px;font-weight:700;font-size:14px;transition:top .2s}
     .skip:focus{top:16px}
 
@@ -120,39 +120,39 @@
     .del-card__title{font-size:13px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:4px}
     .del-card__sub{font-size:12px;color:var(--muted)}
 
-    /* METRIC CALLOUT */
-    .metric-hero{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:32px 36px;border-radius:24px;border:1px solid var(--brand-a);background:rgba(10,186,181,0.06);margin:32px 0;max-width:360px;transition:transform var(--ease)}
+    /* METRIC */
+    .metric-hero{display:flex;flex-direction:column;gap:4px;padding:32px 36px;border-radius:24px;border:1px solid var(--brand-a);background:rgba(10,186,181,0.06);margin:32px 0;max-width:360px;transition:transform var(--ease)}
     .metric-hero:hover{transform:translateY(-4px)}
     [data-theme="light"] .metric-hero{background:rgba(10,186,181,0.05)}
     .metric-hero__num{font-size:64px;font-weight:800;letter-spacing:-.04em;color:var(--brand-a);line-height:1}
     .metric-hero__label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-top:8px}
     .metric-hero__desc{font-size:14px;color:var(--muted);margin-top:4px}
 
-    /* BENTO GALLERY */
-    .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;align-items:start}
-    @media(max-width:640px){.bento{grid-template-columns:repeat(2,1fr);gap:10px}}
-    .bento-item{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft);cursor:pointer;opacity:0;transform:translateY(20px);transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease,border-color .3s ease}
-    .bento-item:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 20px 48px rgba(0,0,0,.38);border-color:var(--brand-a);z-index:2}
-    .bento.visible .bento-item{animation:bentoIn .5s ease forwards}
-    .bento.visible .bento-item:nth-child(1){animation-delay:.05s}
-    .bento.visible .bento-item:nth-child(2){animation-delay:.10s}
-    .bento.visible .bento-item:nth-child(3){animation-delay:.15s}
-    .bento.visible .bento-item:nth-child(4){animation-delay:.20s}
-    .bento.visible .bento-item:nth-child(5){animation-delay:.25s}
-    .bento.visible .bento-item:nth-child(6){animation-delay:.30s}
-    .bento.visible .bento-item:nth-child(7){animation-delay:.35s}
-    .bento.visible .bento-item:nth-child(8){animation-delay:.40s}
-    @keyframes bentoIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-    @media(prefers-reduced-motion:reduce){.bento-item{opacity:1;transform:none;animation:none!important}}
-    .bento-item--wide{grid-column:span 2}
-    .bento-item--full{grid-column:1/-1}
-    .bento-item img{width:100%;height:auto;display:block;transition:transform .6s ease}
-    .bento-item:hover img{transform:scale(1.04)}
-    .bento-item__ph{min-height:160px;display:flex;align-items:center;justify-content:center;opacity:.12}
-    .bento-item__ph svg{width:32px;height:32px}
-    .bento-item__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 50%);opacity:0;transition:opacity .35s ease;display:flex;align-items:flex-end;padding:14px 16px;pointer-events:none}
-    .bento-item:hover .bento-item__overlay{opacity:1}
-    .bento-item__label{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.9)}
+    /* GALLERY */
+    .e-gallery{margin-top:32px}
+    .e-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;grid-auto-flow:dense;align-items:start}
+    @media(max-width:600px){.e-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
+    .e-item:nth-child(1){grid-column:span 2}
+    .e-item:nth-child(4){grid-column:span 2}
+    .e-item:nth-child(6){grid-column:span 2}
+    .e-item{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft);cursor:pointer;opacity:0;transform:translateY(14px);transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease,border-color .3s ease}
+    .e-gallery.visible .e-item{animation:eIn .5s ease forwards}
+    .e-gallery.visible .e-item:nth-child(1){animation-delay:.04s}
+    .e-gallery.visible .e-item:nth-child(2){animation-delay:.08s}
+    .e-gallery.visible .e-item:nth-child(3){animation-delay:.12s}
+    .e-gallery.visible .e-item:nth-child(4){animation-delay:.16s}
+    .e-gallery.visible .e-item:nth-child(5){animation-delay:.20s}
+    .e-gallery.visible .e-item:nth-child(6){animation-delay:.24s}
+    @keyframes eIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    @media(prefers-reduced-motion:reduce){.e-item{opacity:1;transform:none;animation:none!important}}
+    .e-item:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.32);border-color:var(--brand-a);z-index:2}
+    .e-item img{width:100%;height:auto;display:block;transition:transform .6s ease}
+    .e-item:hover img{transform:scale(1.04)}
+    .e-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 46%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:12px 14px;pointer-events:none}
+    .e-item:hover .e-ov{opacity:1}
+    .e-lbl{font-family:var(--mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.9)}
+    .e-ph{min-height:140px;display:flex;align-items:center;justify-content:center;opacity:.1}
+    .e-ph svg{width:26px;height:26px}
 
     /* PROJ NAV */
     .proj-nav{background:var(--surface);border-top:1px solid var(--border);padding:36px 0}
@@ -170,151 +170,12 @@
     .reveal.visible{opacity:1;transform:translateY(0)}
     footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--faint)}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-
-    /* ── PASSWORD GATE ─────────────────────────────────── */
-    .gate {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      transition: opacity .4s ease;
-    }
-    .gate.unlocking {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .gate__box {
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-    }
-    .gate__icon {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: rgba(10,186,181,0.12);
-      border: 1px solid var(--brand-a);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--brand-a);
-    }
-    .gate__icon svg { width: 22px; height: 22px; }
-    .gate__title {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -.02em;
-      color: var(--text);
-    }
-    .gate__sub {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-top: -12px;
-    }
-    .gate__form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .gate__input {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 12px;
-      border: 1px solid var(--border-mid);
-      background: var(--surface);
-      color: var(--text);
-      font-family: var(--mono);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      outline: none;
-      transition: border-color .3s ease, box-shadow .3s ease;
-      text-align: center;
-    }
-    .gate__input:focus {
-      border-color: var(--brand-a);
-      box-shadow: 0 0 0 3px rgba(10,186,181,0.15);
-    }
-    .gate__btn {
-      padding: 14px 24px;
-      border-radius: 100px;
-      background: var(--brand-a);
-      color: #fff;
-      font-family: var(--font);
-      font-weight: 700;
-      font-size: 14px;
-      border: none;
-      cursor: pointer;
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
-    }
-    .gate__btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(10,186,181,0.35);
-    }
-    .gate__error {
-      font-size: 13px;
-      color: #f87171;
-      font-family: var(--mono);
-      font-weight: 700;
-      min-height: 20px;
-      letter-spacing: .04em;
-    }
-    .gate__back {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .3s;
-    }
-    .gate__back:hover { color: var(--text); }
-
   </style>
 </head>
 <body>
 <script>
-(function(){
-  var t=localStorage.getItem('va-theme')||'dark';
-  document.documentElement.setAttribute('data-theme',t);
-})();
+(function(){var t=localStorage.getItem('va-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
 </script>
-      <h1 class="gate__title">Proyecto protegido</h1>
-      <p class="gate__sub">Este proyecto es confidencial.<br>Introduce la contraseña para acceder.</p>
-      <div class="gate__form">
-        <input class="gate__input" id="gate-input" type="password"
-               placeholder="Contraseña" autocomplete="current-password"
-               onkeydown="if(event.key==='Enter')checkPwd()">
-        <button class="gate__btn" onclick="checkPwd()">Acceder</button>
-        <p class="gate__error" id="gate-error" aria-live="polite"></p>
-      </div>
-      <a href="index.html" class="gate__back">← Volver al portfolio</a>
-    </div>
-  </div>
-
-  <!-- PASSWORD GATE -->
-  <div class="gate" id="gate" role="dialog" aria-modal="true">
-    <div class="gate__box">
-      <div class="gate__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="11" width="18" height="11" rx="2"/>
-          <path d="M7 11V7a5 5 0 0110 0v4"/>
-        </svg>
-      </div>
-      <h2 class="gate__title">Proyecto protegido</h2>
-      <p class="gate__sub">Este proyecto es confidencial.<br>Introduce la contraseña para acceder.</p>
-      <input class="gate__input" id="gate-input" type="password"
-             placeholder="••••••••" autocomplete="off"
-             onkeydown="if(event.key==='Enter')gateCheck()">
-      <button class="gate__btn" onclick="gateCheck()">Acceder →</button>
-      <p class="gate__error" id="gate-error" aria-live="polite"></p>
-      <a href="index.html" class="gate__link">← Volver al portfolio</a>
-    </div>
-  </div>
 
 <a href="#main" class="skip" data-t="skip">Saltar al contenido</a>
 
@@ -340,10 +201,8 @@
 
 <main id="main">
 
-<!-- HERO -->
 <header class="hero">
-  <img class="hero__img" src="assets/hexalud-hero.jpg" alt="Hero del proyecto Hexalud Wellness" loading="eager"
-       onerror="this.style.opacity='0'">
+  <img class="hero__img" src="assets/hexalud-hero.jpg" alt="Hero Hexalud Wellness" loading="eager" onerror="this.style.opacity='0'">
   <div class="hero__overlay" aria-hidden="true"></div>
   <div class="hero__content">
     <p class="hero__eyebrow" data-t="sector">Bienestar Corporativo · Startup</p>
@@ -356,7 +215,6 @@
   </div>
 </header>
 
-<!-- META -->
 <div class="meta-strip">
   <div class="meta-inner">
     <div class="meta-block"><p class="meta-label" data-t="ml_sector">Sector</p><p class="meta-value" data-t="mv_sector">Bienestar Corporativo</p></div>
@@ -366,7 +224,7 @@
   </div>
 </div>
 
-<!-- 01 · CONTEXTO -->
+<!-- 01 -->
 <section class="cs-sec">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="eyebrow__num">01</span><div class="eyebrow__line"></div><span class="lbl" data-t="s1l">El proyecto</span></div>
@@ -375,24 +233,21 @@
       <p data-t="s1p1">Hexalud Wellness es una <strong>plataforma de bienestar corporativo</strong> que fomenta hábitos saludables mediante gamificación y recompensas. Los usuarios acumulan puntos realizando actividad física —caminar, hacer ejercicio— que pueden canjear por descuentos, cupones y beneficios de empresas colaboradoras.</p>
       <p data-t="s1p2">El objetivo era transformar una acción cotidiana en una experiencia motivadora y tangible: <strong>actividad física → puntos → progreso → recompensas → motivación para continuar</strong>. Me incorporé en 2021 como Customer Service y mi rol evolucionó progresivamente hacia diseño gráfico, UX/UI e innovación de producto.</p>
     </div>
-
     <div class="highlight reveal">
       <p data-t="s1q">"Trabajar desde Customer Service me permitió escuchar directamente a los usuarios, identificar sus fricciones y trasladar esos aprendizajes al diseño de las experiencias digitales — una perspectiva que pocas veces tiene un diseñador desde el primer día."</p>
     </div>
   </div>
 </section>
 
-<!-- 02 · EL RETO -->
+<!-- 02 -->
 <section class="cs-sec cs-sec--alt">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="eyebrow__num">02</span><div class="eyebrow__line"></div><span class="lbl" data-t="s2l">El reto</span></div>
     <h2 data-t="s2h">Diseñar en una startup en constante transformación</h2>
     <div class="prose reveal">
       <p data-t="s2p1">Hexalud era una <strong>startup en crecimiento activo</strong>. Durante mi etapa el producto pasó por diferentes fases y tuvo tres cambios de nombre hasta su denominación actual. El principal reto era diseñar en un entorno donde el producto, la marca y las necesidades del negocio evolucionaban rápidamente.</p>
-      <p data-t="s2p2">El equipo trabajaba en <strong>dinámica Agile</strong>, con Jira para el seguimiento de tareas y reuniones semanales para revisar avances, prioridades y próximos pasos. Esto exigía adaptabilidad constante, capacidad de priorizar y entregar valor en ciclos cortos.</p>
+      <p data-t="s2p2">El equipo trabajaba en <strong>dinámica Agile</strong>, con Jira para el seguimiento de tareas y reuniones semanales para revisar avances, prioridades y próximos pasos. Esto exigía adaptabilidad constante y capacidad de entregar valor en ciclos cortos.</p>
     </div>
-
-    <!-- El flujo clave del producto -->
     <div class="reveal" style="margin-top:40px">
       <p class="lbl" style="margin-bottom:20px" data-t="s2_flow_label">El flujo central del producto</p>
       <div class="flow">
@@ -429,51 +284,24 @@
   </div>
 </section>
 
-<!-- 03 · LO QUE DESARROLLÉ -->
+<!-- 03 -->
 <section class="cs-sec">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="eyebrow__num">03</span><div class="eyebrow__line"></div><span class="lbl" data-t="s3l">El trabajo</span></div>
     <h2 data-t="s3h">Diseño transversal a lo largo de 3 años</h2>
     <div class="prose reveal">
       <p data-t="s3p1">Mi participación fue <strong>transversal y evolutiva</strong>. Empecé como Customer Service, lo que me dio una perspectiva única sobre las necesidades reales de los usuarios. A medida que mi rol evolucionó, pude incorporar esos aprendizajes directamente al diseño de la experiencia.</p>
-      <p data-t="s3p2">El foco principal estuvo en el <strong>diseño UX/UI de la aplicación móvil</strong>, pero participé en todo el espectro: desde wireframes y prototipos hasta la evolución de la identidad visual y los recursos de comunicación de la marca.</p>
+      <p data-t="s3p2">El foco principal estuvo en el <strong>diseño UX/UI de la aplicación móvil</strong>, pero participé en todo el espectro: wireframes, prototipos, evolución de la identidad visual y recursos de comunicación de la marca.</p>
     </div>
-
     <div class="del-grid reveal">
-      <div class="del-card">
-        <div class="del-card__icon">📱</div>
-        <p class="del-card__title" data-t="d1t">App móvil UX/UI</p>
-        <p class="del-card__sub" data-t="d1s">Diseño de interfaces, flujos y evolución de pantallas</p>
-      </div>
-      <div class="del-card">
-        <div class="del-card__icon">🔬</div>
-        <p class="del-card__title" data-t="d2t">Wireframes & Prototipos</p>
-        <p class="del-card__sub" data-t="d2s">Baja y alta fidelidad, interacción y navegación</p>
-      </div>
-      <div class="del-card">
-        <div class="del-card__icon">📊</div>
-        <p class="del-card__title" data-t="d3t">UX Tracking</p>
-        <p class="del-card__sub" data-t="d3s">Seguimiento de la experiencia y optimización de retención</p>
-      </div>
-      <div class="del-card">
-        <div class="del-card__icon">🖥️</div>
-        <p class="del-card__title" data-t="d4t">Plataforma web</p>
-        <p class="del-card__sub" data-t="d4s">Prototipado de baja fidelidad de la plataforma</p>
-      </div>
-      <div class="del-card">
-        <div class="del-card__icon">🎨</div>
-        <p class="del-card__title" data-t="d5t">Identidad visual</p>
-        <p class="del-card__sub" data-t="d5s">Evolución de la marca a través de sus diferentes etapas</p>
-      </div>
-      <div class="del-card">
-        <div class="del-card__icon">📣</div>
-        <p class="del-card__title" data-t="d6t">Comunicación visual</p>
-        <p class="del-card__sub" data-t="d6s">Banners, infografías, presentaciones y recursos digitales</p>
-      </div>
+      <div class="del-card"><div class="del-card__icon">📱</div><p class="del-card__title" data-t="d1t">App móvil UX/UI</p><p class="del-card__sub" data-t="d1s">Interfaces, flujos y evolución de pantallas</p></div>
+      <div class="del-card"><div class="del-card__icon">🔬</div><p class="del-card__title" data-t="d2t">Wireframes & Prototipos</p><p class="del-card__sub" data-t="d2s">Baja y alta fidelidad, interacción y navegación</p></div>
+      <div class="del-card"><div class="del-card__icon">📊</div><p class="del-card__title" data-t="d3t">UX Tracking</p><p class="del-card__sub" data-t="d3s">Seguimiento de experiencia y optimización de retención</p></div>
+      <div class="del-card"><div class="del-card__icon">🖥️</div><p class="del-card__title" data-t="d4t">Plataforma web</p><p class="del-card__sub" data-t="d4s">Prototipado de baja fidelidad</p></div>
+      <div class="del-card"><div class="del-card__icon">🎨</div><p class="del-card__title" data-t="d5t">Identidad visual</p><p class="del-card__sub" data-t="d5s">Evolución de la marca en sus diferentes etapas</p></div>
+      <div class="del-card"><div class="del-card__icon">📣</div><p class="del-card__title" data-t="d6t">Comunicación visual</p><p class="del-card__sub" data-t="d6s">Banners, infografías, presentaciones y recursos digitales</p></div>
     </div>
-
-    <!-- Resultado destacado -->
-    <div class="metric-hero reveal" aria-label="Resultado: +30% retención de usuarios">
+    <div class="metric-hero reveal">
       <span class="metric-hero__num">+30%</span>
       <span class="metric-hero__label" data-t="metric_label">Retención de usuarios</span>
       <span class="metric-hero__desc" data-t="metric_desc">Mejora conseguida mediante UX tracking y optimización continua de la experiencia</span>
@@ -481,57 +309,50 @@
   </div>
 </section>
 
-<!-- 04 · GALERÍA -->
+<!-- 04 GALERÍA -->
 <section class="cs-sec cs-sec--alt">
   <div class="wrap">
     <div class="eyebrow reveal"><span class="eyebrow__num">04</span><div class="eyebrow__line"></div><span class="lbl" data-t="s4l">Galería</span></div>
     <h2 data-t="s4h">Piezas seleccionadas</h2>
-
-    <div class="bento reveal" role="list">
-      <!-- Pantallas app -->
-      <figure class="bento-item bento-item--wide">
-        <img src="assets/hexalud-01.jpg" alt="Pantalla de la app Hexalud" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label" data-t="g1">App — Pantalla principal</span></div>
-      </figure>
-      <figure class="bento-item">
-        <img src="assets/hexalud-02.jpg" alt="Flujo de puntos Hexalud" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label" data-t="g2">Flujo de puntos</span></div>
-      </figure>
-      <figure class="bento-item">
-        <img src="assets/hexalud-03.jpg" alt="Pantalla de recompensas" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label" data-t="g3">Recompensas</span></div>
-      </figure>
-      <figure class="bento-item">
-        <img src="assets/hexalud-04.jpg" alt="Wireframes Hexalud" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label" data-t="g4">Wireframes</span></div>
-      </figure>
-      <figure class="bento-item bento-item--wide">
-        <img src="assets/hexalud-05.jpg" alt="Identidad visual Hexalud" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label" data-t="g5">Identidad visual</span></div>
-      </figure>
-      <figure class="bento-item bento-item--full">
-        <img src="assets/hexalud-06.jpg" alt="Recursos de comunicación Hexalud" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="bento-item__ph" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <div class="bento-item__overlay" aria-hidden="true"><span class="bento-item__label" data-t="g6">Comunicación visual</span></div>
-      </figure>
+    <div class="e-gallery reveal" role="list">
+      <div class="e-grid">
+        <div class="e-item">
+          <img src="assets/hexalud-01.jpg" alt="App Hexalud" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="e-ov"><span class="e-lbl" data-t="g1">Pantalla principal</span></div>
+        </div>
+        <div class="e-item">
+          <img src="assets/hexalud-02.jpg" alt="Flujo de puntos" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="e-ov"><span class="e-lbl" data-t="g2">Flujo de puntos</span></div>
+        </div>
+        <div class="e-item">
+          <img src="assets/hexalud-03.jpg" alt="Recompensas" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="e-ov"><span class="e-lbl" data-t="g3">Recompensas</span></div>
+        </div>
+        <div class="e-item">
+          <img src="assets/hexalud-04.jpg" alt="Wireframes" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="e-ov"><span class="e-lbl" data-t="g4">Wireframes</span></div>
+        </div>
+        <div class="e-item">
+          <img src="assets/hexalud-05.jpg" alt="Identidad visual" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="e-ov"><span class="e-lbl" data-t="g5">Identidad visual</span></div>
+        </div>
+        <div class="e-item">
+          <img src="assets/hexalud-06.jpg" alt="Comunicación visual" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="e-ov"><span class="e-lbl" data-t="g6">Comunicación visual</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- PROJ NAV -->
 <div class="proj-nav">
   <div class="proj-nav__inner">
     <a href="thunder-gym.html" class="nav-proj nav-proj--prev">
@@ -539,8 +360,8 @@
       <span data-t="prev_lbl">Thunder Gym</span>
     </a>
     <a href="index.html#projects" class="nav-home" data-t="all_projects">Ver todos los proyectos</a>
-    <a href="holly-body.html" class="nav-proj nav-proj--next">
-      <span data-t="next_lbl">Holly Body</span>
+    <a href="chiltepik.html" class="nav-proj nav-proj--next">
+      <span data-t="next_lbl">Chiltepiik</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -550,83 +371,79 @@
 
 <script>
 const T = {
-  es: {
-    skip:"Saltar al contenido", back:"Volver al portfolio",
-    sector:"Bienestar Corporativo · Startup",
-    tag1:"UX/UI Design", tag2:"Product Design", tag3:"3 años · Agile",
-    ml_sector:"Sector", mv_sector:"Bienestar Corporativo",
-    ml_role:"Rol", mv_role:"UX/UI & Product Designer",
-    ml_period:"Período", ml_tools:"Herramientas",
-    s1l:"El proyecto", s1h:"Una startup que convierte el movimiento en recompensas",
+  es:{
+    skip:"Saltar al contenido",back:"Volver al portfolio",
+    sector:"Bienestar Corporativo · Startup",tag1:"UX/UI Design",tag2:"Product Design",tag3:"3 años · Agile",
+    ml_sector:"Sector",mv_sector:"Bienestar Corporativo",ml_role:"Rol",mv_role:"UX/UI & Product Designer",
+    ml_period:"Período",ml_tools:"Herramientas",
+    s1l:"El proyecto",s1h:"Una startup que convierte el movimiento en recompensas",
     s1p1:"Hexalud Wellness es una plataforma de bienestar corporativo que fomenta hábitos saludables mediante gamificación y recompensas. Los usuarios acumulan puntos realizando actividad física que pueden canjear por descuentos, cupones y beneficios de empresas colaboradoras.",
     s1p2:"El objetivo era transformar una acción cotidiana en una experiencia motivadora y tangible: actividad física → puntos → progreso → recompensas → motivación para continuar. Me incorporé en 2021 como Customer Service y mi rol evolucionó hacia diseño gráfico, UX/UI e innovación de producto.",
     s1q:"Trabajar desde Customer Service me permitió escuchar directamente a los usuarios, identificar sus fricciones y trasladar esos aprendizajes al diseño de las experiencias digitales.",
-    s2l:"El reto", s2h:"Diseñar en una startup en constante transformación",
+    s2l:"El reto",s2h:"Diseñar en una startup en constante transformación",
     s2p1:"Hexalud era una startup en crecimiento activo. Durante mi etapa el producto pasó por diferentes fases y tuvo tres cambios de nombre. El principal reto era diseñar en un entorno donde el producto, la marca y las necesidades del negocio evolucionaban rápidamente.",
     s2p2:"El equipo trabajaba en dinámica Agile, con Jira para el seguimiento de tareas y reuniones semanales para revisar avances, prioridades y próximos pasos.",
     s2_flow_label:"El flujo central del producto",
-    f1t:"Actividad física", f1d:"El usuario camina, corre o hace ejercicio. La app registra sus pasos y actividad en tiempo real.",
-    f2t:"Acumulación de puntos", f2d:"Cada meta alcanzada se traduce en puntos dentro de la plataforma, visibles en tiempo real con feedback positivo.",
-    f3t:"Progreso y gamificación", f3d:"El usuario ve su progreso, logros y posición dentro de la comunidad. La gamificación mantiene el engagement.",
-    f4t:"Recompensas reales", f4d:"Los puntos se canjean por descuentos, cupones y beneficios de empresas colaboradoras — motivación tangible para continuar.",
-    s3l:"El trabajo", s3h:"Diseño transversal a lo largo de 3 años",
-    s3p1:"Mi participación fue transversal y evolutiva. Empecé como Customer Service, lo que me dio una perspectiva única sobre las necesidades reales de los usuarios. A medida que mi rol evolucionó, pude incorporar esos aprendizajes directamente al diseño de la experiencia.",
-    s3p2:"El foco principal estuvo en el diseño UX/UI de la aplicación móvil, pero participé en todo el espectro: wireframes, prototipos, evolución de la identidad visual y recursos de comunicación de la marca.",
-    d1t:"App móvil UX/UI", d1s:"Diseño de interfaces, flujos y evolución de pantallas",
-    d2t:"Wireframes & Prototipos", d2s:"Baja y alta fidelidad, interacción y navegación",
-    d3t:"UX Tracking", d3s:"Seguimiento de la experiencia y optimización de retención",
-    d4t:"Plataforma web", d4s:"Prototipado de baja fidelidad de la plataforma",
-    d5t:"Identidad visual", d5s:"Evolución de la marca a través de sus diferentes etapas",
-    d6t:"Comunicación visual", d6s:"Banners, infografías, presentaciones y recursos digitales",
+    f1t:"Actividad física",f1d:"El usuario camina, corre o hace ejercicio. La app registra sus pasos y actividad en tiempo real.",
+    f2t:"Acumulación de puntos",f2d:"Cada meta alcanzada se traduce en puntos dentro de la plataforma, visibles en tiempo real con feedback positivo.",
+    f3t:"Progreso y gamificación",f3d:"El usuario ve su progreso, logros y posición dentro de la comunidad. La gamificación mantiene el engagement.",
+    f4t:"Recompensas reales",f4d:"Los puntos se canjean por descuentos, cupones y beneficios — motivación tangible para continuar.",
+    s3l:"El trabajo",s3h:"Diseño transversal a lo largo de 3 años",
+    s3p1:"Mi participación fue transversal y evolutiva. Empecé como Customer Service, lo que me dio una perspectiva única sobre las necesidades reales de los usuarios.",
+    s3p2:"El foco principal estuvo en el diseño UX/UI de la aplicación móvil, pero participé en wireframes, prototipos, evolución de identidad visual y recursos de comunicación.",
+    d1t:"App móvil UX/UI",d1s:"Interfaces, flujos y evolución de pantallas",
+    d2t:"Wireframes & Prototipos",d2s:"Baja y alta fidelidad, interacción y navegación",
+    d3t:"UX Tracking",d3s:"Seguimiento de experiencia y optimización de retención",
+    d4t:"Plataforma web",d4s:"Prototipado de baja fidelidad",
+    d5t:"Identidad visual",d5s:"Evolución de la marca en sus diferentes etapas",
+    d6t:"Comunicación visual",d6s:"Banners, infografías, presentaciones y recursos digitales",
     metric_label:"Retención de usuarios",
     metric_desc:"Mejora conseguida mediante UX tracking y optimización continua de la experiencia",
-    s4l:"Galería", s4h:"Piezas seleccionadas",
-    g1:"App — Pantalla principal", g2:"Flujo de puntos", g3:"Recompensas",
-    g4:"Wireframes", g5:"Identidad visual", g6:"Comunicación visual",
-    prev_lbl:"Thunder Gym", next_lbl:"Holly Body",
-    all_projects:"Ver todos los proyectos", footer:"Diseñadora Multidisciplinar"
+    s4l:"Galería",s4h:"Piezas seleccionadas",
+    g1:"Pantalla principal",g2:"Flujo de puntos",g3:"Recompensas",
+    g4:"Wireframes",g5:"Identidad visual",g6:"Comunicación visual",
+    prev_lbl:"Thunder Gym",next_lbl:"Chiltepiik",
+    all_projects:"Ver todos los proyectos",footer:"Diseñadora Multidisciplinar"
   },
-  en: {
-    skip:"Skip to content", back:"Back to portfolio",
-    sector:"Corporate Wellness · Startup",
-    tag1:"UX/UI Design", tag2:"Product Design", tag3:"3 years · Agile",
-    ml_sector:"Sector", mv_sector:"Corporate Wellness",
-    ml_role:"Role", mv_role:"UX/UI & Product Designer",
-    ml_period:"Period", ml_tools:"Tools",
-    s1l:"The project", s1h:"A startup that turns movement into rewards",
+  en:{
+    skip:"Skip to content",back:"Back to portfolio",
+    sector:"Corporate Wellness · Startup",tag1:"UX/UI Design",tag2:"Product Design",tag3:"3 years · Agile",
+    ml_sector:"Sector",mv_sector:"Corporate Wellness",ml_role:"Role",mv_role:"UX/UI & Product Designer",
+    ml_period:"Period",ml_tools:"Tools",
+    s1l:"The project",s1h:"A startup that turns movement into rewards",
     s1p1:"Hexalud Wellness is a corporate wellness platform that promotes healthy habits through gamification and rewards. Users earn points by doing physical activity that they can redeem for discounts, coupons and benefits from partner companies.",
     s1p2:"The goal was to transform an everyday action into a motivating and tangible experience: physical activity → points → progress → rewards → motivation to continue. I joined in 2021 as Customer Service and my role evolved toward graphic design, UX/UI and product innovation.",
     s1q:"Working in Customer Service let me hear directly from users, identify their friction points and translate those learnings into the design of digital experiences.",
-    s2l:"The challenge", s2h:"Designing in a constantly evolving startup",
+    s2l:"The challenge",s2h:"Designing in a constantly evolving startup",
     s2p1:"Hexalud was an actively growing startup. During my time there the product went through different phases and had three name changes. The main challenge was designing in an environment where the product, brand and business needs were rapidly evolving.",
     s2p2:"The team worked in an Agile dynamic, using Jira for task tracking and weekly meetings to review progress, priorities and next steps.",
     s2_flow_label:"The product's core flow",
-    f1t:"Physical activity", f1d:"The user walks, runs or exercises. The app tracks their steps and activity in real time.",
-    f2t:"Point accumulation", f2d:"Each goal reached translates into points within the platform, visible in real time with positive feedback.",
-    f3t:"Progress & gamification", f3d:"The user sees their progress, achievements and position within the community. Gamification maintains engagement.",
-    f4t:"Real rewards", f4d:"Points are redeemed for discounts, coupons and benefits from partner companies — tangible motivation to keep going.",
-    s3l:"The work", s3h:"Cross-functional design over 3 years",
-    s3p1:"My involvement was transversal and evolutionary. I started in Customer Service, which gave me a unique perspective on real user needs. As my role evolved, I was able to incorporate those learnings directly into experience design.",
-    s3p2:"The main focus was on UX/UI design of the mobile app, but I participated across the full spectrum: wireframes, prototypes, visual identity evolution and brand communication resources.",
-    d1t:"Mobile app UX/UI", d1s:"Interface design, flows and screen evolution",
-    d2t:"Wireframes & Prototypes", d2s:"Low and high fidelity, interaction and navigation",
-    d3t:"UX Tracking", d3s:"Experience monitoring and retention optimization",
-    d4t:"Web platform", d4s:"Low-fidelity prototyping of the platform",
-    d5t:"Visual identity", d5s:"Brand evolution across its different stages",
-    d6t:"Visual communication", d6s:"Banners, infographics, presentations and digital assets",
+    f1t:"Physical activity",f1d:"The user walks, runs or exercises. The app tracks their steps and activity in real time.",
+    f2t:"Point accumulation",f2d:"Each goal reached translates into points within the platform, visible in real time with positive feedback.",
+    f3t:"Progress & gamification",f3d:"The user sees their progress, achievements and position within the community. Gamification maintains engagement.",
+    f4t:"Real rewards",f4d:"Points are redeemed for discounts, coupons and benefits — tangible motivation to keep going.",
+    s3l:"The work",s3h:"Cross-functional design over 3 years",
+    s3p1:"My involvement was transversal and evolutionary. I started in Customer Service, which gave me a unique perspective on real user needs.",
+    s3p2:"The main focus was on UX/UI design of the mobile app, but I participated across wireframes, prototypes, visual identity evolution and brand communication resources.",
+    d1t:"Mobile app UX/UI",d1s:"Interface design, flows and screen evolution",
+    d2t:"Wireframes & Prototypes",d2s:"Low and high fidelity, interaction and navigation",
+    d3t:"UX Tracking",d3s:"Experience monitoring and retention optimization",
+    d4t:"Web platform",d4s:"Low-fidelity prototyping",
+    d5t:"Visual identity",d5s:"Brand evolution across its different stages",
+    d6t:"Visual communication",d6s:"Banners, infographics, presentations and digital assets",
     metric_label:"User retention",
     metric_desc:"Improvement achieved through UX tracking and continuous experience optimization",
-    s4l:"Gallery", s4h:"Selected pieces",
-    g1:"App — Main screen", g2:"Points flow", g3:"Rewards",
-    g4:"Wireframes", g5:"Visual identity", g6:"Visual communication",
-    prev_lbl:"Thunder Gym", next_lbl:"Holly Body",
-    all_projects:"View all projects", footer:"Multidisciplinary Designer"
+    s4l:"Gallery",s4h:"Selected pieces",
+    g1:"Main screen",g2:"Points flow",g3:"Rewards",
+    g4:"Wireframes",g5:"Visual identity",g6:"Visual communication",
+    prev_lbl:"Thunder Gym",next_lbl:"Chiltepiik",
+    all_projects:"View all projects",footer:"Multidisciplinary Designer"
   }
 };
 
 let lang="es";
 function setLang(l){
-  lang=l; document.documentElement.lang=l;
+  lang=l;document.documentElement.lang=l;
   document.querySelectorAll("[data-t]").forEach(el=>{const k=el.getAttribute("data-t");if(T[l]&&T[l][k]!==undefined)el.textContent=T[l][k];});
   document.getElementById("btn-es").setAttribute("aria-pressed",l==="es"?"true":"false");
   document.getElementById("btn-en").setAttribute("aria-pressed",l==="en"?"true":"false");
@@ -647,38 +464,9 @@ const io=new IntersectionObserver(
   e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("visible");io.unobserve(x.target);}}),
   {threshold:0.08}
 );
-document.querySelectorAll(".reveal, .bento").forEach(el=>io.observe(el));
+document.querySelectorAll(".reveal, .e-gallery").forEach(el=>io.observe(el));
 syncIcons();
 setLang("es");
-
-  /* ── PASSWORD GATE ── */
-  var _pw = atob('R2FtZXgyMDIx');
-  function gateCheck() {
-    var v = document.getElementById('gate-input').value;
-    var e = document.getElementById('gate-error');
-    if (!v) { e.textContent = 'Escribe la contraseña'; return; }
-    if (v === _pw) {
-      sessionStorage.setItem('hxl_ok','1');
-      var g = document.getElementById('gate');
-      g.classList.add('out');
-      document.body.style.overflow = '';
-      setTimeout(function(){ if(g) g.remove(); }, 430);
-    } else {
-      e.textContent = 'Contraseña incorrecta';
-      document.getElementById('gate-input').value = '';
-      document.getElementById('gate-input').focus();
-    }
-  }
-  (function(){
-    if (sessionStorage.getItem('hxl_ok')==='1') {
-      var g = document.getElementById('gate');
-      if (g) g.remove();
-      document.body.style.overflow = '';
-    } else {
-      document.body.style.overflow = 'hidden';
-    }
-  })();
-
 </script>
 </body>
 </html>
