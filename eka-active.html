@@ -391,7 +391,7 @@ const T = {
     s2l:"El trabajo", s2h:"Lo que desarrollé", s2p:"Desarrollé una serie de piezas para redes sociales a partir de la dirección visual definida para EKA Active. Trabajé con composición, tipografía, fotografía, color y recursos gráficos para crear publicaciones que mantuvieran una identidad visual consistente, pero que al mismo tiempo permitieran variar el contenido y formato de cada pieza. La propuesta buscó equilibrar la energía propia del mundo del fitness con una estética más natural y cercana, utilizando la combinación de naranja, café y verde como parte importante del lenguaje visual de la marca. El resultado fue una primera línea gráfica aplicada a Instagram y Facebook, que permitió establecer una presencia digital más coherente y reconocible para EKA Active.",
     del0t:"Definición de estilo visual", del0s:"Dirección de arte inicial",
     del1t:"Posts para redes sociales", del1s:"Instagram & Facebook",
-    reel_lbl:"Reel", s3l:"Galería", s3h:"Piezas seleccionadas",
+    reel_lbl:"Reel", reel_lbl:"Reel", s3l:"Galería", s3h:"Piezas seleccionadas",
     prev_lbl:"Proyecto anterior", next_lbl:"Siguiente proyecto",
     all_projects:"Ver todos los proyectos", footer:"Diseñadora Multidisciplinar"
   },
@@ -405,7 +405,7 @@ const T = {
     s2l:"The work", s2h:"What I developed", s2p:"I developed a series of social media pieces based on the visual direction defined for EKA Active. I worked with composition, typography, photography, color and graphic resources to create publications that maintained a consistent visual identity while allowing variation across different content and formats. The proposal sought to balance the energy of the fitness world with a more natural and approachable aesthetic, using the combination of orange, brown and green as an important part of the brand's visual language. The result was a first graphic direction applied to Instagram and Facebook, establishing a more coherent and recognizable digital presence for EKA Active.",
     del0t:"Visual style definition", del0s:"Initial art direction",
     del1t:"Social media posts", del1s:"Instagram & Facebook",
-    reel_lbl:"Reel", s3l:"Gallery", s3h:"Selected pieces",
+    reel_lbl:"Reel", reel_lbl:"Reel", s3l:"Gallery", s3h:"Selected pieces",
     prev_lbl:"Previous project", next_lbl:"Next project",
     all_projects:"View all projects", footer:"Multidisciplinary Designer"
   }
@@ -428,31 +428,21 @@ const io=new IntersectionObserver(
   {threshold:0.08}
 );
 document.querySelectorAll(".reveal, .e-gallery").forEach(el=>io.observe(el));
-function syncIcons(){
-  const dark=document.documentElement.getAttribute("data-theme")==="dark";
-  const moon=document.getElementById("icon-moon");
-  const sun=document.getElementById("icon-sun");
-  if(moon) moon.style.display=dark?"block":"none";
-  if(sun) sun.style.display=dark?"none":"block";
-}
-setLang("es");
 syncIcons();
+setLang("es");
 
   function playReel(overlay) {
-    const fig = overlay.closest('.e-item--reel');
-    const vid = fig ? fig.querySelector('video') : null;
+    var fig = overlay.closest('.e-item--reel');
+    var vid = fig ? fig.querySelector('video') : null;
     if (!vid) return;
-    if (vid.paused) {
-      vid.play().catch(()=>{});
-      overlay.style.opacity='0';
-      overlay.style.pointerEvents='none';
-    } else {
+    if (vid.paused) { vid.play(); overlay.style.opacity='0'; overlay.style.pointerEvents='none'; }
+    else { vid.pause(); overlay.style.opacity='1'; overlay.style.pointerEvents='auto'; }
+  } else {
       vid.pause();
-      overlay.style.opacity='1';
-      overlay.style.pointerEvents='auto';
+      overlay.style.opacity = '1';
+      overlay.style.pointerEvents = 'auto';
     }
   }
-
 
 </script>
 </body>
