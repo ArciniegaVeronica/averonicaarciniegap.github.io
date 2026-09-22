@@ -10,7 +10,13 @@
     "descEs": "Diseño UX/UI de una app móvil de gimnasio bajo presión de tiempo real: 72 horas para investigar, idear y entregar un prototipo navegable de alta fidelidad con flujos de reserva, horarios y alertas.",
     "descEn": "UX/UI design of a gym mobile app under real time pressure: 72 hours to research, ideate and deliver a high-fidelity navigable prototype covering booking, schedules and alert flows.",
     "image": "thunder-gym.png",
-    "tags": ["Figma", "UX Research", "Crazy 8's", "Wireframing", "Prototipado"],
+    "tags": [
+      "Figma",
+      "UX Research",
+      "Crazy 8's",
+      "Wireframing",
+      "Prototipado"
+    ],
     "link": "thunder-gym.html"
   },
   {
@@ -24,8 +30,33 @@
     "descEs": "Plataforma de bienestar corporativo con gamificación y recompensas. Diseño UX/UI de la app móvil, wireframes, UX tracking y evolución de identidad visual a lo largo de 3 años en equipo Agile. +30% retención.",
     "descEn": "Corporate wellness platform with gamification and rewards. Mobile app UX/UI design, wireframes, UX tracking and visual identity evolution over 3 years in an Agile team. +30% user retention.",
     "image": "assets/hexalud-hero.jpg",
-    "tags": ["Figma", "Jira", "UX Research", "Prototipos", "Adobe Suite"],
+    "tags": [
+      "Figma",
+      "Jira",
+      "UX Research",
+      "Prototipos",
+      "Adobe Suite"
+    ],
     "link": "hexalud-wellness.html"
+  },
+  {
+    "id": "wisecook",
+    "category": "uxui",
+    "color": "#34A853",
+    "titleEs": "WiseCook",
+    "titleEn": "WiseCook",
+    "tagEs": "UX/UI · Service Design",
+    "tagEn": "UX/UI · Service Design",
+    "descEs": "App y dispositivo inteligente contra el desperdicio de alimentos. Proyecto académico en equipo: investigación, encuesta propia, identidad de marca y prototipo de alta fidelidad.",
+    "descEn": "App and smart device against food waste. Academic team project: research, own survey, brand identity and high-fidelity prototype.",
+    "image": "assets/wisecook-hero.jpg",
+    "tags": [
+      "Figma",
+      "Illustrator",
+      "Modelado 3D",
+      "Research"
+    ],
+    "link": "wisecook.html"
   },
   {
     "id": "chiltepik",
@@ -38,7 +69,12 @@
     "descEs": "Construcción de una identidad editorial desde cero para una salsa artesanal mexicana: paleta, estilo fotográfico, sistema de composición, parrilla de contenido, posts y reels.",
     "descEn": "Building an editorial identity from scratch for a Mexican artisan salsa: palette, photographic style, composition system, content grid, posts and reels.",
     "image": "assets/chiltepik-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "IA"],
+    "tags": [
+      "Photoshop",
+      "Illustrator",
+      "Canva",
+      "IA"
+    ],
     "link": "chiltepik.html"
   },
   {
@@ -52,7 +88,12 @@
     "descEs": "Exploración creativa dentro de una identidad ya establecida: contenido para redes sociales, reels, material de pauta y un mockup de packaging que extiende la marca al mundo físico.",
     "descEn": "Creative exploration within an established identity: social media content, reels, advertising material and a packaging mockup that extends the brand into the physical world.",
     "image": "assets/habemus-pizza-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "IA"],
+    "tags": [
+      "Photoshop",
+      "Illustrator",
+      "Canva",
+      "IA"
+    ],
     "link": "habemus-pizza.html"
   },
   {
@@ -66,7 +107,12 @@
     "descEs": "Piezas visuales para un equipo de béisbol profesional que fusionan identidad deportiva y cultura nayarita. Propuesta innovadora que el equipo eligió publicar en su feed oficial.",
     "descEn": "Visual pieces for a professional baseball team fusing sports identity and Nayarit culture. An innovative proposal the team chose to publish in their official feed.",
     "image": "assets/jaguares-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "IA"],
+    "tags": [
+      "Photoshop",
+      "Illustrator",
+      "Canva",
+      "IA"
+    ],
     "link": "jaguares.html"
   },
   {
@@ -80,7 +126,12 @@
     "descEs": "Dirección de arte y contenido para redes sociales de una marca de fitness en construcción: definición del estilo visual y piezas que comunican energía, movimiento y conexión con la naturaleza.",
     "descEn": "Art direction and social media content for a fitness brand in development: visual style definition and pieces that communicate energy, movement and connection with nature.",
     "image": "assets/eka-active-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "IA"],
+    "tags": [
+      "Photoshop",
+      "Illustrator",
+      "Canva",
+      "IA"
+    ],
     "link": "eka-active.html"
   },
   {
@@ -94,7 +145,12 @@
     "descEs": "Ecosistema de comunicación visual para una marca de belleza: contenido para redes sociales, banners y una pieza de alto impacto para pauta publicitaria alineados con una estética nude y aspiracional.",
     "descEn": "Visual communication ecosystem for a beauty brand: social media content, banners and a high-impact paid advertising asset aligned with a nude and aspirational aesthetic.",
     "image": "assets/holly-body-hero.jpg",
-    "tags": ["Photoshop", "Illustrator", "Canva", "IA"],
+    "tags": [
+      "Photoshop",
+      "Illustrator",
+      "Canva",
+      "IA"
+    ],
     "link": "holly-body.html"
   }
 ]

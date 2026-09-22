@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WiseCook — Verónica Arciniega</title>
+<meta name="description" content="WiseCook: app y dispositivo inteligente contra el desperdicio de alimentos. Proyecto UX/UI académico con investigación, prototipo e identidad de marca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#16161d;--card:#1a1a24;--card-soft:#0d0d14;--text:#f5f5f7;--muted:rgba(245,245,247,0.55);--faint:rgba(245,245,247,0.22);--border:rgba(255,255,255,0.07);--border-mid:rgba(255,255,255,0.13);--font:'Plus Jakarta Sans',sans-serif;--mono:'Space Mono',monospace;--ease:0.4s cubic-bezier(0.4,0,0.2,1);--bounce:0.5s cubic-bezier(0.34,1.56,0.64,1);--brand-a:#34A853;--brand-b:#1B5E20}
+[data-theme="light"]{--bg:#f4f4f8;--surface:#ffffff;--card:#ffffff;--card-soft:#ececf4;--text:#0a0a0f;--muted:rgba(10,10,15,0.55);--faint:rgba(10,10,15,0.22);--border:rgba(0,0,0,0.07);--border-mid:rgba(0,0,0,0.13)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:68px}
+body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.65;transition:background var(--ease),color var(--ease)}
+img{max-width:100%;display:block} a{color:inherit;text-decoration:none} button{font-family:inherit;cursor:pointer;border:none;background:none}
+:focus-visible{outline:2px solid var(--brand-a);outline-offset:3px;border-radius:4px}
+.skip{position:fixed;top:-100px;left:16px;z-index:9999;padding:12px 20px;background:var(--brand-a);color:#fff;border-radius:8px;font-weight:700;font-size:14px;transition:top .2s}
+.skip:focus{top:16px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-mid);background:rgba(10,10,15,0.92);box-shadow:0 4px 24px rgba(0,0,0,.2)}
+[data-theme="light"] .nav{background:rgba(248,248,252,0.94)}
+.nav__inner{max-width:1280px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+@media(min-width:768px){.nav__inner{padding:0 48px}}
+.nav__back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--muted);transition:color var(--ease)}
+.nav__back:hover{color:var(--text)}
+.nav__back svg{width:16px;height:16px;transition:transform var(--ease)}
+.nav__back:hover svg{transform:translateX(-3px)}
+.nav__right{display:flex;align-items:center;gap:12px}
+.lang-sep{color:var(--faint);font-size:11px}
+.lang-btn{font-family:var(--mono);font-size:11px;background:none;border:none;cursor:pointer;padding:5px 8px;border-radius:6px;font-weight:400;color:var(--faint);transition:color .3s,font-weight .3s,background .3s;letter-spacing:.05em}
+.lang-btn[aria-pressed="true"]{color:var(--brand-a);font-weight:800;background:rgba(52,168,83,0.12)}
+[data-theme="light"] .lang-btn[aria-pressed="true"]{background:rgba(52,168,83,0.10)}
+.lang-btn:hover:not([aria-pressed="true"]){color:var(--text);background:rgba(255,255,255,0.06)}
+.theme-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-mid);color:var(--muted);transition:background var(--ease),transform var(--bounce),border-color var(--ease),color var(--ease)}
+.theme-btn:hover{background:var(--surface);transform:rotate(20deg);color:var(--text)}
+[data-theme="light"] .theme-btn{background:rgba(52,168,83,0.10);border-color:var(--brand-a);color:var(--brand-a)}
+[data-theme="light"] .theme-btn:hover{background:var(--brand-a);color:#fff}
+.theme-btn svg{width:16px;height:16px}
+.hero{position:relative;height:92svh;min-height:540px;overflow:hidden;display:flex;align-items:flex-end;padding-top:68px}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 8s ease}
+.hero:hover .hero__img{transform:scale(1.03)}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.4) 45%,rgba(0,0,0,.15) 100%)}
+.hero__content{position:relative;z-index:1;width:100%;max-width:1280px;margin:0 auto;padding:0 24px 72px}
+@media(min-width:768px){.hero__content{padding:0 48px 88px}}
+.hero__eyebrow{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:var(--brand-a);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:12px;opacity:0;animation:fadeUp .7s .1s ease forwards}
+.hero__eyebrow::before{content:'';width:32px;height:1px;background:var(--brand-a)}
+.hero__title{font-size:clamp(44px,9vw,104px);font-weight:800;letter-spacing:-.045em;line-height:.92;color:#fff;opacity:0;animation:fadeUp .8s .25s ease forwards;margin-bottom:24px}
+.hero__chips{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:fadeUp .8s .4s ease forwards}
+.hero__chip{padding:8px 18px;border-radius:100px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);backdrop-filter:blur(8px);font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.08em}
+.hero__chip--accent{border-color:var(--brand-a);background:rgba(52,168,83,0.20);color:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.meta-strip{background:var(--surface);border-bottom:1px solid var(--border)}
+.meta-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+@media(min-width:640px){.meta-inner{grid-template-columns:repeat(4,1fr)}}
+.meta-block{background:var(--surface);padding:24px 28px}
+@media(min-width:768px){.meta-block{padding:28px 48px}}
+.meta-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--brand-a);font-weight:700;margin-bottom:8px}
+.meta-value{font-size:13px;font-weight:600;color:var(--text);line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+@media(min-width:768px){.wrap{padding:0 48px}}
+.cs-sec{padding:80px 0}
+.cs-sec--alt{background:var(--surface)}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.eyebrow__num{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:700;letter-spacing:.1em}
+.eyebrow__line{flex:1;height:1px;background:var(--border)}
+.lbl{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--brand-a);font-weight:700}
+h2{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.03em;margin:10px 0 16px}
+.prose{font-size:16px;color:var(--muted);line-height:1.8;max-width:680px}
+.prose strong{color:var(--text);font-weight:700}
+.prose p{margin-bottom:14px}
+.prose p:last-child{margin-bottom:0}
+.highlight{border-left:3px solid var(--brand-a);padding:20px 24px;background:var(--surface);border-radius:0 12px 12px 0;margin:28px 0}
+.highlight p{font-size:15px;font-style:italic;color:var(--muted);line-height:1.7}
+.highlight cite{display:block;margin-top:10px;font-style:normal;font-family:var(--mono);font-size:10px;color:var(--brand-a);text-transform:uppercase;letter-spacing:.08em}
+.flow{display:flex;flex-direction:column;gap:0;margin-top:32px;max-width:680px}
+.flow-step{display:flex;gap:20px;align-items:flex-start;padding-bottom:24px;position:relative}
+.flow-step:last-child{padding-bottom:0}
+.flow-step::before{content:'';position:absolute;left:17px;top:36px;bottom:0;width:1px;background:var(--border)}
+.flow-step:last-child::before{display:none}
+.flow-step__dot{width:36px;height:36px;border-radius:50%;background:var(--brand-a);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono);font-size:11px;font-weight:700;color:#fff}
+.flow-step__content{flex:1;padding-top:6px}
+.flow-step__title{font-size:15px;font-weight:800;letter-spacing:-.01em;color:var(--text);margin-bottom:4px}
+.flow-step__desc{font-size:14px;color:var(--muted);line-height:1.65}
+.del-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-top:28px}
+.del-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;transition:all var(--ease)}
+.del-card:hover{border-color:var(--brand-a);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.25)}
+.del-card__icon{font-size:24px;margin-bottom:12px}
+.del-card__title{font-size:13px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:4px}
+.del-card__sub{font-size:12px;color:var(--muted)}
+.team-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.team-chip{padding:8px 16px;border-radius:100px;background:var(--card);border:1px solid var(--border);font-size:12px;font-weight:600;color:var(--text)}
+.e-gallery{margin-top:32px}
+.e-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;grid-auto-flow:dense;align-items:start}
+@media(max-width:600px){.e-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
+.e-item:nth-child(1){grid-column:span 2}
+.e-item:nth-child(4){grid-column:span 2}
+.e-item{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft);opacity:0;transform:translateY(14px);transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease,border-color .3s ease}
+.e-gallery.visible .e-item{animation:eIn .5s ease forwards}
+.e-gallery.visible .e-item:nth-child(1){animation-delay:.04s}
+.e-gallery.visible .e-item:nth-child(2){animation-delay:.08s}
+.e-gallery.visible .e-item:nth-child(3){animation-delay:.12s}
+.e-gallery.visible .e-item:nth-child(4){animation-delay:.16s}
+.e-gallery.visible .e-item:nth-child(5){animation-delay:.20s}
+@keyframes eIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.e-item:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.32);border-color:var(--brand-a);z-index:2}
+.e-item img{width:100%;height:auto;display:block;transition:transform .6s ease}
+.e-item:hover img{transform:scale(1.04)}
+.e-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 46%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:12px 14px;pointer-events:none}
+.e-item:hover .e-ov{opacity:1}
+.e-lbl{font-family:var(--mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.9)}
+.e-ph{min-height:140px;display:flex;align-items:center;justify-content:center;opacity:.1}
+.e-ph svg{width:26px;height:26px}
+.proj-nav{background:var(--surface);border-top:1px solid var(--border);padding:36px 0}
+.proj-nav__inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(min-width:768px){.proj-nav__inner{padding:0 48px}}
+.nav-proj{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:var(--muted);padding:11px 20px;border-radius:100px;border:1px solid var(--border);transition:all var(--ease)}
+.nav-proj:hover{color:var(--text);border-color:var(--border-mid);background:var(--card)}
+.nav-proj svg{width:15px;height:15px;flex-shrink:0}
+.nav-home{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#fff;padding:11px 24px;border-radius:100px;background:var(--brand-a);border:1px solid var(--brand-a);transition:all var(--bounce)}
+.nav-home:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(52,168,83,0.35)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--faint)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<script>(function(){var t=localStorage.getItem('va-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+
+<a href="#main" class="skip" data-t="skip">Saltar al contenido</a>
+
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span data-t="back">Volver al portfolio</span>
+    </a>
+    <div class="nav__right">
+      <div style="display:flex;align-items:center;gap:6px">
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')" aria-pressed="true">ES</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-pressed="false">EN</button>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()">
+        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707M6.343 17.657l-.707.707m12.728 0-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero">
+  <img class="hero__img" src="assets/wisecook-hero.jpg" alt="Hero WiseCook" loading="eager" onerror="this.style.opacity='0'">
+  <div class="hero__overlay" aria-hidden="true"></div>
+  <div class="hero__content">
+    <p class="hero__eyebrow" data-t="sector">Sostenibilidad · Foodtech · Proyecto Académico</p>
+    <h1 class="hero__title">WiseCook</h1>
+    <div class="hero__chips">
+      <span class="hero__chip hero__chip--accent" data-t="tag1">UX/UI Design</span>
+      <span class="hero__chip" data-t="tag2">Service Design</span>
+      <span class="hero__chip" data-t="tag3">Trabajo en Equipo</span>
+    </div>
+  </div>
+</header>
+
+<div class="meta-strip">
+  <div class="meta-inner">
+    <div class="meta-block"><p class="meta-label" data-t="ml_sector">Sector</p><p class="meta-value" data-t="mv_sector">Sostenibilidad & Foodtech</p></div>
+    <div class="meta-block"><p class="meta-label" data-t="ml_role">Mi rol</p><p class="meta-value" data-t="mv_role">Research, Ideación, Diseño 3D & Ilustración</p></div>
+    <div class="meta-block"><p class="meta-label" data-t="ml_team">Equipo</p><p class="meta-value">5 diseñadores</p></div>
+    <div class="meta-block"><p class="meta-label" data-t="ml_tools">Herramientas</p><p class="meta-value">Figma · Illustrator · Modelado 3D · Keyshot</p></div>
+  </div>
+</div>
+
+<!-- 01 PROBLEMA -->
+<section class="cs-sec">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">01</span><div class="eyebrow__line"></div><span class="lbl" data-t="s1l">El problema</span></div>
+    <h2 data-t="s1h">Ciudades frente al cambio climático</h2>
+    <div class="prose reveal">
+      <p data-t="s1p1">El punto de partida del proyecto fue una pregunta amplia: <strong>¿cómo se pueden adaptar las ciudades y sus habitantes a los efectos provocados por el cambio climático?</strong> Investigamos distintos espacios de oportunidad y decidimos enfocarnos en el tema de <strong>alimentación</strong>, específicamente en el desperdicio de alimentos en los hogares.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 INVESTIGACIÓN -->
+<section class="cs-sec cs-sec--alt">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">02</span><div class="eyebrow__line"></div><span class="lbl" data-t="s2l">Investigación</span></div>
+    <h2 data-t="s2h">De los datos globales a la encuesta propia</h2>
+    <div class="prose reveal">
+      <p data-t="s2p1">Realizamos investigación para comprender el problema del desperdicio de alimentos a nivel global, y desarrollamos una <strong>encuesta propia</strong> para obtener datos de primera mano sobre cómo ocurre el desperdicio dentro del hogar.</p>
+    </div>
+    <div class="highlight reveal">
+      <p data-t="s2quote">"Compremos con cuidado, cocinemos de forma creativa y hagamos que el despilfarro de alimentos sea socialmente inaceptable en cualquier lugar, al tiempo que nos esforzamos por ofrecer dietas sanas y sostenibles para todos."</p>
+      <cite data-t="s2cite">UNEP Food Waste Index Report 2021 — Programa Ambiental de Naciones Unidas</cite>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OPORTUNIDAD -->
+<section class="cs-sec">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">03</span><div class="eyebrow__line"></div><span class="lbl" data-t="s3l">Oportunidad</span></div>
+    <h2 data-t="s3h">Educación, recuperación y sobreconsumo</h2>
+    <div class="prose reveal">
+      <p data-t="s3p1">Gracias a la encuesta identificamos las razones más constantes por las que los usuarios desechan alimentos en casa. A partir de ahí, redefinimos el reto desde el modelo de un sistema alimentario sostenible: consumo humano, recuperación de desperdicios y prevención del sobreconsumo mediante educación.</p>
+      <p data-t="s3p2">Definimos nuestro campo de acción en la <strong>intersección entre educación, recuperación y prevención del sobreconsumo</strong> — el espacio donde podíamos generar más impacto para disminuir el desperdicio de alimentos en los hogares.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CONCEPTO -->
+<section class="cs-sec cs-sec--alt">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">04</span><div class="eyebrow__line"></div><span class="lbl" data-t="s4l">Concepto del servicio</span></div>
+    <h2 data-t="s4h">¿Cómo crear conciencia y educar?</h2>
+    <div class="prose reveal">
+      <p data-t="s4p1">A partir del reto redefinido — <strong>¿cómo podríamos crear conciencia, educar y disminuir el porcentaje de desperdicio de alimentos en los hogares?</strong> — diseñamos el concepto de WiseCook: una app que acompaña al usuario desde la despensa hasta el plato, combinando registro de alimentos, recetas, medición de impacto y educación continua.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 IDENTIDAD -->
+<section class="cs-sec">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">05</span><div class="eyebrow__line"></div><span class="lbl" data-t="s5l">Identidad</span></div>
+    <h2 data-t="s5h">Un sistema visual cálido y orgánico</h2>
+    <div class="prose reveal">
+      <p data-t="s5p1">Desarrollamos el logotipo, la paleta de colores, la tipografía y los recursos gráficos de apoyo de la marca — un sistema visual pensado para transmitir frescura, alimentos orgánicos y una experiencia amigable y educativa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 PROTOTIPO -->
+<section class="cs-sec cs-sec--alt">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">06</span><div class="eyebrow__line"></div><span class="lbl" data-t="s6l">Prototipo</span></div>
+    <h2 data-t="s6h">Registro, educación y comunidad</h2>
+    <div class="prose reveal">
+      <p data-t="s6p1">El prototipo de alta fidelidad incluye tres pilares: <strong>registro de alimentos, recetas y medición</strong> del impacto personal; una sección de <strong>educación y foro</strong> para aprender y compartir con la comunidad; y <strong>"Mi impacto"</strong>, donde el usuario visualiza cuánto desperdicio ha evitado.</p>
+    </div>
+    <div class="del-grid reveal">
+      <div class="del-card"><div class="del-card__icon">🥕</div><p class="del-card__title" data-t="d1t">Despensa digital</p><p class="del-card__sub" data-t="d1s">Registro de alimentos y su vida útil</p></div>
+      <div class="del-card"><div class="del-card__icon">🍳</div><p class="del-card__title" data-t="d2t">Recetas inteligentes</p><p class="del-card__sub" data-t="d2s">Sugeridas según lo que hay en casa</p></div>
+      <div class="del-card"><div class="del-card__icon">📊</div><p class="del-card__title" data-t="d3t">Mi impacto</p><p class="del-card__sub" data-t="d3s">Medición del desperdicio evitado</p></div>
+      <div class="del-card"><div class="del-card__icon">💬</div><p class="del-card__title" data-t="d4t">Foro & educación</p><p class="del-card__sub" data-t="d4s">Comunidad y contenido educativo</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 WISEMER -->
+<section class="cs-sec">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">07</span><div class="eyebrow__line"></div><span class="lbl" data-t="s7l">Dispositivo</span></div>
+    <h2 data-t="s7h">Wisemer — el complemento físico</h2>
+    <div class="prose reveal">
+      <p data-t="s7p1">Wisemer es el <strong>dispositivo inteligente</strong> diseñado para complementar la app, sincronizándose con la sección "Despensa". Su objetivo es mostrar el tiempo de vida, la etapa y la cantidad de productos orgánicos disponibles en tiempo real, sin que el usuario tenga que registrar todo manualmente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 ROL Y APRENDIZAJES -->
+<section class="cs-sec cs-sec--alt">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">08</span><div class="eyebrow__line"></div><span class="lbl" data-t="s8l">Mi rol</span></div>
+    <h2 data-t="s8h">Un proyecto de equipo, un rol transversal</h2>
+    <div class="prose reveal">
+      <p data-t="s8p1">Dentro de un equipo de 5 diseñadores, mi participación abarcó <strong>investigación, ideación de propuestas, diseño (modelado 3D, renderizado y mockups) e ilustración</strong>. El proyecto se realizó bajo la tutela de Juan Carlos Díez, Álvaro Millán y Jonatan Morquecho.</p>
+    </div>
+    <div class="team-row reveal" aria-label="Equipo del proyecto">
+      <span class="team-chip">Verónica Arciniega</span>
+      <span class="team-chip">Alejandra Morales</span>
+      <span class="team-chip">Manuel González</span>
+      <span class="team-chip">Mario Martín Méndez</span>
+      <span class="team-chip">Nicolás Zapata</span>
+    </div>
+    <div class="del-grid reveal">
+      <div class="del-card"><div class="del-card__icon">🔍</div><p class="del-card__title" data-t="r1t">Research</p></div>
+      <div class="del-card"><div class="del-card__icon">💡</div><p class="del-card__title" data-t="r2t">Ideación & propuestas</p></div>
+      <div class="del-card"><div class="del-card__icon">🎨</div><p class="del-card__title" data-t="r3t">Modelado 3D & renderizado</p></div>
+      <div class="del-card"><div class="del-card__icon">✏️</div><p class="del-card__title" data-t="r4t">Ilustración</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 GALERÍA -->
+<section class="cs-sec">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">09</span><div class="eyebrow__line"></div><span class="lbl" data-t="s9l">Galería</span></div>
+    <h2 data-t="s9h">Piezas seleccionadas</h2>
+    <div class="e-gallery reveal" role="list">
+      <div class="e-grid">
+        <div class="e-item"><img src="assets/wisecook-01.jpg" alt="Storyboard" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="e-ov"><span class="e-lbl" data-t="g1">Storyboard</span></div></div>
+        <div class="e-item"><img src="assets/wisecook-02.jpg" alt="Customer Journey" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="e-ov"><span class="e-lbl" data-t="g2">Customer Journey</span></div></div>
+        <div class="e-item"><img src="assets/wisecook-03.jpg" alt="Identidad" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="e-ov"><span class="e-lbl" data-t="g3">Identidad</span></div></div>
+        <div class="e-item"><img src="assets/wisecook-04.jpg" alt="Prototipo app" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="e-ov"><span class="e-lbl" data-t="g4">Prototipo App</span></div></div>
+        <div class="e-item"><img src="assets/wisecook-05.jpg" alt="Wisemer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="e-ov"><span class="e-lbl" data-t="g5">Wisemer</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="proj-nav">
+  <div class="proj-nav__inner">
+    <a href="hexalud-wellness.html" class="nav-proj">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span data-t="prev_lbl">Hexalud Wellness</span>
+    </a>
+    <a href="index.html#projects" class="nav-home" data-t="all_projects">Ver todos los proyectos</a>
+    <a href="chiltepik.html" class="nav-proj">
+      <span data-t="next_lbl">Chiltepiik</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</div>
+
+<footer><p>© 2026 Verónica Arciniega — <span data-t="footer">Diseñadora Multidisciplinar</span></p></footer>
+
+<script>
+const T = {
+  es:{
+    skip:"Saltar al contenido",back:"Volver al portfolio",
+    sector:"Sostenibilidad · Foodtech · Proyecto Académico",tag1:"UX/UI Design",tag2:"Service Design",tag3:"Trabajo en Equipo",
+    ml_sector:"Sector",mv_sector:"Sostenibilidad & Foodtech",ml_role:"Mi rol",mv_role:"Research, Ideación, Diseño 3D & Ilustración",ml_team:"Equipo",ml_tools:"Herramientas",
+    s1l:"El problema",s1h:"Ciudades frente al cambio climático",
+    s1p1:"El punto de partida del proyecto fue una pregunta amplia: ¿cómo se pueden adaptar las ciudades y sus habitantes a los efectos provocados por el cambio climático? Investigamos distintos espacios de oportunidad y decidimos enfocarnos en el tema de alimentación, específicamente en el desperdicio de alimentos en los hogares.",
+    s2l:"Investigación",s2h:"De los datos globales a la encuesta propia",
+    s2p1:"Realizamos investigación para comprender el problema del desperdicio de alimentos a nivel global, y desarrollamos una encuesta propia para obtener datos de primera mano sobre cómo ocurre el desperdicio dentro del hogar.",
+    s2quote:"Compremos con cuidado, cocinemos de forma creativa y hagamos que el despilfarro de alimentos sea socialmente inaceptable en cualquier lugar, al tiempo que nos esforzamos por ofrecer dietas sanas y sostenibles para todos.",
+    s2cite:"UNEP Food Waste Index Report 2021 — Programa Ambiental de Naciones Unidas",
+    s3l:"Oportunidad",s3h:"Educación, recuperación y sobreconsumo",
+    s3p1:"Gracias a la encuesta identificamos las razones más constantes por las que los usuarios desechan alimentos en casa. A partir de ahí, redefinimos el reto desde el modelo de un sistema alimentario sostenible: consumo humano, recuperación de desperdicios y prevención del sobreconsumo mediante educación.",
+    s3p2:"Definimos nuestro campo de acción en la intersección entre educación, recuperación y prevención del sobreconsumo — el espacio donde podíamos generar más impacto para disminuir el desperdicio de alimentos en los hogares.",
+    s4l:"Concepto del servicio",s4h:"¿Cómo crear conciencia y educar?",
+    s4p1:"A partir del reto redefinido — ¿cómo podríamos crear conciencia, educar y disminuir el porcentaje de desperdicio de alimentos en los hogares? — diseñamos el concepto de WiseCook: una app que acompaña al usuario desde la despensa hasta el plato, combinando registro de alimentos, recetas, medición de impacto y educación continua.",
+    s5l:"Identidad",s5h:"Un sistema visual cálido y orgánico",
+    s5p1:"Desarrollamos el logotipo, la paleta de colores, la tipografía y los recursos gráficos de apoyo de la marca — un sistema visual pensado para transmitir frescura, alimentos orgánicos y una experiencia amigable y educativa.",
+    s6l:"Prototipo",s6h:"Registro, educación y comunidad",
+    s6p1:"El prototipo de alta fidelidad incluye tres pilares: registro de alimentos, recetas y medición del impacto personal; una sección de educación y foro para aprender y compartir con la comunidad; y Mi impacto, donde el usuario visualiza cuánto desperdicio ha evitado.",
+    d1t:"Despensa digital",d1s:"Registro de alimentos y su vida útil",
+    d2t:"Recetas inteligentes",d2s:"Sugeridas según lo que hay en casa",
+    d3t:"Mi impacto",d3s:"Medición del desperdicio evitado",
+    d4t:"Foro & educación",d4s:"Comunidad y contenido educativo",
+    s7l:"Dispositivo",s7h:"Wisemer — el complemento físico",
+    s7p1:"Wisemer es el dispositivo inteligente diseñado para complementar la app, sincronizándose con la sección Despensa. Su objetivo es mostrar el tiempo de vida, la etapa y la cantidad de productos orgánicos disponibles en tiempo real, sin que el usuario tenga que registrar todo manualmente.",
+    s8l:"Mi rol",s8h:"Un proyecto de equipo, un rol transversal",
+    s8p1:"Dentro de un equipo de 5 diseñadores, mi participación abarcó investigación, ideación de propuestas, diseño (modelado 3D, renderizado y mockups) e ilustración. El proyecto se realizó bajo la tutela de Juan Carlos Díez, Álvaro Millán y Jonatan Morquecho.",
+    r1t:"Research",r2t:"Ideación & propuestas",r3t:"Modelado 3D & renderizado",r4t:"Ilustración",
+    s9l:"Galería",s9h:"Piezas seleccionadas",
+    g1:"Storyboard",g2:"Customer Journey",g3:"Identidad",g4:"Prototipo App",g5:"Wisemer",
+    prev_lbl:"Hexalud Wellness",next_lbl:"Chiltepiik",
+    all_projects:"Ver todos los proyectos",footer:"Diseñadora Multidisciplinar"
+  },
+  en:{
+    skip:"Skip to content",back:"Back to portfolio",
+    sector:"Sustainability · Foodtech · Academic Project",tag1:"UX/UI Design",tag2:"Service Design",tag3:"Team Project",
+    ml_sector:"Sector",mv_sector:"Sustainability & Foodtech",ml_role:"My role",mv_role:"Research, Ideation, 3D Design & Illustration",ml_team:"Team",ml_tools:"Tools",
+    s1l:"The problem",s1h:"Cities facing climate change",
+    s1p1:"The starting point of the project was a broad question: how can cities and their inhabitants adapt to the effects caused by climate change? We researched different opportunity spaces and decided to focus on food, specifically household food waste.",
+    s2l:"Research",s2h:"From global data to our own survey",
+    s2p1:"We conducted research to understand the problem of food waste at a global level, and developed our own survey to get first-hand data on how waste happens within the household.",
+    s2quote:"Let's shop with care, cook creatively and make food waste socially unacceptable everywhere, while striving to deliver healthy and sustainable diets for all.",
+    s2cite:"UNEP Food Waste Index Report 2021 — United Nations Environment Programme",
+    s3l:"Opportunity",s3h:"Education, recovery and overconsumption",
+    s3p1:"Thanks to the survey we identified the most common reasons why users discard food at home. From there, we redefined the challenge based on a sustainable food system model: human consumption, waste recovery and preventing overconsumption through education.",
+    s3p2:"We defined our field of action at the intersection between education, recovery and preventing overconsumption — the space where we could generate the most impact to reduce household food waste.",
+    s4l:"Service concept",s4h:"How to raise awareness and educate?",
+    s4p1:"Based on the redefined challenge — how could we raise awareness, educate and reduce the percentage of food waste in households? — we designed the WiseCook concept: an app that accompanies the user from pantry to plate, combining food logging, recipes, impact measurement and ongoing education.",
+    s5l:"Identity",s5h:"A warm, organic visual system",
+    s5p1:"We developed the logo, color palette, typography and supporting graphic resources for the brand — a visual system designed to convey freshness, organic food and a friendly, educational experience.",
+    s6l:"Prototype",s6h:"Logging, education and community",
+    s6p1:"The high-fidelity prototype includes three pillars: food logging, recipes and personal impact measurement; an education and forum section to learn and share with the community; and My Impact, where the user sees how much waste they've avoided.",
+    d1t:"Digital pantry",d1s:"Food logging and shelf-life tracking",
+    d2t:"Smart recipes",d2s:"Suggested based on what's at home",
+    d3t:"My impact",d3s:"Measuring avoided food waste",
+    d4t:"Forum & education",d4s:"Community and educational content",
+    s7l:"Device",s7h:"Wisemer — the physical companion",
+    s7p1:"Wisemer is the smart device designed to complement the app, syncing with the Pantry section. Its goal is to show the shelf life, stage and quantity of available organic products in real time, without the user having to log everything manually.",
+    s8l:"My role",s8h:"A team project, a cross-functional role",
+    s8p1:"Within a team of 5 designers, my involvement spanned research, ideation of proposals, design (3D modeling, rendering and mockups) and illustration. The project was carried out under the guidance of Juan Carlos Díez, Álvaro Millán and Jonatan Morquecho.",
+    r1t:"Research",r2t:"Ideation & proposals",r3t:"3D modeling & rendering",r4t:"Illustration",
+    s9l:"Gallery",s9h:"Selected pieces",
+    g1:"Storyboard",g2:"Customer Journey",g3:"Identity",g4:"App Prototype",g5:"Wisemer",
+    prev_lbl:"Hexalud Wellness",next_lbl:"Chiltepiik",
+    all_projects:"View all projects",footer:"Multidisciplinary Designer"
+  }
+};
+let lang="es";
+function setLang(l){
+  lang=l;document.documentElement.lang=l;
+  document.querySelectorAll("[data-t]").forEach(el=>{const k=el.getAttribute("data-t");if(T[l]&&T[l][k]!==undefined)el.textContent=T[l][k];});
+  document.getElementById("btn-es").setAttribute("aria-pressed",l==="es"?"true":"false");
+  document.getElementById("btn-en").setAttribute("aria-pressed",l==="en"?"true":"false");
+}
+function toggleTheme(){
+  const dark=document.documentElement.getAttribute("data-theme")==="dark";
+  const next=dark?"light":"dark";
+  document.documentElement.setAttribute("data-theme",next);
+  localStorage.setItem("va-theme",next);
+  syncIcons();
+}
+function syncIcons(){
+  const dark=document.documentElement.getAttribute("data-theme")==="dark";
+  document.getElementById("icon-moon").style.display=dark?"block":"none";
+  document.getElementById("icon-sun").style.display=dark?"none":"block";
+}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("visible");io.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll(".reveal, .e-gallery").forEach(el=>io.observe(el));
+syncIcons();
+setLang("es");
+</script>
+</body>
+</html>
