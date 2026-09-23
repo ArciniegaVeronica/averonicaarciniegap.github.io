@@ -90,6 +90,58 @@ h2{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.03em;margin:1
 .del-card__sub{font-size:12px;color:var(--muted)}
 .team-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .team-chip{padding:8px 16px;border-radius:100px;background:var(--card);border:1px solid var(--border);font-size:12px;font-weight:600;color:var(--text)}
+/* Identity: colors + typography */
+.id-block{margin-top:36px}
+.id-block__label{margin-bottom:16px}
+.swatch-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;margin-top:16px}
+.swatch{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card)}
+.swatch__color{height:64px;width:100%}
+.swatch__info{padding:10px 12px}
+.swatch__hex{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--text)}
+.swatch__rgb{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px}
+.type-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:20px}
+@media(min-width:640px){.type-grid{grid-template-columns:1fr 1fr}}
+.type-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px}
+.type-card__use{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-a);font-weight:700;margin-bottom:6px}
+.type-card__name{font-size:20px;font-weight:800;color:var(--text);margin-bottom:12px}
+.type-card__specimen{font-size:14px;color:var(--muted);line-height:1.9}
+.moodboard-note{display:flex;align-items:flex-start;gap:14px;margin-top:28px;padding:18px 20px;background:var(--card);border:1px solid var(--border);border-radius:16px}
+.moodboard-note__icon{font-size:20px;flex-shrink:0}
+.moodboard-note__text{font-size:13px;color:var(--muted);line-height:1.6}
+.moodboard-note__text strong{color:var(--text)}
+/* Customer Journey — visual, adapted to site style */
+.journey{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;margin-top:32px;scrollbar-width:thin}
+.journey::-webkit-scrollbar{height:6px}
+.journey::-webkit-scrollbar-thumb{background:var(--border-mid);border-radius:3px}
+.j-card{flex:0 0 220px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;transition:all var(--ease)}
+.j-card:hover{border-color:var(--brand-a);transform:translateY(-4px)}
+.j-card__icon{font-size:26px;margin-bottom:12px}
+.j-card__phase{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-a);font-weight:700;margin-bottom:6px}
+.j-card__action{font-size:13px;color:var(--text);font-weight:600;line-height:1.5;margin-bottom:14px}
+.j-card__emo{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;background:rgba(52,168,83,0.1);font-size:11px;font-weight:700;color:var(--brand-a)}
+.j-card--low .j-card__emo{background:rgba(148,148,158,0.14);color:var(--muted)}
+/* Figma embed */
+.proto-frame{margin-top:28px;border-radius:20px;overflow:hidden;border:1px solid var(--border-mid);box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.proto-frame iframe{width:100%;height:520px;border:none;display:block}
+.proto-cta{margin-top:20px}
+/* Wisemer render */
+.render-frame{margin-top:28px;border-radius:20px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)}
+.render-frame img{width:100%;height:auto;display:block}
+.render-caption{margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center}
+/* Video demo */
+.video-frame{margin-top:28px;border-radius:20px;overflow:hidden;border:1px solid var(--border);background:#000;position:relative}
+.video-frame video{width:100%;display:block;max-height:560px}
+/* Screens — uniform grid, exact same as Thunder Gym */
+.screens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:540px){.screens-grid{grid-template-columns:repeat(4,1fr);gap:18px}}
+.screen-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft);transition:all var(--ease);display:flex;flex-direction:column}
+.screen-card:hover{border-color:var(--border-mid);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.screen-card__img-wrap{width:100%;aspect-ratio:9/16;overflow:hidden;position:relative;background:var(--card-soft);flex-shrink:0}
+.screen-card__img-wrap img{width:100%;height:100%;object-fit:contain;object-position:center top;display:block;padding:6px;transition:transform .5s ease}
+.screen-card:hover .screen-card__img-wrap img{transform:scale(1.03)}
+.screen-card__empty{width:100%;aspect-ratio:9/16;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:.15}
+.screen-card__empty svg{width:24px;height:24px}
+.screen-card figcaption{padding:10px 12px;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);border-top:1px solid var(--border)}
 .e-gallery{margin-top:32px}
 .e-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;grid-auto-flow:dense;align-items:start}
 @media(max-width:600px){.e-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
@@ -229,6 +281,47 @@ footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;fo
     <div class="prose reveal">
       <p data-t="s5p1">Desarrollamos el logotipo, la paleta de colores, la tipografía y los recursos gráficos de apoyo de la marca — un sistema visual pensado para transmitir frescura, alimentos orgánicos y una experiencia amigable y educativa.</p>
     </div>
+
+    <div class="moodboard-note reveal">
+      <span class="moodboard-note__icon" aria-hidden="true">🎨</span>
+      <p class="moodboard-note__text" data-t="mood_note">Partimos de un <strong>moodboard</strong> con ilustraciones editoriales de mercados orgánicos, libros de recetas infantiles y contenido vegano — referencias que guiaron un estilo amigable, ilustrado y cercano a la comida real, alejado de la estética clínica típica de las apps de salud.</p>
+    </div>
+
+    <div class="id-block reveal">
+      <p class="lbl id-block__label" data-t="colors_label">Paleta de colores — versión clara</p>
+      <div class="swatch-row">
+        <div class="swatch"><div class="swatch__color" style="background:#1E5D3E"></div><div class="swatch__info"><p class="swatch__hex">#1E5D3E</p><p class="swatch__rgb">30, 93, 62</p></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#29A566"></div><div class="swatch__info"><p class="swatch__hex">#29A566</p><p class="swatch__rgb">41, 165, 102</p></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#E8E970"></div><div class="swatch__info"><p class="swatch__hex">#E8E970</p><p class="swatch__rgb">232, 233, 112</p></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#DFF9EB"></div><div class="swatch__info"><p class="swatch__hex">#DFF9EB</p><p class="swatch__rgb">223, 249, 235</p></div></div>
+      </div>
+    </div>
+
+    <div class="id-block reveal">
+      <p class="lbl id-block__label" data-t="colors_label_2">Paleta de colores — versión oscura</p>
+      <div class="swatch-row">
+        <div class="swatch"><div class="swatch__color" style="background:#092A1B"></div><div class="swatch__info"><p class="swatch__hex">#092A1B</p><p class="swatch__rgb">9, 42, 27</p></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#29A566"></div><div class="swatch__info"><p class="swatch__hex">#29A566</p><p class="swatch__rgb">41, 165, 102</p></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#687684"></div><div class="swatch__info"><p class="swatch__hex">#687684</p><p class="swatch__rgb">104, 118, 132</p></div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#FFFFFF;border-bottom:1px solid var(--border)"></div><div class="swatch__info"><p class="swatch__hex">#FFFFFF</p><p class="swatch__rgb">255, 255, 255</p></div></div>
+      </div>
+    </div>
+
+    <div class="id-block reveal">
+      <p class="lbl id-block__label" data-t="type_label">Tipografía</p>
+      <div class="type-grid">
+        <div class="type-card">
+          <p class="type-card__use" data-t="type1_use">Onboarding</p>
+          <p class="type-card__name">Poppins</p>
+          <p class="type-card__specimen">Light · Medium · SemiBold · <strong>Bold</strong> · <strong>ExtraBold</strong></p>
+        </div>
+        <div class="type-card">
+          <p class="type-card__use" data-t="type2_use">Secciones</p>
+          <p class="type-card__name">Articulat CF</p>
+          <p class="type-card__specimen">Normal · Medium · <strong>Bold</strong></p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -246,6 +339,52 @@ footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;fo
       <div class="del-card"><div class="del-card__icon">📊</div><p class="del-card__title" data-t="d3t">Mi impacto</p><p class="del-card__sub" data-t="d3s">Medición del desperdicio evitado</p></div>
       <div class="del-card"><div class="del-card__icon">💬</div><p class="del-card__title" data-t="d4t">Foro & educación</p><p class="del-card__sub" data-t="d4s">Comunidad y contenido educativo</p></div>
     </div>
+
+    <p class="lbl reveal" style="margin-top:40px;margin-bottom:8px" data-t="screens_label">Pantallas del prototipo</p>
+    <div class="screens-grid reveal">
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-screen-01.jpg" alt="Onboarding — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr1">Onboarding</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-screen-02.jpg" alt="Despensa — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr2">Despensa</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-screen-03.jpg" alt="Recetas — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr3">Recetas</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-screen-04.jpg" alt="Mi impacto — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr4">Mi impacto</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-screen-05.jpg" alt="Foro — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr5">Foro</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-screen-06.jpg" alt="Educación — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr6">Educación</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -257,13 +396,87 @@ footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;fo
     <div class="prose reveal">
       <p data-t="s7p1">Wisemer es el <strong>dispositivo inteligente</strong> diseñado para complementar la app, sincronizándose con la sección "Despensa". Su objetivo es mostrar el tiempo de vida, la etapa y la cantidad de productos orgánicos disponibles en tiempo real, sin que el usuario tenga que registrar todo manualmente.</p>
     </div>
+    <div class="render-frame reveal">
+      <img src="assets/wisecook-wisemer.jpg" alt="Modelado 3D del dispositivo Wisemer, renderizado en Rhino" loading="lazy" onerror="this.parentElement.style.display='none'">
+    </div>
+    <p class="render-caption reveal" data-t="render_caption">Modelado 3D y renderizado del dispositivo Wisemer — realizado en Rhino</p>
   </div>
 </section>
 
-<!-- 08 ROL Y APRENDIZAJES -->
+<!-- 08 CUSTOMER JOURNEY -->
 <section class="cs-sec cs-sec--alt">
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="eyebrow__num">08</span><div class="eyebrow__line"></div><span class="lbl" data-t="s8l">Mi rol</span></div>
+    <div class="eyebrow reveal"><span class="eyebrow__num">08</span><div class="eyebrow__line"></div><span class="lbl" data-t="s8jl">Customer Journey</span></div>
+    <h2 data-t="s8jh">De la duda a la recomendación</h2>
+    <div class="prose reveal">
+      <p data-t="s8jp1">Mapeamos el recorrido completo del usuario en cinco fases, desde que percibe el problema del desperdicio hasta que recomienda la app a otras personas — identificando acciones y estado emocional en cada etapa.</p>
+    </div>
+    <div class="journey reveal" role="list" aria-label="Fases del Customer Journey">
+      <div class="j-card j-card--low" role="listitem">
+        <div class="j-card__icon" aria-hidden="true">🤔</div>
+        <p class="j-card__phase" data-t="j1_phase">Conciencia</p>
+        <p class="j-card__action" data-t="j1_action">Revisa la nevera y reflexiona sobre el desperdicio de comida.</p>
+        <span class="j-card__emo" data-t="j1_emo">Impresionado y desilusionado</span>
+      </div>
+      <div class="j-card" role="listitem">
+        <div class="j-card__icon" aria-hidden="true">💡</div>
+        <p class="j-card__phase" data-t="j2_phase">Descubrimiento</p>
+        <p class="j-card__action" data-t="j2_action">Investiga alternativas y descarga la app.</p>
+        <span class="j-card__emo" data-t="j2_emo">Curioso y motivado</span>
+      </div>
+      <div class="j-card j-card--low" role="listitem">
+        <div class="j-card__icon" aria-hidden="true">📖</div>
+        <p class="j-card__phase" data-t="j3_phase">Aprendizaje</p>
+        <p class="j-card__action" data-t="j3_action">Ve el tutorial y completa su perfil con las unidades de medida.</p>
+        <span class="j-card__emo" data-t="j3_emo">Preocupado, luego motivado</span>
+      </div>
+      <div class="j-card" role="listitem">
+        <div class="j-card__icon" aria-hidden="true">👨‍🍳</div>
+        <p class="j-card__phase" data-t="j4_phase">Uso</p>
+        <p class="j-card__action" data-t="j4_action">Cocina su primera receta y sigue el feedback de la app.</p>
+        <span class="j-card__emo" data-t="j4_emo">Agobiado, luego confiado</span>
+      </div>
+      <div class="j-card" role="listitem">
+        <div class="j-card__icon" aria-hidden="true">🚀</div>
+        <p class="j-card__phase" data-t="j5_phase">Engagement</p>
+        <p class="j-card__action" data-t="j5_action">Reduce su desperdicio, recomienda la app y habla del tema con más gente.</p>
+        <span class="j-card__emo" data-t="j5_emo">Feliz y entusiasmado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 PROTOTIPO INTERACTIVO -->
+<section class="cs-sec">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">09</span><div class="eyebrow__line"></div><span class="lbl" data-t="s9l">Prototipo interactivo</span></div>
+    <h2 data-t="s9h">Explora el prototipo</h2>
+    <div class="prose reveal">
+      <p data-t="s9p1">El prototipo navegable completo, hecho en Figma, incluye los flujos de onboarding, despensa, recetas y "Mi impacto".</p>
+    </div>
+    <div class="proto-cta reveal">
+      <a href="https://www.figma.com/file/hVJ9vEoXKAWhqVQv7Ak8zo/App-principios?type=design&node-id=1170-1067&mode=design" target="_blank" rel="noopener noreferrer" class="hero__chip hero__chip--accent" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:100px;font-size:12px" data-t="btn_figma">
+        Ver prototipo en Figma
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="proto-frame reveal">
+      <iframe src="https://embed.figma.com/file/hVJ9vEoXKAWhqVQv7Ak8zo/App-principios?type=design&node-id=1170-1067&mode=design&embed-host=share" allowfullscreen loading="lazy" title="Prototipo interactivo WiseCook — Figma"></iframe>
+    </div>
+
+    <p class="lbl reveal" style="margin-top:48px;margin-bottom:8px" data-t="video_label">Video de interacción</p>
+    <div class="video-frame reveal">
+      <video controls preload="metadata" poster="assets/wisecook-video-poster.jpg" onerror="this.parentElement.style.display='none'">
+        <source src="assets/wisecook-demo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ROL Y APRENDIZAJES -->
+<section class="cs-sec cs-sec--alt">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="eyebrow__num">10</span><div class="eyebrow__line"></div><span class="lbl" data-t="s8l">Mi rol</span></div>
     <h2 data-t="s8h">Un proyecto de equipo, un rol transversal</h2>
     <div class="prose reveal">
       <p data-t="s8p1">Dentro de un equipo de 5 diseñadores, mi participación abarcó <strong>investigación, ideación de propuestas, diseño (modelado 3D, renderizado y mockups) e ilustración</strong>. El proyecto se realizó bajo la tutela de Juan Carlos Díez, Álvaro Millán y Jonatan Morquecho.</p>
@@ -280,23 +493,6 @@ footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;fo
       <div class="del-card"><div class="del-card__icon">💡</div><p class="del-card__title" data-t="r2t">Ideación & propuestas</p></div>
       <div class="del-card"><div class="del-card__icon">🎨</div><p class="del-card__title" data-t="r3t">Modelado 3D & renderizado</p></div>
       <div class="del-card"><div class="del-card__icon">✏️</div><p class="del-card__title" data-t="r4t">Ilustración</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 09 GALERÍA -->
-<section class="cs-sec">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="eyebrow__num">09</span><div class="eyebrow__line"></div><span class="lbl" data-t="s9l">Galería</span></div>
-    <h2 data-t="s9h">Piezas seleccionadas</h2>
-    <div class="e-gallery reveal" role="list">
-      <div class="e-grid">
-        <div class="e-item"><img src="assets/wisecook-01.jpg" alt="Storyboard" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div></div>
-        <div class="e-item"><img src="assets/wisecook-02.jpg" alt="Customer Journey" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div></div>
-        <div class="e-item"><img src="assets/wisecook-03.jpg" alt="Identidad" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div></div>
-        <div class="e-item"><img src="assets/wisecook-04.jpg" alt="Prototipo app" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div></div>
-        <div class="e-item"><img src="assets/wisecook-05.jpg" alt="Wisemer" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="e-ph" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div></div>
-      </div>
     </div>
   </div>
 </section>
@@ -338,6 +534,11 @@ const T = {
     s4p1:"A partir del reto redefinido — ¿cómo podríamos crear conciencia, educar y disminuir el porcentaje de desperdicio de alimentos en los hogares? — diseñamos el concepto de WiseCook: una app que acompaña al usuario desde la despensa hasta el plato, combinando registro de alimentos, recetas, medición de impacto y educación continua.",
     s5l:"Identidad",s5h:"Un sistema visual cálido y orgánico",
     s5p1:"Desarrollamos el logotipo, la paleta de colores, la tipografía y los recursos gráficos de apoyo de la marca — un sistema visual pensado para transmitir frescura, alimentos orgánicos y una experiencia amigable y educativa.",
+    mood_note:"Partimos de un moodboard con ilustraciones editoriales de mercados orgánicos, libros de recetas infantiles y contenido vegano — referencias que guiaron un estilo amigable, ilustrado y cercano a la comida real, alejado de la estética clínica típica de las apps de salud.",
+    colors_label:"Paleta de colores — versión clara",
+    colors_label_2:"Paleta de colores — versión oscura",
+    type_label:"Tipografía",
+    type1_use:"Onboarding",type2_use:"Secciones",
     s6l:"Prototipo",s6h:"Registro, educación y comunidad",
     s6p1:"El prototipo de alta fidelidad incluye tres pilares: registro de alimentos, recetas y medición del impacto personal; una sección de educación y foro para aprender y compartir con la comunidad; y Mi impacto, donde el usuario visualiza cuánto desperdicio ha evitado.",
     d1t:"Despensa digital",d1s:"Registro de alimentos y su vida útil",
@@ -349,8 +550,18 @@ const T = {
     s8l:"Mi rol",s8h:"Un proyecto de equipo, un rol transversal",
     s8p1:"Dentro de un equipo de 5 diseñadores, mi participación abarcó investigación, ideación de propuestas, diseño (modelado 3D, renderizado y mockups) e ilustración. El proyecto se realizó bajo la tutela de Juan Carlos Díez, Álvaro Millán y Jonatan Morquecho.",
     r1t:"Research",r2t:"Ideación & propuestas",r3t:"Modelado 3D & renderizado",r4t:"Ilustración",
-    s9l:"Galería",s9h:"Piezas seleccionadas",
-    g1:"Storyboard",g2:"Customer Journey",g3:"Identidad",g4:"Prototipo App",g5:"Wisemer",
+    render_caption:"Modelado 3D y renderizado del dispositivo Wisemer — realizado en Rhino",
+    s8jl:"Customer Journey",s8jh:"De la duda a la recomendación",
+    s8jp1:"Mapeamos el recorrido completo del usuario en cinco fases, desde que percibe el problema del desperdicio hasta que recomienda la app a otras personas — identificando acciones y estado emocional en cada etapa.",
+    j1_phase:"Conciencia",j1_action:"Revisa la nevera y reflexiona sobre el desperdicio de comida.",j1_emo:"Impresionado y desilusionado",
+    j2_phase:"Descubrimiento",j2_action:"Investiga alternativas y descarga la app.",j2_emo:"Curioso y motivado",
+    j3_phase:"Aprendizaje",j3_action:"Ve el tutorial y completa su perfil con las unidades de medida.",j3_emo:"Preocupado, luego motivado",
+    j4_phase:"Uso",j4_action:"Cocina su primera receta y sigue el feedback de la app.",j4_emo:"Agobiado, luego confiado",
+    j5_phase:"Engagement",j5_action:"Reduce su desperdicio, recomienda la app y habla del tema con más gente.",j5_emo:"Feliz y entusiasmado",
+    s9l:"Prototipo interactivo",s9h:"Explora el prototipo",
+    s9p1:"El prototipo navegable completo, hecho en Figma, incluye los flujos de onboarding, despensa, recetas y \"Mi impacto\".",
+    btn_figma:"Ver prototipo en Figma",video_label:"Video de interacción",screens_label:"Pantallas del prototipo",
+    scr1:"Onboarding",scr2:"Despensa",scr3:"Recetas",scr4:"Mi impacto",scr5:"Foro",scr6:"Educación",
     prev_lbl:"Hexalud Wellness",next_lbl:"Chiltepiik",
     all_projects:"Ver todos los proyectos",footer:"Diseñadora Multidisciplinar"
   },
@@ -371,6 +582,11 @@ const T = {
     s4p1:"Based on the redefined challenge — how could we raise awareness, educate and reduce the percentage of food waste in households? — we designed the WiseCook concept: an app that accompanies the user from pantry to plate, combining food logging, recipes, impact measurement and ongoing education.",
     s5l:"Identity",s5h:"A warm, organic visual system",
     s5p1:"We developed the logo, color palette, typography and supporting graphic resources for the brand — a visual system designed to convey freshness, organic food and a friendly, educational experience.",
+    mood_note:"We started from a moodboard with editorial illustrations of organic markets, children's recipe books and vegan content — references that guided a friendly, illustrated style close to real food, away from the typical clinical aesthetic of health apps.",
+    colors_label:"Color palette — light version",
+    colors_label_2:"Color palette — dark version",
+    type_label:"Typography",
+    type1_use:"Onboarding",type2_use:"Sections",
     s6l:"Prototype",s6h:"Logging, education and community",
     s6p1:"The high-fidelity prototype includes three pillars: food logging, recipes and personal impact measurement; an education and forum section to learn and share with the community; and My Impact, where the user sees how much waste they've avoided.",
     d1t:"Digital pantry",d1s:"Food logging and shelf-life tracking",
@@ -382,8 +598,18 @@ const T = {
     s8l:"My role",s8h:"A team project, a cross-functional role",
     s8p1:"Within a team of 5 designers, my involvement spanned research, ideation of proposals, design (3D modeling, rendering and mockups) and illustration. The project was carried out under the guidance of Juan Carlos Díez, Álvaro Millán and Jonatan Morquecho.",
     r1t:"Research",r2t:"Ideation & proposals",r3t:"3D modeling & rendering",r4t:"Illustration",
-    s9l:"Gallery",s9h:"Selected pieces",
-    g1:"Storyboard",g2:"Customer Journey",g3:"Identity",g4:"App Prototype",g5:"Wisemer",
+    render_caption:"3D modeling and rendering of the Wisemer device — made in Rhino",
+    s8jl:"Customer Journey",s8jh:"From doubt to recommendation",
+    s8jp1:"We mapped the user's full journey across five phases, from noticing the food-waste problem to recommending the app to others — identifying actions and emotional state at each stage.",
+    j1_phase:"Awareness",j1_action:"Checks the fridge and reflects on food waste.",j1_emo:"Impressed and disillusioned",
+    j2_phase:"Discovery",j2_action:"Researches alternatives and downloads the app.",j2_emo:"Curious and motivated",
+    j3_phase:"Learning",j3_action:"Watches the tutorial and completes their profile with units of measure.",j3_emo:"Worried, then motivated",
+    j4_phase:"Usage",j4_action:"Cooks their first recipe and follows the app's feedback.",j4_emo:"Overwhelmed, then confident",
+    j5_phase:"Engagement",j5_action:"Reduces their waste, recommends the app and talks about it with more people.",j5_emo:"Happy and enthusiastic",
+    s9l:"Interactive prototype",s9h:"Explore the prototype",
+    s9p1:"The full navigable prototype, made in Figma, includes the onboarding, pantry, recipes and \"My Impact\" flows.",
+    btn_figma:"View prototype in Figma",video_label:"Interaction video",screens_label:"Prototype screens",
+    scr1:"Onboarding",scr2:"Pantry",scr3:"Recipes",scr4:"My Impact",scr5:"Forum",scr6:"Education",
     prev_lbl:"Hexalud Wellness",next_lbl:"Chiltepiik",
     all_projects:"View all projects",footer:"Multidisciplinary Designer"
   }
