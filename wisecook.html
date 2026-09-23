@@ -109,6 +109,40 @@ h2{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.03em;margin:1
 .moodboard-note__icon{font-size:20px;flex-shrink:0}
 .moodboard-note__text{font-size:13px;color:var(--muted);line-height:1.6}
 .moodboard-note__text strong{color:var(--text)}
+
+/* Identity / Design System — organización inspirada en Thunder Gym */
+.identity-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:36px}
+@media(min-width:820px){.identity-grid{grid-template-columns:1.15fr .85fr;gap:20px}}
+.identity-block{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px}
+.identity-block--wide{grid-column:1/-1}
+.identity-block__head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+.identity-block__title{font-size:15px;font-weight:800;color:var(--text);letter-spacing:-.01em}
+.identity-block__tag{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-a);font-weight:700}
+.identity-palette{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:520px){.identity-palette{grid-template-columns:1fr 1fr}}
+.identity-color{display:grid;grid-template-columns:54px 1fr;min-height:70px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--card-soft)}
+.identity-color__swatch{min-height:70px}
+.identity-color__info{padding:11px 13px;display:flex;flex-direction:column;justify-content:center}
+.identity-color__name{font-size:12px;font-weight:800;color:var(--text)}
+.identity-color__hex{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px}
+.identity-color__role{font-size:10px;color:var(--faint);line-height:1.4;margin-top:4px}
+.identity-type-list{display:flex;flex-direction:column;gap:10px}
+.identity-type{padding:18px;border:1px solid var(--border);border-radius:14px;background:var(--card-soft)}
+.identity-type__preview{font-size:26px;font-weight:800;letter-spacing:-.03em;color:var(--text);line-height:1.1;margin-bottom:12px}
+.identity-type__preview--body{font-size:14px;font-weight:500;line-height:1.55;color:var(--muted);letter-spacing:0}
+.identity-type__name{font-size:12px;font-weight:800;color:var(--text)}
+.identity-type__spec{display:block;font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:4px}
+.identity-note{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--card-soft)}
+.identity-note__icon{width:38px;height:38px;border-radius:10px;background:rgba(52,168,83,.12);display:flex;align-items:center;justify-content:center;font-size:18px}
+.identity-note__title{font-size:12px;font-weight:800;color:var(--text);margin-bottom:5px}
+.identity-note__text{font-size:13px;color:var(--muted);line-height:1.65}
+.identity-note__text strong{color:var(--text)}
+.identity-mood{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+@media(min-width:640px){.identity-mood{grid-template-columns:repeat(3,1fr)}}
+.identity-mood__item{padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--card-soft)}
+.identity-mood__label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-a);font-weight:700;margin-bottom:5px}
+.identity-mood__value{font-size:12px;color:var(--text);font-weight:600}
+
 /* Customer Journey — visual, adapted to site style */
 .journey{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;margin-top:32px;scrollbar-width:thin}
 .journey::-webkit-scrollbar{height:6px}
@@ -274,53 +308,120 @@ footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;fo
 </section>
 
 <!-- 05 IDENTIDAD -->
-<section class="cs-sec">
+<section class="cs-sec cs-sec--alt" aria-labelledby="s5">
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="eyebrow__num">05</span><div class="eyebrow__line"></div><span class="lbl" data-t="s5l">Identidad</span></div>
-    <h2 data-t="s5h">Un sistema visual cálido y orgánico</h2>
-    <div class="prose reveal">
+
+    <div class="section-head reveal">
+      <div class="section-head__eyebrow">
+        <span class="section-head__num">05</span>
+        <div class="section-head__line" aria-hidden="true"></div>
+        <span class="label" data-t="s5l">Identidad</span>
+      </div>
+      <h2 id="s5" data-t="s5h">Un sistema visual cálido y orgánico</h2>
       <p data-t="s5p1">Desarrollamos el logotipo, la paleta de colores, la tipografía y los recursos gráficos de apoyo de la marca — un sistema visual pensado para transmitir frescura, alimentos orgánicos y una experiencia amigable y educativa.</p>
     </div>
 
-    <div class="moodboard-note reveal">
-      <span class="moodboard-note__icon" aria-hidden="true">🎨</span>
-      <p class="moodboard-note__text" data-t="mood_note">Partimos de un <strong>moodboard</strong> con ilustraciones editoriales de mercados orgánicos, libros de recetas infantiles y contenido vegano — referencias que guiaron un estilo amigable, ilustrado y cercano a la comida real, alejado de la estética clínica típica de las apps de salud.</p>
-    </div>
+    <div class="identity-grid">
 
-    <div class="id-block reveal">
-      <p class="lbl id-block__label" data-t="colors_label">Paleta de colores — versión clara</p>
-      <div class="swatch-row">
-        <div class="swatch"><div class="swatch__color" style="background:#1E5D3E"></div><div class="swatch__info"><p class="swatch__hex">#1E5D3E</p><p class="swatch__rgb">30, 93, 62</p></div></div>
-        <div class="swatch"><div class="swatch__color" style="background:#29A566"></div><div class="swatch__info"><p class="swatch__hex">#29A566</p><p class="swatch__rgb">41, 165, 102</p></div></div>
-        <div class="swatch"><div class="swatch__color" style="background:#E8E970"></div><div class="swatch__info"><p class="swatch__hex">#E8E970</p><p class="swatch__rgb">232, 233, 112</p></div></div>
-        <div class="swatch"><div class="swatch__color" style="background:#DFF9EB"></div><div class="swatch__info"><p class="swatch__hex">#DFF9EB</p><p class="swatch__rgb">223, 249, 235</p></div></div>
-      </div>
-    </div>
-
-    <div class="id-block reveal">
-      <p class="lbl id-block__label" data-t="colors_label_2">Paleta de colores — versión oscura</p>
-      <div class="swatch-row">
-        <div class="swatch"><div class="swatch__color" style="background:#092A1B"></div><div class="swatch__info"><p class="swatch__hex">#092A1B</p><p class="swatch__rgb">9, 42, 27</p></div></div>
-        <div class="swatch"><div class="swatch__color" style="background:#29A566"></div><div class="swatch__info"><p class="swatch__hex">#29A566</p><p class="swatch__rgb">41, 165, 102</p></div></div>
-        <div class="swatch"><div class="swatch__color" style="background:#687684"></div><div class="swatch__info"><p class="swatch__hex">#687684</p><p class="swatch__rgb">104, 118, 132</p></div></div>
-        <div class="swatch"><div class="swatch__color" style="background:#FFFFFF;border-bottom:1px solid var(--border)"></div><div class="swatch__info"><p class="swatch__hex">#FFFFFF</p><p class="swatch__rgb">255, 255, 255</p></div></div>
-      </div>
-    </div>
-
-    <div class="id-block reveal">
-      <p class="lbl id-block__label" data-t="type_label">Tipografía</p>
-      <div class="type-grid">
-        <div class="type-card">
-          <p class="type-card__use" data-t="type1_use">Onboarding</p>
-          <p class="type-card__name">Poppins</p>
-          <p class="type-card__specimen">Light · Medium · SemiBold · <strong>Bold</strong> · <strong>ExtraBold</strong></p>
+      <!-- PALETA -->
+      <div class="identity-block reveal">
+        <div class="identity-block__head">
+          <h3 class="identity-block__title" data-t="colors_title">Paleta de colores</h3>
+          <span class="identity-block__tag" data-t="colors_tag">Color System</span>
         </div>
-        <div class="type-card">
-          <p class="type-card__use" data-t="type2_use">Secciones</p>
-          <p class="type-card__name">Articulat CF</p>
-          <p class="type-card__specimen">Normal · Medium · <strong>Bold</strong></p>
+
+        <div class="identity-palette">
+          <div class="identity-color">
+            <div class="identity-color__swatch" style="background:#1E5D3E"></div>
+            <div class="identity-color__info">
+              <span class="identity-color__name">Organic Green</span>
+              <span class="identity-color__hex">#1E5D3E</span>
+              <span class="identity-color__role" data-t="col1_role">Color principal · naturaleza</span>
+            </div>
+          </div>
+
+          <div class="identity-color">
+            <div class="identity-color__swatch" style="background:#29A566"></div>
+            <div class="identity-color__info">
+              <span class="identity-color__name">Fresh Green</span>
+              <span class="identity-color__hex">#29A566</span>
+              <span class="identity-color__role" data-t="col2_role">Acciones · energía</span>
+            </div>
+          </div>
+
+          <div class="identity-color">
+            <div class="identity-color__swatch" style="background:#E8E970"></div>
+            <div class="identity-color__info">
+              <span class="identity-color__name">Lemon</span>
+              <span class="identity-color__hex">#E8E970</span>
+              <span class="identity-color__role" data-t="col3_role">Acentos · frescura</span>
+            </div>
+          </div>
+
+          <div class="identity-color">
+            <div class="identity-color__swatch" style="background:#DFF9EB"></div>
+            <div class="identity-color__info">
+              <span class="identity-color__name">Mint</span>
+              <span class="identity-color__hex">#DFF9EB</span>
+              <span class="identity-color__role" data-t="col4_role">Fondos · superficies</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- TIPOGRAFÍA -->
+      <div class="identity-block reveal" style="transition-delay:.1s">
+        <div class="identity-block__head">
+          <h3 class="identity-block__title" data-t="type_title">Sistema tipográfico</h3>
+          <span class="identity-block__tag" data-t="type_tag">Typography</span>
+        </div>
+
+        <div class="identity-type-list">
+          <div class="identity-type">
+            <div class="identity-type__preview">Aa</div>
+            <span class="identity-type__name">Poppins</span>
+            <span class="identity-type__spec" data-t="type1_spec">Onboarding · Light · Medium · SemiBold · Bold · ExtraBold</span>
+          </div>
+
+          <div class="identity-type">
+            <div class="identity-type__preview identity-type__preview--body">Una experiencia clara y cercana</div>
+            <span class="identity-type__name">Articulat CF</span>
+            <span class="identity-type__spec" data-t="type2_spec">Secciones · Normal · Medium · Bold</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOODBOARD / DIRECCIÓN VISUAL -->
+      <div class="identity-block identity-block--wide reveal">
+        <div class="identity-block__head">
+          <h3 class="identity-block__title" data-t="mood_title">Dirección visual</h3>
+          <span class="identity-block__tag" data-t="mood_tag">Art Direction</span>
+        </div>
+
+        <div class="identity-note">
+          <div class="identity-note__icon" aria-hidden="true">🎨</div>
+          <div>
+            <p class="identity-note__title" data-t="mood_note_title">Un lenguaje cercano a la comida real</p>
+            <p class="identity-note__text" data-t="mood_note">Partimos de un <strong>moodboard</strong> con ilustraciones editoriales de mercados orgánicos, libros de recetas infantiles y contenido vegano — referencias que guiaron un estilo amigable, ilustrado y cercano a la comida real, alejado de la estética clínica típica de las apps de salud.</p>
+          </div>
+        </div>
+
+        <div class="identity-mood">
+          <div class="identity-mood__item">
+            <p class="identity-mood__label" data-t="mood1_label">Sensación</p>
+            <p class="identity-mood__value" data-t="mood1_value">Amigable · fresca · orgánica</p>
+          </div>
+          <div class="identity-mood__item">
+            <p class="identity-mood__label" data-t="mood2_label">Lenguaje</p>
+            <p class="identity-mood__value" data-t="mood2_value">Ilustrado · educativo · cercano</p>
+          </div>
+          <div class="identity-mood__item">
+            <p class="identity-mood__label" data-t="mood3_label">Objetivo</p>
+            <p class="identity-mood__value" data-t="mood3_value">Evitar la estética clínica</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -461,7 +562,7 @@ footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;fo
       </a>
     </div>
     <div class="proto-frame reveal">
-      <iframe src="https://embed.figma.com/file/hVJ9vEoXKAWhqVQv7Ak8zo/App-principios?type=design&node-id=1170-1067&mode=design&embed-host=share" allowfullscreen loading="lazy" title="Prototipo interactivo WiseCook — Figma"></iframe>
+      <iframe src="https://embed.figma.com/proto/0kbfwB2H3ne5hsqSaVpdlM/WISECOOK?node-id=562-1246&scaling=scale-down&content-scaling=fixed&starting-point-node-id=562%3A1246&page-id=370%3A826&embed-host=share" allowfullscreen loading="lazy" title="Prototipo interactivo WiseCook — Figma"></iframe>
     </div>
 
     <p class="lbl reveal" style="margin-top:48px;margin-bottom:8px" data-t="video_label">Video de interacción</p>
