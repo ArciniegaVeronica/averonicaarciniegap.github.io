@@ -165,6 +165,32 @@ h2{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.03em;margin:1
 /* Video demo */
 .video-frame{margin-top:28px;border-radius:20px;overflow:hidden;border:1px solid var(--border);background:#000;position:relative}
 .video-frame video{width:100%;display:block;max-height:560px}
+/* Customer Journey table — exact same as Thunder Gym */
+.cj-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cj-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:20px;overflow:hidden;border:1px solid var(--border);margin-top:32px}
+.cj-table th{padding:14px 18px;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;text-align:left;white-space:nowrap}
+.cj-table th:nth-child(1){background:var(--surface);color:var(--muted)}
+.cj-table th:nth-child(2){background:var(--surface);color:var(--brand-a)}
+.cj-table th:nth-child(3){background:var(--surface);color:var(--brand-a)}
+.cj-table th:nth-child(4){background:var(--surface);color:var(--brand-b)}
+.cj-table th:nth-child(5){background:var(--surface);color:var(--brand-b)}
+.cj-table th:nth-child(6){background:var(--surface);color:var(--brand-a)}
+.cj-table td{padding:16px 18px;border-top:1px solid var(--border);vertical-align:top;background:var(--surface);font-size:13px;color:var(--muted);line-height:1.55;transition:background var(--ease)}
+.cj-table tr:hover td{background:var(--card-soft)}
+.cj-phase{display:flex;align-items:center;gap:10px}
+.cj-phase__num{width:24px;height:24px;border-radius:6px;background:var(--brand-a);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;font-weight:700;color:#fff;flex-shrink:0}
+.cj-phase__name{font-weight:700;color:var(--text);font-size:13px}
+.cj-emotion{display:flex;align-items:center;gap:8px;font-size:13px}
+.cj-emotion__emoji{font-size:20px}
+.cj-opp{font-size:12px;color:var(--brand-a);font-weight:600}
+.cj-pain{font-size:13px;color:#e88a5c}
+@media(max-width:900px){.cj-table{min-width:900px}}
+/* Screen groups */
+.screen-group{margin-top:44px}
+.screen-group:first-child{margin-top:32px}
+.screen-group__label{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.screen-group__label span:first-child{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-a);font-weight:700}
+.screen-group__count{font-family:var(--mono);font-size:9px;color:var(--faint)}
 /* Screens — uniform grid, exact same as Thunder Gym */
 .screens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 @media(min-width:540px){.screens-grid{grid-template-columns:repeat(4,1fr);gap:18px}}
@@ -436,50 +462,294 @@ footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;fo
       <div class="del-card"><div class="del-card__icon">💬</div><p class="del-card__title" data-t="d4t">Foro & educación</p><p class="del-card__sub" data-t="d4s">Comunidad y contenido educativo</p></div>
     </div>
 
-    <p class="lbl reveal" style="margin-top:40px;margin-bottom:8px" data-t="screens_label">Pantallas del prototipo</p>
-    <div class="screens-grid reveal">
+    <p class="lbl reveal" style="margin-top:40px;margin-bottom:0" data-t="screens_label">Pantallas del prototipo</p>
+    <div class="screen-group reveal">
+      <div class="screen-group__label">
+        <span data-t="grp_wiser">Conexión con Wisemer</span>
+        <span class="screen-group__count">(5)</span>
+      </div>
+      <div class="screens-grid">
       <figure class="screen-card">
         <div class="screen-card__img-wrap">
-          <img src="assets/wisecook-screen-01.jpg" alt="Onboarding — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="assets/wisecook-wiser-01.jpg" alt="Wisemer intro — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
         </div>
-        <figcaption data-t="scr1">Onboarding</figcaption>
+        <figcaption data-t="scr_wiser01">Wisemer intro</figcaption>
       </figure>
       <figure class="screen-card">
         <div class="screen-card__img-wrap">
-          <img src="assets/wisecook-screen-02.jpg" alt="Despensa — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="assets/wisecook-wiser-02.jpg" alt="Detectando Wisemer — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
         </div>
-        <figcaption data-t="scr2">Despensa</figcaption>
+        <figcaption data-t="scr_wiser02">Detectando Wisemer</figcaption>
       </figure>
       <figure class="screen-card">
         <div class="screen-card__img-wrap">
-          <img src="assets/wisecook-screen-03.jpg" alt="Recetas — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="assets/wisecook-wiser-03.jpg" alt="Conectando — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
         </div>
-        <figcaption data-t="scr3">Recetas</figcaption>
+        <figcaption data-t="scr_wiser03">Conectando</figcaption>
       </figure>
       <figure class="screen-card">
         <div class="screen-card__img-wrap">
-          <img src="assets/wisecook-screen-04.jpg" alt="Mi impacto — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="assets/wisecook-wiser-04.jpg" alt="Wisemer detectado — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
         </div>
-        <figcaption data-t="scr4">Mi impacto</figcaption>
+        <figcaption data-t="scr_wiser04">Wisemer detectado</figcaption>
       </figure>
       <figure class="screen-card">
         <div class="screen-card__img-wrap">
-          <img src="assets/wisecook-screen-05.jpg" alt="Foro — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="assets/wisecook-wiser-05.jpg" alt="Wisemer conectado — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
         </div>
-        <figcaption data-t="scr5">Foro</figcaption>
+        <figcaption data-t="scr_wiser05">Wisemer conectado</figcaption>
+      </figure>
+      </div>
+    </div>
+    <div class="screen-group reveal">
+      <div class="screen-group__label">
+        <span data-t="grp_auth">Registro y onboarding</span>
+        <span class="screen-group__count">(8)</span>
+      </div>
+      <div class="screens-grid">
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-auth-01.jpg" alt="Pantalla inicio — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_auth01">Pantalla inicio</figcaption>
       </figure>
       <figure class="screen-card">
         <div class="screen-card__img-wrap">
-          <img src="assets/wisecook-screen-06.jpg" alt="Educación — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="assets/wisecook-auth-02.jpg" alt="Iniciar sesión — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
         </div>
-        <figcaption data-t="scr6">Educación</figcaption>
+        <figcaption data-t="scr_auth02">Iniciar sesión</figcaption>
       </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-auth-03.jpg" alt="Crear cuenta — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_auth03">Crear cuenta</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-auth-04.jpg" alt="Verificación — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_auth04">Verificación</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-auth-05.jpg" alt="Verificación código — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_auth05">Verificación código</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-auth-06.jpg" alt="Popup Educación — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_auth06">Popup Educación</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-auth-07.jpg" alt="Popup Despensa — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_auth07">Popup Despensa</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-auth-08.jpg" alt="Popup Escanear — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_auth08">Popup Escanear</figcaption>
+      </figure>
+      </div>
+    </div>
+    <div class="screen-group reveal">
+      <div class="screen-group__label">
+        <span data-t="grp_scan">Escaneo y despensa</span>
+        <span class="screen-group__count">(4)</span>
+      </div>
+      <div class="screens-grid">
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-scan-01.jpg" alt="Escaneando — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_scan01">Escaneando</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-scan-02.jpg" alt="Escaneo resultado — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_scan02">Escaneo resultado</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-scan-03.jpg" alt="Conoces tus alimentos — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_scan03">Conoces tus alimentos</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-scan-04.jpg" alt="Despensa — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_scan04">Despensa</figcaption>
+      </figure>
+      </div>
+    </div>
+    <div class="screen-group reveal">
+      <div class="screen-group__label">
+        <span data-t="grp_recipes">Recetas</span>
+        <span class="screen-group__count">(2)</span>
+      </div>
+      <div class="screens-grid">
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-recipes-01.jpg" alt="Recetas — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_recipes01">Recetas</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-recipes-02.jpg" alt="Flan de plátano — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_recipes02">Flan de plátano</figcaption>
+      </figure>
+      </div>
+    </div>
+    <div class="screen-group reveal">
+      <div class="screen-group__label">
+        <span data-t="grp_measure">Medición</span>
+        <span class="screen-group__count">(4)</span>
+      </div>
+      <div class="screens-grid">
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-measure-01.jpg" alt="Medición balanza — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_measure01">Medición balanza</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-measure-02.jpg" alt="Medición cantidad — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_measure02">Medición cantidad</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-measure-03.jpg" alt="¿Te ha sobrado comida? — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_measure03">¿Te ha sobrado comida?</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-measure-04.jpg" alt="Medición confirmación — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_measure04">Medición confirmación</figcaption>
+      </figure>
+      </div>
+    </div>
+    <div class="screen-group reveal">
+      <div class="screen-group__label">
+        <span data-t="grp_impact">Mi Impacto</span>
+        <span class="screen-group__count">(1)</span>
+      </div>
+      <div class="screens-grid">
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-impact-01.jpg" alt="Mi impacto — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_impact01">Mi impacto</figcaption>
+      </figure>
+      </div>
+    </div>
+    <div class="screen-group reveal">
+      <div class="screen-group__label">
+        <span data-t="grp_edu">Educación y artículos</span>
+        <span class="screen-group__count">(2)</span>
+      </div>
+      <div class="screens-grid">
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-edu-01.jpg" alt="Educación — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_edu01">Educación</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-edu-02.jpg" alt="Artículos — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_edu02">Artículos</figcaption>
+      </figure>
+      </div>
+    </div>
+    <div class="screen-group reveal">
+      <div class="screen-group__label">
+        <span data-t="grp_social">Social y foro</span>
+        <span class="screen-group__count">(6)</span>
+      </div>
+      <div class="screens-grid">
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-social-01.jpg" alt="Foro home — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_social01">Foro home</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-social-02.jpg" alt="Post popup — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_social02">Post popup</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-social-03.jpg" alt="Perfil — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_social03">Perfil</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-social-04.jpg" alt="Buscar — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_social04">Buscar</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-social-05.jpg" alt="Mensajes — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_social05">Mensajes</figcaption>
+      </figure>
+      <figure class="screen-card">
+        <div class="screen-card__img-wrap">
+          <img src="assets/wisecook-social-06.jpg" alt="Escribir mensaje — WiseCook" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="screen-card__empty" style="display:none" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        </div>
+        <figcaption data-t="scr_social06">Escribir mensaje</figcaption>
+      </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -504,40 +774,63 @@ footer{padding:32px 24px;border-top:1px solid var(--border);text-align:center;fo
   <div class="wrap">
     <div class="eyebrow reveal"><span class="eyebrow__num">08</span><div class="eyebrow__line"></div><span class="lbl" data-t="s8jl">Customer Journey</span></div>
     <h2 data-t="s8jh">De la duda a la recomendación</h2>
-    <div class="prose reveal">
-      <p data-t="s8jp1">Mapeamos el recorrido completo del usuario en cinco fases, desde que percibe el problema del desperdicio hasta que recomienda la app a otras personas — identificando acciones y estado emocional en cada etapa.</p>
-    </div>
-    <div class="journey reveal" role="list" aria-label="Fases del Customer Journey">
-      <div class="j-card j-card--low" role="listitem">
-        <div class="j-card__icon" aria-hidden="true">🤔</div>
-        <p class="j-card__phase" data-t="j1_phase">Conciencia</p>
-        <p class="j-card__action" data-t="j1_action">Revisa la nevera y reflexiona sobre el desperdicio de comida.</p>
-        <span class="j-card__emo" data-t="j1_emo">Impresionado y desilusionado</span>
-      </div>
-      <div class="j-card" role="listitem">
-        <div class="j-card__icon" aria-hidden="true">💡</div>
-        <p class="j-card__phase" data-t="j2_phase">Descubrimiento</p>
-        <p class="j-card__action" data-t="j2_action">Investiga alternativas y descarga la app.</p>
-        <span class="j-card__emo" data-t="j2_emo">Curioso y motivado</span>
-      </div>
-      <div class="j-card j-card--low" role="listitem">
-        <div class="j-card__icon" aria-hidden="true">📖</div>
-        <p class="j-card__phase" data-t="j3_phase">Aprendizaje</p>
-        <p class="j-card__action" data-t="j3_action">Ve el tutorial y completa su perfil con las unidades de medida.</p>
-        <span class="j-card__emo" data-t="j3_emo">Preocupado, luego motivado</span>
-      </div>
-      <div class="j-card" role="listitem">
-        <div class="j-card__icon" aria-hidden="true">👨‍🍳</div>
-        <p class="j-card__phase" data-t="j4_phase">Uso</p>
-        <p class="j-card__action" data-t="j4_action">Cocina su primera receta y sigue el feedback de la app.</p>
-        <span class="j-card__emo" data-t="j4_emo">Agobiado, luego confiado</span>
-      </div>
-      <div class="j-card" role="listitem">
-        <div class="j-card__icon" aria-hidden="true">🚀</div>
-        <p class="j-card__phase" data-t="j5_phase">Engagement</p>
-        <p class="j-card__action" data-t="j5_action">Reduce su desperdicio, recomienda la app y habla del tema con más gente.</p>
-        <span class="j-card__emo" data-t="j5_emo">Feliz y entusiasmado</span>
-      </div>
+    <p class="prose reveal" data-t="s8jp1">Mapeamos el recorrido completo del usuario en cinco fases, desde que percibe el problema del desperdicio hasta que recomienda la app a otras personas.</p>
+
+    <div class="cj-table-wrap reveal">
+      <table class="cj-table" role="table" aria-label="Customer Journey de WiseCook">
+        <thead>
+          <tr>
+            <th scope="col" data-t="cj_fase">🚩 Fase</th>
+            <th scope="col" data-t="cj_actions">⚡ Acciones</th>
+            <th scope="col" data-t="cj_touch">📍 Puntos de contacto</th>
+            <th scope="col" data-t="cj_emotion">😊 Emociones</th>
+            <th scope="col" data-t="cj_pain">⚠️ Frustraciones</th>
+            <th scope="col" data-t="cj_opp">💡 Oportunidades</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="cj-phase"><div class="cj-phase__num">01</div><span class="cj-phase__name" data-t="cj1_name">Conciencia</span></div></td>
+            <td data-t="cj1_action">Revisa la nevera y nota comida que se está echando a perder.</td>
+            <td data-t="cj1_touch">Nevera / despensa</td>
+            <td><div class="cj-emotion"><span class="cj-emotion__emoji">😞</span><span data-t="cj1_emo">Desilusionado</span></div></td>
+            <td class="cj-pain" data-t="cj1_pain">No sabe cuánta comida desperdicia ni por qué.</td>
+            <td class="cj-opp" data-t="cj1_opp">→ Registro visual de la despensa en la app</td>
+          </tr>
+          <tr>
+            <td><div class="cj-phase"><div class="cj-phase__num">02</div><span class="cj-phase__name" data-t="cj2_name">Descubrimiento</span></div></td>
+            <td data-t="cj2_action">Investiga alternativas para reducir el desperdicio y descarga la app.</td>
+            <td data-t="cj2_touch">Búsqueda / App Store</td>
+            <td><div class="cj-emotion"><span class="cj-emotion__emoji">🤔</span><span data-t="cj2_emo">Curioso</span></div></td>
+            <td class="cj-pain" data-t="cj2_pain">Duda si otra app más le va a funcionar de verdad.</td>
+            <td class="cj-opp" data-t="cj2_opp">→ Onboarding claro con beneficio inmediato</td>
+          </tr>
+          <tr>
+            <td><div class="cj-phase"><div class="cj-phase__num">03</div><span class="cj-phase__name" data-t="cj3_name">Aprendizaje</span></div></td>
+            <td data-t="cj3_action">Ve el tutorial, verifica su número y completa su perfil.</td>
+            <td data-t="cj3_touch">Onboarding / registro</td>
+            <td><div class="cj-emotion"><span class="cj-emotion__emoji">😰</span><span data-t="cj3_emo">Preocupado</span></div></td>
+            <td class="cj-pain" data-t="cj3_pain">Teme que registrar todo manualmente sea tedioso.</td>
+            <td class="cj-opp" data-t="cj3_opp">→ Conexión automática con el dispositivo Wisemer</td>
+          </tr>
+          <tr>
+            <td><div class="cj-phase"><div class="cj-phase__num">04</div><span class="cj-phase__name" data-t="cj4_name">Uso</span></div></td>
+            <td data-t="cj4_action">Escanea su despensa, cocina su primera receta y mide su comida sobrante.</td>
+            <td data-t="cj4_touch">Escaneo / Recetas / Medición</td>
+            <td><div class="cj-emotion"><span class="cj-emotion__emoji">😓</span><span data-t="cj4_emo">Agobiado</span></div></td>
+            <td class="cj-pain" data-t="cj4_pain">Demasiados pasos nuevos al mismo tiempo.</td>
+            <td class="cj-opp" data-t="cj4_opp">→ Flujo guiado paso a paso con feedback inmediato</td>
+          </tr>
+          <tr>
+            <td><div class="cj-phase"><div class="cj-phase__num">05</div><span class="cj-phase__name" data-t="cj5_name">Engagement</span></div></td>
+            <td data-t="cj5_action">Ve su progreso en "Mi impacto" y recomienda la app a otras personas.</td>
+            <td data-t="cj5_touch">Mi Impacto / Foro / Social</td>
+            <td><div class="cj-emotion"><span class="cj-emotion__emoji">🎉</span><span data-t="cj5_emo">Entusiasmado</span></div></td>
+            <td class="cj-pain" data-t="cj5_pain">Sin comunidad, el hábito es fácil de abandonar.</td>
+            <td class="cj-opp" data-t="cj5_opp">→ Foro y mensajería para sostener el hábito en comunidad</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -648,16 +941,56 @@ const T = {
     r1t:"Research",r2t:"Ideación & propuestas",r3t:"Modelado 3D & renderizado",r4t:"Ilustración",
     render_caption:"Modelado 3D y renderizado del dispositivo Wisemer — realizado en Rhino",
     s8jl:"Customer Journey",s8jh:"De la duda a la recomendación",
-    s8jp1:"Mapeamos el recorrido completo del usuario en cinco fases, desde que percibe el problema del desperdicio hasta que recomienda la app a otras personas — identificando acciones y estado emocional en cada etapa.",
-    j1_phase:"Conciencia",j1_action:"Revisa la nevera y reflexiona sobre el desperdicio de comida.",j1_emo:"Impresionado y desilusionado",
-    j2_phase:"Descubrimiento",j2_action:"Investiga alternativas y descarga la app.",j2_emo:"Curioso y motivado",
-    j3_phase:"Aprendizaje",j3_action:"Ve el tutorial y completa su perfil con las unidades de medida.",j3_emo:"Preocupado, luego motivado",
-    j4_phase:"Uso",j4_action:"Cocina su primera receta y sigue el feedback de la app.",j4_emo:"Agobiado, luego confiado",
-    j5_phase:"Engagement",j5_action:"Reduce su desperdicio, recomienda la app y habla del tema con más gente.",j5_emo:"Feliz y entusiasmado",
+    s8jp1:"Mapeamos el recorrido completo del usuario en cinco fases, desde que percibe el problema del desperdicio hasta que recomienda la app a otras personas.",
+    cj_fase:"🚩 Fase",cj_actions:"⚡ Acciones",cj_touch:"📍 Puntos de contacto",cj_emotion:"😊 Emociones",cj_pain:"⚠️ Frustraciones",cj_opp:"💡 Oportunidades",
+    cj1_name:"Conciencia",cj1_action:"Revisa la nevera y nota comida que se está echando a perder.",cj1_touch:"Nevera / despensa",cj1_emo:"Desilusionado",cj1_pain:"No sabe cuánta comida desperdicia ni por qué.",cj1_opp:"→ Registro visual de la despensa en la app",
+    cj2_name:"Descubrimiento",cj2_action:"Investiga alternativas para reducir el desperdicio y descarga la app.",cj2_touch:"Búsqueda / App Store",cj2_emo:"Curioso",cj2_pain:"Duda si otra app más le va a funcionar de verdad.",cj2_opp:"→ Onboarding claro con beneficio inmediato",
+    cj3_name:"Aprendizaje",cj3_action:"Ve el tutorial, verifica su número y completa su perfil.",cj3_touch:"Onboarding / registro",cj3_emo:"Preocupado",cj3_pain:"Teme que registrar todo manualmente sea tedioso.",cj3_opp:"→ Conexión automática con el dispositivo Wisemer",
+    cj4_name:"Uso",cj4_action:"Escanea su despensa, cocina su primera receta y mide su comida sobrante.",cj4_touch:"Escaneo / Recetas / Medición",cj4_emo:"Agobiado",cj4_pain:"Demasiados pasos nuevos al mismo tiempo.",cj4_opp:"→ Flujo guiado paso a paso con feedback inmediato",
+    cj5_name:"Engagement",cj5_action:"Ve su progreso en \"Mi impacto\" y recomienda la app a otras personas.",cj5_touch:"Mi Impacto / Foro / Social",cj5_emo:"Entusiasmado",cj5_pain:"Sin comunidad, el hábito es fácil de abandonar.",cj5_opp:"→ Foro y mensajería para sostener el hábito en comunidad",
     s9l:"Prototipo interactivo",s9h:"Explora el prototipo",
     s9p1:"El prototipo navegable completo, hecho en Figma, incluye los flujos de onboarding, despensa, recetas y \"Mi impacto\".",
     btn_figma:"Ver prototipo en Figma",video_label:"Video de interacción",screens_label:"Pantallas del prototipo",
-    scr1:"Onboarding",scr2:"Despensa",scr3:"Recetas",scr4:"Mi impacto",scr5:"Foro",scr6:"Educación",
+    scr_wiser01:"Wisemer intro",
+    scr_wiser02:"Detectando Wisemer",
+    scr_wiser03:"Conectando",
+    scr_wiser04:"Wisemer detectado",
+    scr_wiser05:"Wisemer conectado",
+    grp_wiser:"Conexión con Wisemer",
+    scr_auth01:"Pantalla inicio",
+    scr_auth02:"Iniciar sesión",
+    scr_auth03:"Crear cuenta",
+    scr_auth04:"Verificación",
+    scr_auth05:"Verificación código",
+    scr_auth06:"Popup Educación",
+    scr_auth07:"Popup Despensa",
+    scr_auth08:"Popup Escanear",
+    grp_auth:"Registro y onboarding",
+    scr_scan01:"Escaneando",
+    scr_scan02:"Escaneo resultado",
+    scr_scan03:"Conoces tus alimentos",
+    scr_scan04:"Despensa",
+    grp_scan:"Escaneo y despensa",
+    scr_recipes01:"Recetas",
+    scr_recipes02:"Flan de plátano",
+    grp_recipes:"Recetas",
+    scr_measure01:"Medición balanza",
+    scr_measure02:"Medición cantidad",
+    scr_measure03:"¿Te ha sobrado comida?",
+    scr_measure04:"Medición confirmación",
+    grp_measure:"Medición",
+    scr_impact01:"Mi impacto",
+    grp_impact:"Mi Impacto",
+    scr_edu01:"Educación",
+    scr_edu02:"Artículos",
+    grp_edu:"Educación y artículos",
+    scr_social01:"Foro home",
+    scr_social02:"Post popup",
+    scr_social03:"Perfil",
+    scr_social04:"Buscar",
+    scr_social05:"Mensajes",
+    scr_social06:"Escribir mensaje",
+    grp_social:"Social y foro",
     prev_lbl:"Hexalud Wellness",next_lbl:"Chiltepiik",
     all_projects:"Ver todos los proyectos",footer:"Diseñadora Multidisciplinar"
   },
@@ -696,16 +1029,56 @@ const T = {
     r1t:"Research",r2t:"Ideation & proposals",r3t:"3D modeling & rendering",r4t:"Illustration",
     render_caption:"3D modeling and rendering of the Wisemer device — made in Rhino",
     s8jl:"Customer Journey",s8jh:"From doubt to recommendation",
-    s8jp1:"We mapped the user's full journey across five phases, from noticing the food-waste problem to recommending the app to others — identifying actions and emotional state at each stage.",
-    j1_phase:"Awareness",j1_action:"Checks the fridge and reflects on food waste.",j1_emo:"Impressed and disillusioned",
-    j2_phase:"Discovery",j2_action:"Researches alternatives and downloads the app.",j2_emo:"Curious and motivated",
-    j3_phase:"Learning",j3_action:"Watches the tutorial and completes their profile with units of measure.",j3_emo:"Worried, then motivated",
-    j4_phase:"Usage",j4_action:"Cooks their first recipe and follows the app's feedback.",j4_emo:"Overwhelmed, then confident",
-    j5_phase:"Engagement",j5_action:"Reduces their waste, recommends the app and talks about it with more people.",j5_emo:"Happy and enthusiastic",
+    s8jp1:"We mapped the user's full journey across five phases, from noticing the food-waste problem to recommending the app to others.",
+    cj_fase:"🚩 Phase",cj_actions:"⚡ Actions",cj_touch:"📍 Touchpoints",cj_emotion:"😊 Emotions",cj_pain:"⚠️ Pain points",cj_opp:"💡 Opportunities",
+    cj1_name:"Awareness",cj1_action:"Checks the fridge and notices food going bad.",cj1_touch:"Fridge / pantry",cj1_emo:"Disillusioned",cj1_pain:"Doesn't know how much food they waste or why.",cj1_opp:"→ Visual pantry log within the app",
+    cj2_name:"Discovery",cj2_action:"Researches ways to reduce waste and downloads the app.",cj2_touch:"Search / App Store",cj2_emo:"Curious",cj2_pain:"Doubts whether yet another app will actually help.",cj2_opp:"→ Clear onboarding with immediate benefit",
+    cj3_name:"Learning",cj3_action:"Watches the tutorial, verifies their number and completes their profile.",cj3_touch:"Onboarding / signup",cj3_emo:"Worried",cj3_pain:"Fears manual logging will be tedious.",cj3_opp:"→ Automatic sync with the Wisemer device",
+    cj4_name:"Usage",cj4_action:"Scans their pantry, cooks their first recipe and measures leftovers.",cj4_touch:"Scan / Recipes / Measurement",cj4_emo:"Overwhelmed",cj4_pain:"Too many new steps at once.",cj4_opp:"→ Guided step-by-step flow with instant feedback",
+    cj5_name:"Engagement",cj5_action:"Sees their progress in \"My Impact\" and recommends the app to others.",cj5_touch:"My Impact / Forum / Social",cj5_emo:"Enthusiastic",cj5_pain:"Without community, the habit is easy to drop.",cj5_opp:"→ Forum and messaging to sustain the habit as a community",
     s9l:"Interactive prototype",s9h:"Explore the prototype",
     s9p1:"The full navigable prototype, made in Figma, includes the onboarding, pantry, recipes and \"My Impact\" flows.",
     btn_figma:"View prototype in Figma",video_label:"Interaction video",screens_label:"Prototype screens",
-    scr1:"Onboarding",scr2:"Pantry",scr3:"Recipes",scr4:"My Impact",scr5:"Forum",scr6:"Education",
+    scr_wiser01:"Wisemer intro",
+    scr_wiser02:"Detecting Wisemer",
+    scr_wiser03:"Connecting",
+    scr_wiser04:"Wisemer detected",
+    scr_wiser05:"Wisemer connected",
+    grp_wiser:"Wisemer Connection",
+    scr_auth01:"Home screen",
+    scr_auth02:"Log in",
+    scr_auth03:"Create account",
+    scr_auth04:"Verification",
+    scr_auth05:"Verification code",
+    scr_auth06:"Education popup",
+    scr_auth07:"Pantry popup",
+    scr_auth08:"Scan popup",
+    grp_auth:"Onboarding & Signup",
+    scr_scan01:"Scanning",
+    scr_scan02:"Scan result",
+    scr_scan03:"Know your food",
+    scr_scan04:"Pantry",
+    grp_scan:"Scanning & Pantry",
+    scr_recipes01:"Recipes",
+    scr_recipes02:"Banana flan",
+    grp_recipes:"Recipes",
+    scr_measure01:"Scale measurement",
+    scr_measure02:"Amount measurement",
+    scr_measure03:"Leftover food?",
+    scr_measure04:"Measurement confirmation",
+    grp_measure:"Measurement",
+    scr_impact01:"My impact",
+    grp_impact:"My Impact",
+    scr_edu01:"Education",
+    scr_edu02:"Articles",
+    grp_edu:"Education & Articles",
+    scr_social01:"Forum home",
+    scr_social02:"Post popup",
+    scr_social03:"Profile",
+    scr_social04:"Search",
+    scr_social05:"Messages",
+    scr_social06:"Write message",
+    grp_social:"Social & Forum",
     prev_lbl:"Hexalud Wellness",next_lbl:"Chiltepiik",
     all_projects:"View all projects",footer:"Multidisciplinary Designer"
   }
